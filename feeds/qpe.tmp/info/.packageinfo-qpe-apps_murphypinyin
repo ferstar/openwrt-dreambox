@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/qpe-apps/murphypinyin/Makefile
+Package: murphytalk.pinyin
+Submenu: qpe-apps
+Version: 0.03-3
+Depends: +qpe-build +libc +libgcc +libstdcpp +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qtopia-
+Category: Qt/Qtopia
+Title: MurphyPinyin a Chinese Input Method
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: MurphyPinyin-0.03-src.tgz
+Type: ipkg
+Description:   MurphyPinyin a Chinese Input Method,
+  Port of Scim Chinese of James Su,released under GPL.
+  Maintainer: MurphyTalk(murphytalk@gmail.com) SunsetYang(sunsetyang@gmail.com)
+http://www.qkevin.com/
+@@
+
+

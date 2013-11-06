@@ -1,0 +1,10 @@
+TEMPLATE	= app
+CONFIG		+= qt warn_on release
+HEADERS		+= src/mainwindow.h src/zudokuengine.h
+SOURCES		+= src/mainwindow.cpp src/zudokuengine.cpp src/main.cpp
+DEFINES		+= DEBUG_LOGGING QT_WIN
+TARGET      = zudoku
+INCLUDEPATH	+= . 
+VERSION		= 1.0.0
+RC_FILE		= zudoku.rc
+LIBS        += 

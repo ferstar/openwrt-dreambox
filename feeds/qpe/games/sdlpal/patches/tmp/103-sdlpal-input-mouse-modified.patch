@@ -1,0 +1,135 @@
+diff -Nur sdlpal/input.c sdlpal-mini6410//input.c
+--- sdlpal/input.c	2011-01-05 00:15:18.000000000 +0800
++++ sdlpal/input.c	2011-01-10 17:37:17.000000000 +0800
+@@ -444,82 +444,64 @@
+ --*/
+ {
+ #ifdef PAL_HAS_JOYSTICKS
++   BOOL keyDown = FALSE;
++
+    switch (lpEvent->type)
+    {
+    case SDL_JOYAXISMOTION:
+       //
+       // Moved an axis on joystick
+       //
+-      switch (lpEvent->jaxis.axis)
+-      {
+-      case 0:
+-         //
+-         // X axis
+-         //
+-         if (lpEvent->jaxis.value > 20000)
+-         {
+-            if (g_InputState.dir != kDirEast)
+-            {
+-               g_InputState.dwKeyPress |= kKeyRight;
+-            }
+-            g_InputState.prevdir = g_InputState.dir;
+-            g_InputState.dir = kDirEast;
+-         }
+-         else if (lpEvent->jaxis.value < -20000)
+-         {
+-            if (g_InputState.dir != kDirWest)
+-            {
+-               g_InputState.dwKeyPress |= kKeyLeft;
+-            }
+-            g_InputState.prevdir = g_InputState.dir;
+-            g_InputState.dir = kDirWest;
+-         }
+-         else
+-         {
+-            if (g_InputState.prevdir != kDirEast &&
+-               g_InputState.prevdir != kDirWest)
+-            {
+-               g_InputState.dir = g_InputState.prevdir;
+-            }
+-            g_InputState.prevdir = kDirUnknown;
+-         }
+-         break;
+-
+-      case 1:
+-         //
+-         // Y axis
+-         //
+-         if (lpEvent->jaxis.value > 20000)
+-         {
+-            if (g_InputState.dir != kDirSouth)
+-            {
+-               g_InputState.dwKeyPress |= kKeyDown;
+-            }
+-            g_InputState.prevdir = g_InputState.dir;
+-            g_InputState.dir = kDirSouth;
+-         }
+-         else if (lpEvent->jaxis.value < -20000)
+-         {
+-            if (g_InputState.dir != kDirNorth)
+-            {
+-               g_InputState.dwKeyPress |= kKeyUp;
+-            }
+-            g_InputState.prevdir = g_InputState.dir;
+-            g_InputState.dir = kDirNorth;
+-         }
+-         else
+-         {
+-            if (g_InputState.prevdir != kDirNorth &&
+-               g_InputState.prevdir != kDirSouth)
+-            {
+-               g_InputState.dir = g_InputState.prevdir;
+-            }
+-            g_InputState.prevdir = kDirUnknown;
+-         }
+-         break;
++
++      // printf("PAL_JoystickEventFilter: lpEvent->jaxis.axis: %d:  jaxis.value: %d\n", lpEvent->jaxis.axis, lpEvent->jaxis.value );
++
++      if (lpEvent->jaxis.axis == 0) {
++          if (lpEvent->jaxis.value == 32767 && g_InputState.dir != kDirSouth && g_InputState.dir != kDirNorth)
++          {
++              if (g_InputState.dir != kDirEast)
++              {
++                  g_InputState.dwKeyPress |= kKeyRight;
++              }
++              g_InputState.prevdir = g_InputState.dir;
++              g_InputState.dir = kDirEast;
++          }
++          else if (lpEvent->jaxis.value == -32768 && g_InputState.dir != kDirSouth && g_InputState.dir != kDirNorth)
++          {
++              if (g_InputState.dir != kDirWest)
++              {
++                  g_InputState.dwKeyPress |= kKeyLeft;
++              }
++              g_InputState.prevdir = g_InputState.dir;
++              g_InputState.dir = kDirWest;
++          }
++          else if (lpEvent->jaxis.value == 255 && g_InputState.dir != kDirEast && g_InputState.dir != kDirWest)
++          {
++              if (g_InputState.dir != kDirSouth)
++              {
++                  g_InputState.dwKeyPress |= kKeyDown;
++              }
++              g_InputState.prevdir = g_InputState.dir;
++              g_InputState.dir = kDirSouth;
++          }
++          else if (lpEvent->jaxis.value == 0 && g_InputState.dir != kDirEast && g_InputState.dir != kDirWest)
++          {
++              if (g_InputState.dir != kDirNorth)
++              {
++                  g_InputState.dwKeyPress |= kKeyUp;
++              }
++              g_InputState.prevdir = g_InputState.dir;
++              g_InputState.dir = kDirNorth;
++          }
++          else
++          {
++              g_InputState.dir = kDirUnknown;
++              g_InputState.prevdir = kDirUnknown;
++          }
+       }
++
+       break;
+ 
++
+    case SDL_JOYBUTTONDOWN:
+       //
+       // Pressed the joystick button

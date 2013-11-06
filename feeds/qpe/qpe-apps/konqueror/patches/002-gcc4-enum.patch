@@ -1,0 +1,11 @@
+--- konqueror-embedded-snapshot-20030705/konq-embed/add-ons/kflashpart/flashlib/flash.h.orig	2003-05-29 23:08:45.000000000 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/add-ons/kflashpart/flashlib/flash.h	2012-01-21 23:31:05.000000000 +0800
+@@ -74,7 +74,7 @@
+     FeRefresh,
+     FeKeyPress,
+     /* internal events */
+-    FeKeyRelease,
++    FeKeyRelease
+ };
+ 
+ enum FlashKey {

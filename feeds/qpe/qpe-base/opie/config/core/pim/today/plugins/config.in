@@ -1,0 +1,5 @@
+  source core/pim/today/plugins/addressbook/config.in
+  source core/pim/today/plugins/datebook/config.in
+  source core/pim/today/plugins/mail/config.in
+  source core/pim/today/plugins/todolist/config.in
+

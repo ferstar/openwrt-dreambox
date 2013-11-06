@@ -1,0 +1,19 @@
+Source-Makefile: feeds/qpe/apps/smplayer/Makefile
+Package: smplayer
+Submenu: apps
+Version: 0.8.1-1
+Depends: +mplayer +Qt4
+Provides: 
+Section: sound
+Category: Qt/Qtopia
+Title: SMPlayer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: smplayer-0.8.1.tar.bz2
+Type: ipkg
+Description:   SMPlayer is a complete front-end for MPlayer,
+  from basic features like playing videos, DVDs, VCDs
+  to more advanced features like support for MPlayer filters, edl lists, and more.
+http://smplayer.sourceforge.net/
+@@
+
+

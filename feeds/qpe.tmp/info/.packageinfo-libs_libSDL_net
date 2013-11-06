@@ -1,0 +1,21 @@
+Source-Makefile: feeds/qpe/libs/libSDL_net/Makefile
+Package: libSDL_net
+Submenu: libs
+Version: 1.2.8-1
+Depends: +libSDL +zlib
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple portable network library for use with SDL
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_net-1.2.8.tar.gz
+Type: ipkg
+Description:   This is an example portable network library for use with SDL.
+  It is available under the zlib license, found in the file COPYING.
+  The API can be found in the file SDL_net.h
+  This library supports UNIX, Windows, MacOS Classic, MacOS X, BeOS and QNX.
+http://www.libsdl.org/projects/SDL_net/
+@@
+
+

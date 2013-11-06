@@ -1,0 +1,30 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- MurphyPinyin/PinyinFrame.cpp.orig	2012-05-14 23:25:17.014957325 +0800
++++ MurphyPinyin/PinyinFrame.cpp	2012-05-14 23:27:36.590957249 +0800
+@@ -45,21 +45,21 @@
+ #ifdef X86
+ "/home/chyang/pinyin_table.txt";
+ #else
+-"/home/zaurus/.murphytalk/pinyin_table.txt";
++"/opt/murphytalk/default/pinyin_table.txt";
+ #endif
+ 
+ const char phrase_index_file[]=
+ #ifdef X86
+ "/home/chyang/murphytalk_phrase_idx.txt";
+ #else
+-"/home/zaurus/.murphytalk/murphytalk_phrase_idx.txt";
++"/opt/murphytalk/default/murphytalk_phrase_idx.txt";
+ #endif
+ 
+ const char config_file[]=
+ #ifdef X86
+ "/home/chyang/murphytalk.conf";
+ #else
+-"/etc/murphytalk.conf";
++"/opt/murphytalk/murphytalk.conf";
+ #endif
+ 
+ 

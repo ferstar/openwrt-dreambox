@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-host/qt2/Makefile
+Package: qt2
+Submenu: qpe-host
+Version: 2.3.2-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt-x11-2.3.2 tools
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-x11-2.3.2.tar.gz
+Type: ipkg
+Description:   qt-x11-2.3.2
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+

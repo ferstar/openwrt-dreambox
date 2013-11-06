@@ -1,0 +1,406 @@
+Source-Makefile: feeds/qpe/qpe-base/Qt4/Makefile
+Package: Qt4
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: +zlib +librt +libstdcpp @!LINUX_2_4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4
+http://qt.nokia.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/Qt4/Config.in"
+@@
+
+Package: Qt4-gui
+Submenu: qpe-base
+Default: y
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-gui:libpng +PACKAGE_Qt4-gui:libtiff +PACKAGE_Qt4-gui:libjpeg +PACKAGE_Qt4-gui:libfreetype +Qt4-network +FEATURE_drawing-backend_libX11:libX11 +FEATURE_drawing-backend_libX11:libXext @DISPLAY_SUPPORT
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (gui)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (gui)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-demos
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (demos)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (demos)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-examples
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-svg
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (examples)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (examples)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-network
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (network)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (network)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-sqlite
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-sqlite:libsqlite3
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (sqlite)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (sqlite)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-mysql
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-mysql:libmysqlclient
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (mysql)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (mysql)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-pgsql
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +coreutils +coreutils-su +PACKAGE_Qt4-pgsql:libpq
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (pgsql)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (pgsql)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-openssl
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-openssl:libopenssl
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (openssl)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (openssl)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-phonon
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-xml +Qt4-dbus +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (phonon)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (phonon)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-svg
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (svg)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (svg)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-webkit
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-webkit:libsqlite3 +Qt4-phonon +Qt4-dbus +Qt4-xml +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (webkit)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (webkit)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-script
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (script)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (script)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-scripttools
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-script +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (scripttools)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (scripttools)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-dbus
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-dbus:libdbus +Qt4-xml
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (dbus)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (dbus)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-qt3support
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-xml
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (qt3support)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (qt3support)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-declarative
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-script +Qt4-xml +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (declarative)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (declarative)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-xml
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (xml)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (xml)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-xmlpatterns
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (xmlpatterns)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (xmlpatterns)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-tpmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers tpmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers tpmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-pcmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers pcmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers pcmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-tslibmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS +PACKAGE_Qt4-drivers-mouse-tslibmousedriver:libts
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers tslibmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers tslibmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-directfb
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS @FEATURE_drawing-backend_DirectFB +Qt4-drivers-gfx-directfb:directfb
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers directfb
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers directfb
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-linuxfb
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers linuxfb
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers linuxfb
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-vnc
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers VNC
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers VNC
+http://qt.nokia.com/
+@@
+
+

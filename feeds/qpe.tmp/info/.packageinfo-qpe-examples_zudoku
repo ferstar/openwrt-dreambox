@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/qpe-examples/zudoku/Makefile
+Package: zudoku
+Submenu: qpe-examples
+Version: 1.1-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A Sudoku Game for Opie or Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://www.vanille.de/mirror/zudoku-1.1.tar.gz
+@@
+
+

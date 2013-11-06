@@ -1,0 +1,21 @@
+Source-Makefile: feeds/qpe/libs/libetpan/Makefile
+Package: libetpan
+Submenu: libs
+Version: 2012-09-01-1
+Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: Mail Framework for C Language
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: libetpan-2012-09-01.tar.bz2
+Type: ipkg
+Description:   The purpose of this mail library is to provide a portable, 
+  efficient framework for different kinds of mail access. 
+  When using the drivers interface, the interface is the same 
+  for all kinds of mail access, remote and local mailboxes.
+http://www.etpan.org/ https://github.com/dinhviethoa/libetpan.git
+@@
+
+

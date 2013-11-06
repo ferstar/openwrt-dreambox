@@ -1,0 +1,27 @@
+--- SDL_ttf-2.0.11/configure.orig	2012-05-22 03:36:15.243294418 +0800
++++ SDL_ttf-2.0.11/configure	2012-05-22 03:39:11.907294499 +0800
+@@ -14509,10 +14509,10 @@
+ fi
+ 
+         if test x$have_x = xyes; then
+-            CFLAGS="$CFLAGS $X_CFLAGS"
+-            SYS_GL_LIBS="$X_LIBS -lGL"
++            CFLAGS="$CFLAGS"
++            SYS_GL_LIBS=
+         else
+-            SYS_GL_LIBS="-lGL"
++            SYS_GL_LIBS=
+         fi
+         ;;
+ esac
+@@ -14569,8 +14569,8 @@
+ { echo "$as_me:$LINENO: result: $have_opengl" >&5
+ echo "${ECHO_T}$have_opengl" >&6; }
+ if test x$have_opengl = xyes; then
+-    CFLAGS="$CFLAGS -DHAVE_OPENGL"
+-    GL_LIBS="$SYS_GL_LIBS"
++    CFLAGS="$CFLAGS"
++    GL_LIBS=
+ else
+     GL_LIBS=""
+ fi

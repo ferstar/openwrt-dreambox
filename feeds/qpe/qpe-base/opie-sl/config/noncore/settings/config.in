@@ -1,0 +1,15 @@
+  source noncore/settings/appearance2/config.in
+  source noncore/settings/aqpkg/config.in
+  source noncore/settings/backup/config.in
+  source noncore/settings/doctab/config.in
+  source noncore/settings/kbddcontrol/config.in
+  source noncore/settings/language/config.in
+  source noncore/settings/mediummount/config.in
+  source noncore/settings/netsystemtime/config.in
+  source noncore/settings/networksettings/config.in
+  source noncore/settings/networksettings2/config.in
+  source noncore/settings/packagemanager/config.in
+  source noncore/settings/sound/config.in
+  source noncore/settings/sshkeys/config.in
+  source noncore/settings/sysinfo/config.in
+

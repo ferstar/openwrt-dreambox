@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/libs/libobexftp/Makefile
+Package: libobexftp
+Submenu: libs
+Version: 0.23-1
+Depends: +libopenobex +bluez-libs
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: ObexFTP
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: obexftp-0.23.tar.bz2
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+

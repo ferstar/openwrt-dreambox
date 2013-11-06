@@ -1,0 +1,11 @@
+--- opie-1.2.5/noncore/games/sfcave-sdl/game.cpp.orig	2012-08-10 11:14:57.209706828 +0800
++++ opie-1.2.5/noncore/games/sfcave-sdl/game.cpp	2012-08-10 11:41:29.793707028 +0800
+@@ -24,7 +24,7 @@
+ 	sHeight = h;
+ 	sWidth = w;
+ 	difficulty = diff;
+-	replayIt = 0;
++	replayIt = (list<int>::iterator) 0;
+ 	replay = false;
+ 	terrain = 0;
+ 	player = 0;

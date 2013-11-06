@@ -1,0 +1,1005 @@
+--- zbedic-1.2.2/zbedic/src/bedic.h	1970-01-01 07:00:00.000000000 +0700
++++ zbedic-1.2.2/zbedic/src/bedic.h	2011-10-31 15:29:44.665003294 +0800
+@@ -0,0 +1,193 @@
++/****************************************************************************
++* bedic.h
++*
++* Copyright (C) 2005 Rafal Mantiuk <rafm@users.sourceforge.net>
++*
++* This is a new dictionary interface, which should replace Dictionary class.
++*
++* This program is free software; you can redistribute it and/or modify
++* it under the terms of the GNU General Public License as published by
++* the Free Software Foundation; either version 2 of the License, or
++* (at your option) any later version.
++*
++* This program is distributed in the hope that it will be useful,
++* but WITHOUT ANY WARRANTY; without even the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++* GNU General Public License for more details.
++*
++* You should have received a copy of the GNU General Public License
++* along with this program; if not, write to the Free Software
++* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++****************************************************************************/
++#ifndef _BEDIC_H
++#define _BEDIC_H
++
++#include <string.h>
++
++#include <string>
++#include <stdio.h>
++
++class CollationComparator;
++
++/**
++ * A slightly modified simple smart pointer from Yonat Sharon.
++ */
++template <class X> class OwnedPtr
++{
++public:
++    typedef X element_type;
++
++    explicit OwnedPtr(X* p=0)       : itsOwn(p!=0), itsPtr(p) {}
++    ~OwnedPtr() {
++      if (itsOwn) {
++        delete itsPtr;
++      }
++    }
++    OwnedPtr(const OwnedPtr& r) 
++        : itsOwn(r.itsOwn), itsPtr(r.release()) {}
++    OwnedPtr& operator=(const OwnedPtr& r) 
++    {
++        if (&r != this) {
++            if (itsPtr != r.itsPtr) {
++                if (itsOwn) delete itsPtr;
++                itsOwn = r.itsOwn;
++            }
++            else if (r.itsOwn) itsOwn = true;
++            itsPtr = r.release();
++        }
++        return *this;
++    }
++
++    bool operator==( const OwnedPtr &x ) const
++      {
++        return *(itsPtr) == *(x.itsPtr);
++      }
++
++    bool operator!=( const OwnedPtr &x ) const
++      {
++        return *(itsPtr) != *(x.itsPtr);
++      }
++
++    bool isValid() const
++      {
++        return itsPtr != NULL;
++      }
++    
++    X& operator*()  const            {return *itsPtr;}
++    X* operator->() const            {return itsPtr;}
++    X* get()        const            {return itsPtr;}
++    X* release()    const  {itsOwn = false; return itsPtr;}
++
++private:
++    mutable bool itsOwn;
++    X* itsPtr;
++};
++
++class DictionaryIterator
++{
++public:
++  virtual ~DictionaryIterator()
++    {
++    }
++  
++  virtual const char *getKeyword() = 0;
++  virtual const char *getDescription() = 0;
++
++  virtual bool nextEntry() = 0;
++  virtual bool previousEntry() = 0;
++
++  bool operator==( DictionaryIterator &x ) 
++  {
++    return strcmp( getKeyword(), x.getKeyword() )==0;
++  }
++
++  bool operator!=( DictionaryIterator &x ) 
++  {
++    return strcmp( getKeyword(), x.getKeyword() )!=0;
++  }
++  
++};
++
++typedef OwnedPtr<DictionaryIterator> DictionaryIteratorPtr;
++
++class StaticDictionary
++{
++public:
++  virtual ~StaticDictionary()
++    {
++    }
++  
++  virtual DictionaryIteratorPtr begin() = 0;
++  virtual DictionaryIteratorPtr end() = 0;
++  
++  virtual DictionaryIteratorPtr findEntry( const char *keyword, bool &matches ) = 0;
++
++  virtual const char *getName() = 0;
++  virtual const char *getFileName() = 0;
++
++  virtual bool getProperty( const char *propertyName, std::string &propertyValue ) = 0;
++
++  virtual const char *getErrorMessage() = 0;
++
++  virtual bool checkIntegrity()
++    {
++      return true;
++    }
++
++  virtual CollationComparator* getCollationComparator()
++    {
++      return NULL;
++    }  
++  
++  /**
++   * Check if the dictionary can be casted to DynamicDictionary
++   * interface (qtopia does not allow for RTT).
++   */
++  virtual bool isDynamic()
++    {
++      return false;
++    }
++
++  /**
++   * Check if the dictionary allows to edit its properties. Must be also
++   * DynamicDictionary.
++   */
++  virtual bool isMetaEditable()
++    {
++      return false;
++    }
++  
++  // Static members
++
++  static StaticDictionary *loadDictionary( const char* filename, bool doCheckIntegrity, std::string &errorMessage );
++  
++};
++
++class DynamicDictionary: public StaticDictionary
++{
++public:
++  virtual ~DynamicDictionary()
++    { 
++    }
++
++  virtual DictionaryIteratorPtr insertEntry( const char *keyword ) = 0;
++  virtual bool updateEntry( const DictionaryIteratorPtr &entry, const char *description ) = 0;
++  virtual bool removeEntry( const DictionaryIteratorPtr &entry ) = 0;  
++
++  virtual bool setProperty( const char *propertyName, const char *propertyValue ) = 0;
++
++  virtual bool isDynamic()
++    {
++      return true;
++    }
++  
++};
++
++DynamicDictionary *createSQLiteDictionary( const char *fileName, const char *name, std::string &errorMessage );
++DynamicDictionary *createHybridDictionary( const char *fileName, StaticDictionary *static_dic,
++  std::string &errorMessage );
++  
++std::string formatDicEntry( std::string entry );
++
++
++#endif
+--- zbedic-1.2.2/zbedic/src/dictionary.h	1970-01-01 07:00:00.000000000 +0700
++++ zbedic-1.2.2/zbedic/src/dictionary.h	2011-10-31 15:29:44.681003380 +0800
+@@ -0,0 +1,154 @@
++/****************************************************************************
++* dictionary.h
++*
++* Copyright (C) 2002 Latchesar Ionkov <lionkov@yahoo.com>
++*
++* This program is based on the kbedic dictionary by 
++* Radostin Radnev <radnev@yahoo.com>.
++*
++* This program is free software; you can redistribute it and/or modify
++* it under the terms of the GNU General Public License as published by
++* the Free Software Foundation; either version 2 of the License, or
++* (at your option) any later version.
++*
++* This program is distributed in the hope that it will be useful,
++* but WITHOUT ANY WARRANTY; without even the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++* GNU General Public License for more details.
++*
++* You should have received a copy of the GNU General Public License
++* along with this program; if not, write to the Free Software
++* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++****************************************************************************/
++#ifndef _DICTIONARY_H
++#define _DICTIONARY_H
++
++#include <string>
++
++using namespace std;
++/**
++ * This is an abstract class that represent Dictionary
++ *
++ */
++class Dictionary {
++public:
++	/**
++	 * Create dictionary instance
++	 *
++	 * @param filename name of the file that contains 
++	 * the dictionary database
++	 * @param doCheckIntegrity if true, check integrity. Checking
++	 * integrity may be slow for large dictionaries.
++	 *
++	 * @return pointer to dictionary object or null if error
++	 */
++	static Dictionary* create(const char* filename, bool doCheckIntegrity = true);
++
++	virtual ~Dictionary();
++
++	/**
++	 * Returns dictionary name (as shown to the user
++	 */
++	virtual const string& getName() const =0;
++
++	/**
++	 * Returns file name of the dictionary file
++	 */
++	virtual const string& getFileName() const =0;
++        
++	/**
++	 * Looks for a word in the dictionary
++	 *
++	 * Sets the internal dictionary state to point to a
++	 * word equal or greater (in lexicographical terms)
++	 * to the one specified as parameter.
++	 *
++	 * Before two words are compared, the are canonized.
++	 * I.e. the characters specified in search-ignore-chars 
++	 * property are removed and both words are set 
++	 * to uppercase.
++	 *
++	 * Parameter subword is set to true if the word the
++	 * dictionary points to starts with the word specified
++	 * as a parameter.
++	 *
++	 * @param word word to look for
++	 * @param subword flag if word is subword
++	 *
++	 * @return true if exact match is found
++	 */
++	virtual bool findEntry(const string& word, bool& subword)=0;
++
++	/**
++	 * Moves the internal word pointer to the next word.
++	 *
++	 * If the pointer is set to the last word, it is 
++	 * not changed.
++	 * 
++	 * @return true if the pointer is moved
++	 */
++	virtual bool nextEntry()=0;
++
++	/**
++	 * Moves the internal word pointer to the first word.
++	 * 
++	 * @return true if the word is read successfully
++	 */
++	virtual bool firstEntry()=0;
++
++	/**
++	 * Moves the internal word pointer to the last word.
++	 * 
++	 * @return true if the word is read successfully
++	 */
++	virtual bool lastEntry()=0;
++
++	/**
++	 * Moves the internal word pointer to randomly chosen
++	 * entry.
++	 * 
++	 * @return true if the word is read successfully
++	 */
++	virtual bool randomEntry()=0;
++
++	/**
++	 * Returns the word pointed by the internal word pointer
++	 *
++	 * @return current word
++	 */
++	virtual const string& getWord() const =0;
++
++	/**
++	 * Returns the sense of the word pointer by the 
++	 * internal word pointer
++	 *
++	 * @return sense
++	 */
++	virtual const string& getSense() const =0;
++
++	/**
++	 * Returns error description or zero if no error 
++	 *
++	 * @return error description
++	 */
++	virtual const string& getError() const =0;
++
++
++        /**
++         * Returns property from the header of the dictionary file. See
++         * bedic-format.txt for the description of available properties.
++         *
++         * @return property value
++         */
++        virtual const string& getProperty( const char *name ) =0;
++        
++        /**
++	 * Check integrity of the dictionary file.
++	 *
++	 * @return true if integrity check is succesfull -
++	 * dictionary file is not corrupted.
++	 */
++	virtual bool checkIntegrity() =0;
++};
++
++#endif
+--- zbedic-1.2.2/zbedic/src/helpdialog.cpp	2006-06-07 20:09:51.000000000 +0800
++++ zbedic-1.2.2/zbedic/src/helpdialog.cpp	2011-10-31 15:36:14.742937602 +0800
+@@ -49,7 +49,7 @@
+   
+   QTextBrowser *browser = new QTextBrowser( this );
+   l->addWidget( browser );
+-  browser->setSource( "file:://" PREFIX_PATH "/share/doc/zbedic/zbedic.html" );
++  browser->setSource( "/usr/share/doc/zbedic/zbedic.html" );
+ 
+   connect( home, SIGNAL( clicked() ), browser, SLOT(home()) );
+   connect( back, SIGNAL( clicked() ), browser, SLOT(backward()) );
+--- zbedic-1.2.2/zbedic/src/moc_history_browser.cpp	2007-08-13 02:29:13.000000000 +0800
++++ zbedic-1.2.2/zbedic/src/moc_history_browser.cpp	1970-01-01 07:00:00.000000000 +0700
+@@ -1,110 +0,0 @@
+-/****************************************************************************
+-** HistoryPopup meta object code from reading C++ file 'history_browser.h'
+-**
+-** Created: Sun Aug 12 20:29:13 2007
+-**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.4   edited Jan 21 18:14 $)
+-**
+-** WARNING! All changes made in this file will be lost!
+-*****************************************************************************/
+-
+-#undef QT_NO_COMPAT
+-#include "history_browser.h"
+-#include <qmetaobject.h>
+-#include <qapplication.h>
+-
+-#include <private/qucomextra_p.h>
+-#if !defined(Q_MOC_OUTPUT_REVISION) || (Q_MOC_OUTPUT_REVISION != 26)
+-#error "This file was generated using the moc from 3.3.4. It"
+-#error "cannot be used with the include files from this version of Qt."
+-#error "(The moc has changed too much.)"
+-#endif
+-
+-const char *HistoryPopup::className() const
+-{
+-    return "HistoryPopup";
+-}
+-
+-QMetaObject *HistoryPopup::metaObj = 0;
+-static QMetaObjectCleanUp cleanUp_HistoryPopup( "HistoryPopup", &HistoryPopup::staticMetaObject );
+-
+-#ifndef QT_NO_TRANSLATION
+-QString HistoryPopup::tr( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "HistoryPopup", s, c, QApplication::DefaultCodec );
+-    else
+-	return QString::fromLatin1( s );
+-}
+-#ifndef QT_NO_TRANSLATION_UTF8
+-QString HistoryPopup::trUtf8( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "HistoryPopup", s, c, QApplication::UnicodeUTF8 );
+-    else
+-	return QString::fromUtf8( s );
+-}
+-#endif // QT_NO_TRANSLATION_UTF8
+-
+-#endif // QT_NO_TRANSLATION
+-
+-QMetaObject* HistoryPopup::staticMetaObject()
+-{
+-    if ( metaObj )
+-	return metaObj;
+-    QMetaObject* parentObject = QDialog::staticMetaObject();
+-    static const QUParameter param_slot_0[] = {
+-	{ 0, &static_QUType_int, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_0 = {"itemSelected", 1, param_slot_0 };
+-    static const QUParameter param_slot_1[] = {
+-	{ "item", &static_QUType_ptr, "QListBoxItem", QUParameter::In }
+-    };
+-    static const QUMethod slot_1 = {"itemSelected", 1, param_slot_1 };
+-    static const QMetaData slot_tbl[] = {
+-	{ "itemSelected(int)", &slot_0, QMetaData::Protected },
+-	{ "itemSelected(QListBoxItem*)", &slot_1, QMetaData::Protected }
+-    };
+-    metaObj = QMetaObject::new_metaobject(
+-	"HistoryPopup", parentObject,
+-	slot_tbl, 2,
+-	0, 0,
+-#ifndef QT_NO_PROPERTIES
+-	0, 0,
+-	0, 0,
+-#endif // QT_NO_PROPERTIES
+-	0, 0 );
+-    cleanUp_HistoryPopup.setMetaObject( metaObj );
+-    return metaObj;
+-}
+-
+-void* HistoryPopup::qt_cast( const char* clname )
+-{
+-    if ( !qstrcmp( clname, "HistoryPopup" ) )
+-	return this;
+-    return QDialog::qt_cast( clname );
+-}
+-
+-bool HistoryPopup::qt_invoke( int _id, QUObject* _o )
+-{
+-    switch ( _id - staticMetaObject()->slotOffset() ) {
+-    case 0: itemSelected((int)static_QUType_int.get(_o+1)); break;
+-    case 1: itemSelected((QListBoxItem*)static_QUType_ptr.get(_o+1)); break;
+-    default:
+-	return QDialog::qt_invoke( _id, _o );
+-    }
+-    return TRUE;
+-}
+-
+-bool HistoryPopup::qt_emit( int _id, QUObject* _o )
+-{
+-    return QDialog::qt_emit(_id,_o);
+-}
+-#ifndef QT_NO_PROPERTIES
+-
+-bool HistoryPopup::qt_property( int id, int f, QVariant* v)
+-{
+-    return QDialog::qt_property( id, f, v);
+-}
+-
+-bool HistoryPopup::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+-#endif // QT_NO_PROPERTIES
+--- zbedic-1.2.2/zbedic/src/moc_zbedic.cpp	2007-08-13 02:28:54.000000000 +0800
++++ zbedic-1.2.2/zbedic/src/moc_zbedic.cpp	1970-01-01 07:00:00.000000000 +0700
+@@ -1,465 +0,0 @@
+-/****************************************************************************
+-** ZBEDic meta object code from reading C++ file 'zbedic.h'
+-**
+-** Created: Sun Aug 12 20:28:54 2007
+-**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.4   edited Jan 21 18:14 $)
+-**
+-** WARNING! All changes made in this file will be lost!
+-*****************************************************************************/
+-
+-#undef QT_NO_COMPAT
+-#include "zbedic.h"
+-#include <qmetaobject.h>
+-#include <qapplication.h>
+-
+-#include <private/qucomextra_p.h>
+-#if !defined(Q_MOC_OUTPUT_REVISION) || (Q_MOC_OUTPUT_REVISION != 26)
+-#error "This file was generated using the moc from 3.3.4. It"
+-#error "cannot be used with the include files from this version of Qt."
+-#error "(The moc has changed too much.)"
+-#endif
+-
+-const char *ZBEDic::className() const
+-{
+-    return "ZBEDic";
+-}
+-
+-QMetaObject *ZBEDic::metaObj = 0;
+-static QMetaObjectCleanUp cleanUp_ZBEDic( "ZBEDic", &ZBEDic::staticMetaObject );
+-
+-#ifndef QT_NO_TRANSLATION
+-QString ZBEDic::tr( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "ZBEDic", s, c, QApplication::DefaultCodec );
+-    else
+-	return QString::fromLatin1( s );
+-}
+-#ifndef QT_NO_TRANSLATION_UTF8
+-QString ZBEDic::trUtf8( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "ZBEDic", s, c, QApplication::UnicodeUTF8 );
+-    else
+-	return QString::fromUtf8( s );
+-}
+-#endif // QT_NO_TRANSLATION_UTF8
+-
+-#endif // QT_NO_TRANSLATION
+-
+-QMetaObject* ZBEDic::staticMetaObject()
+-{
+-    if ( metaObj )
+-	return metaObj;
+-    QMetaObject* parentObject = QMainWindow::staticMetaObject();
+-    static const QUParameter param_slot_0[] = {
+-	{ "fileref", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_0 = {"setDocument", 1, param_slot_0 };
+-    static const QUParameter param_slot_1[] = {
+-	{ "text", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_1 = {"wordChanged", 1, param_slot_1 };
+-    static const QUParameter param_slot_2[] = {
+-	{ "text", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_2 = {"listPick", 1, param_slot_2 };
+-    static const QUMethod slot_3 = {"copy", 0, 0 };
+-    static const QUMethod slot_4 = {"paste", 0, 0 };
+-    static const QUMethod slot_5 = {"settings", 0, 0 };
+-    static const QUMethod slot_6 = {"appReturn", 0, 0 };
+-    static const QUMethod slot_7 = {"showDictionaries", 0, 0 };
+-    static const QUParameter param_slot_8[] = {
+-	{ "text", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_8 = {"seeAlso", 1, param_slot_8 };
+-    static const QUParameter param_slot_9[] = {
+-	{ "idx", &static_QUType_int, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_9 = {"selectDictionary", 1, param_slot_9 };
+-    static const QUParameter param_slot_10[] = {
+-	{ "msg", &static_QUType_varptr, "\x14", QUParameter::In },
+-	{ "data", &static_QUType_varptr, "\x1d", QUParameter::In }
+-    };
+-    static const QUMethod slot_10 = {"msgHandler", 2, param_slot_10 };
+-    static const QUMethod slot_11 = {"addToHistoryTriggered", 0, 0 };
+-    static const QUMethod slot_12 = {"switchToPreviousDict", 0, 0 };
+-    static const QUMethod slot_13 = {"navigationNext", 0, 0 };
+-    static const QUMethod slot_14 = {"navigationPrevious", 0, 0 };
+-    static const QUParameter param_slot_15[] = {
+-	{ "pos", &static_QUType_int, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_15 = {"scrollToPos", 1, param_slot_15 };
+-    static const QUMethod slot_16 = {"clearHistory", 0, 0 };
+-    static const QUMethod slot_17 = {"lookupSelection", 0, 0 };
+-    static const QUMethod slot_18 = {"zoomIn", 0, 0 };
+-    static const QUMethod slot_19 = {"zoomOut", 0, 0 };
+-    static const QUMethod slot_20 = {"configureKeyboard", 0, 0 };
+-    static const QUMethod slot_21 = {"showHistoryPopup", 0, 0 };
+-    static const QUMethod slot_22 = {"scrollLineDown", 0, 0 };
+-    static const QUMethod slot_23 = {"scrollLineUp", 0, 0 };
+-    static const QUMethod slot_24 = {"focusOnText", 0, 0 };
+-    static const QUMethod slot_25 = {"newEntry", 0, 0 };
+-    static const QUMethod slot_26 = {"editEntry", 0, 0 };
+-    static const QUMethod slot_27 = {"removeEntry", 0, 0 };
+-    static const QUParameter param_slot_28[] = {
+-	{ "new_text", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod slot_28 = {"finishEditingOK", 1, param_slot_28 };
+-    static const QUMethod slot_29 = {"finishEditingCancel", 0, 0 };
+-    static const QUMethod slot_30 = {"showAbout", 0, 0 };
+-    static const QUMethod slot_31 = {"showHelp", 0, 0 };
+-    static const QMetaData slot_tbl[] = {
+-	{ "setDocument(const QString&)", &slot_0, QMetaData::Public },
+-	{ "wordChanged(const QString&)", &slot_1, QMetaData::Protected },
+-	{ "listPick(const QString&)", &slot_2, QMetaData::Protected },
+-	{ "copy()", &slot_3, QMetaData::Protected },
+-	{ "paste()", &slot_4, QMetaData::Protected },
+-	{ "settings()", &slot_5, QMetaData::Protected },
+-	{ "appReturn()", &slot_6, QMetaData::Protected },
+-	{ "showDictionaries()", &slot_7, QMetaData::Protected },
+-	{ "seeAlso(const QString&)", &slot_8, QMetaData::Protected },
+-	{ "selectDictionary(int)", &slot_9, QMetaData::Protected },
+-	{ "msgHandler(const QCString&,const QByteArray&)", &slot_10, QMetaData::Protected },
+-	{ "addToHistoryTriggered()", &slot_11, QMetaData::Protected },
+-	{ "switchToPreviousDict()", &slot_12, QMetaData::Protected },
+-	{ "navigationNext()", &slot_13, QMetaData::Protected },
+-	{ "navigationPrevious()", &slot_14, QMetaData::Protected },
+-	{ "scrollToPos(int)", &slot_15, QMetaData::Protected },
+-	{ "clearHistory()", &slot_16, QMetaData::Protected },
+-	{ "lookupSelection()", &slot_17, QMetaData::Protected },
+-	{ "zoomIn()", &slot_18, QMetaData::Protected },
+-	{ "zoomOut()", &slot_19, QMetaData::Protected },
+-	{ "configureKeyboard()", &slot_20, QMetaData::Protected },
+-	{ "showHistoryPopup()", &slot_21, QMetaData::Protected },
+-	{ "scrollLineDown()", &slot_22, QMetaData::Protected },
+-	{ "scrollLineUp()", &slot_23, QMetaData::Protected },
+-	{ "focusOnText()", &slot_24, QMetaData::Protected },
+-	{ "newEntry()", &slot_25, QMetaData::Protected },
+-	{ "editEntry()", &slot_26, QMetaData::Protected },
+-	{ "removeEntry()", &slot_27, QMetaData::Protected },
+-	{ "finishEditingOK(QString)", &slot_28, QMetaData::Protected },
+-	{ "finishEditingCancel()", &slot_29, QMetaData::Protected },
+-	{ "showAbout()", &slot_30, QMetaData::Protected },
+-	{ "showHelp()", &slot_31, QMetaData::Protected }
+-    };
+-    metaObj = QMetaObject::new_metaobject(
+-	"ZBEDic", parentObject,
+-	slot_tbl, 32,
+-	0, 0,
+-#ifndef QT_NO_PROPERTIES
+-	0, 0,
+-	0, 0,
+-#endif // QT_NO_PROPERTIES
+-	0, 0 );
+-    cleanUp_ZBEDic.setMetaObject( metaObj );
+-    return metaObj;
+-}
+-
+-void* ZBEDic::qt_cast( const char* clname )
+-{
+-    if ( !qstrcmp( clname, "ZBEDic" ) )
+-	return this;
+-    return QMainWindow::qt_cast( clname );
+-}
+-
+-bool ZBEDic::qt_invoke( int _id, QUObject* _o )
+-{
+-    switch ( _id - staticMetaObject()->slotOffset() ) {
+-    case 0: setDocument((const QString&)static_QUType_QString.get(_o+1)); break;
+-    case 1: wordChanged((const QString&)static_QUType_QString.get(_o+1)); break;
+-    case 2: listPick((const QString&)static_QUType_QString.get(_o+1)); break;
+-    case 3: copy(); break;
+-    case 4: paste(); break;
+-    case 5: settings(); break;
+-    case 6: appReturn(); break;
+-    case 7: showDictionaries(); break;
+-    case 8: seeAlso((const QString&)static_QUType_QString.get(_o+1)); break;
+-    case 9: selectDictionary((int)static_QUType_int.get(_o+1)); break;
+-    case 10: msgHandler((const QCString&)*((const QCString*)static_QUType_ptr.get(_o+1)),(const QByteArray&)*((const QByteArray*)static_QUType_ptr.get(_o+2))); break;
+-    case 11: addToHistoryTriggered(); break;
+-    case 12: switchToPreviousDict(); break;
+-    case 13: navigationNext(); break;
+-    case 14: navigationPrevious(); break;
+-    case 15: scrollToPos((int)static_QUType_int.get(_o+1)); break;
+-    case 16: clearHistory(); break;
+-    case 17: lookupSelection(); break;
+-    case 18: zoomIn(); break;
+-    case 19: zoomOut(); break;
+-    case 20: configureKeyboard(); break;
+-    case 21: showHistoryPopup(); break;
+-    case 22: scrollLineDown(); break;
+-    case 23: scrollLineUp(); break;
+-    case 24: focusOnText(); break;
+-    case 25: newEntry(); break;
+-    case 26: editEntry(); break;
+-    case 27: removeEntry(); break;
+-    case 28: finishEditingOK((QString)static_QUType_QString.get(_o+1)); break;
+-    case 29: finishEditingCancel(); break;
+-    case 30: showAbout(); break;
+-    case 31: showHelp(); break;
+-    default:
+-	return QMainWindow::qt_invoke( _id, _o );
+-    }
+-    return TRUE;
+-}
+-
+-bool ZBEDic::qt_emit( int _id, QUObject* _o )
+-{
+-    return QMainWindow::qt_emit(_id,_o);
+-}
+-#ifndef QT_NO_PROPERTIES
+-
+-bool ZBEDic::qt_property( int id, int f, QVariant* v)
+-{
+-    return QMainWindow::qt_property( id, f, v);
+-}
+-
+-bool ZBEDic::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+-#endif // QT_NO_PROPERTIES
+-
+-
+-const char *DictBrowser::className() const
+-{
+-    return "DictBrowser";
+-}
+-
+-QMetaObject *DictBrowser::metaObj = 0;
+-static QMetaObjectCleanUp cleanUp_DictBrowser( "DictBrowser", &DictBrowser::staticMetaObject );
+-
+-#ifndef QT_NO_TRANSLATION
+-QString DictBrowser::tr( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "DictBrowser", s, c, QApplication::DefaultCodec );
+-    else
+-	return QString::fromLatin1( s );
+-}
+-#ifndef QT_NO_TRANSLATION_UTF8
+-QString DictBrowser::trUtf8( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "DictBrowser", s, c, QApplication::UnicodeUTF8 );
+-    else
+-	return QString::fromUtf8( s );
+-}
+-#endif // QT_NO_TRANSLATION_UTF8
+-
+-#endif // QT_NO_TRANSLATION
+-
+-QMetaObject* DictBrowser::staticMetaObject()
+-{
+-    if ( metaObj )
+-	return metaObj;
+-    QMetaObject* parentObject = QTextBrowser::staticMetaObject();
+-    static const QUParameter param_signal_0[] = {
+-	{ "name", &static_QUType_QString, 0, QUParameter::In }
+-    };
+-    static const QUMethod signal_0 = {"anchor", 1, param_signal_0 };
+-    static const QMetaData signal_tbl[] = {
+-	{ "anchor(const QString&)", &signal_0, QMetaData::Protected }
+-    };
+-    metaObj = QMetaObject::new_metaobject(
+-	"DictBrowser", parentObject,
+-	0, 0,
+-	signal_tbl, 1,
+-#ifndef QT_NO_PROPERTIES
+-	0, 0,
+-	0, 0,
+-#endif // QT_NO_PROPERTIES
+-	0, 0 );
+-    cleanUp_DictBrowser.setMetaObject( metaObj );
+-    return metaObj;
+-}
+-
+-void* DictBrowser::qt_cast( const char* clname )
+-{
+-    if ( !qstrcmp( clname, "DictBrowser" ) )
+-	return this;
+-    return QTextBrowser::qt_cast( clname );
+-}
+-
+-// SIGNAL anchor
+-void DictBrowser::anchor( const QString& t0 )
+-{
+-    activate_signal( staticMetaObject()->signalOffset() + 0, t0 );
+-}
+-
+-bool DictBrowser::qt_invoke( int _id, QUObject* _o )
+-{
+-    return QTextBrowser::qt_invoke(_id,_o);
+-}
+-
+-bool DictBrowser::qt_emit( int _id, QUObject* _o )
+-{
+-    switch ( _id - staticMetaObject()->signalOffset() ) {
+-    case 0: anchor((const QString&)static_QUType_QString.get(_o+1)); break;
+-    default:
+-	return QTextBrowser::qt_emit(_id,_o);
+-    }
+-    return TRUE;
+-}
+-#ifndef QT_NO_PROPERTIES
+-
+-bool DictBrowser::qt_property( int id, int f, QVariant* v)
+-{
+-    return QTextBrowser::qt_property( id, f, v);
+-}
+-
+-bool DictBrowser::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+-#endif // QT_NO_PROPERTIES
+-
+-
+-const char *WordBox::className() const
+-{
+-    return "WordBox";
+-}
+-
+-QMetaObject *WordBox::metaObj = 0;
+-static QMetaObjectCleanUp cleanUp_WordBox( "WordBox", &WordBox::staticMetaObject );
+-
+-#ifndef QT_NO_TRANSLATION
+-QString WordBox::tr( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "WordBox", s, c, QApplication::DefaultCodec );
+-    else
+-	return QString::fromLatin1( s );
+-}
+-#ifndef QT_NO_TRANSLATION_UTF8
+-QString WordBox::trUtf8( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "WordBox", s, c, QApplication::UnicodeUTF8 );
+-    else
+-	return QString::fromUtf8( s );
+-}
+-#endif // QT_NO_TRANSLATION_UTF8
+-
+-#endif // QT_NO_TRANSLATION
+-
+-QMetaObject* WordBox::staticMetaObject()
+-{
+-    if ( metaObj )
+-	return metaObj;
+-    QMetaObject* parentObject = QLineEdit::staticMetaObject();
+-    static const QUMethod slot_0 = {"activatePopup", 0, 0 };
+-    static const QMetaData slot_tbl[] = {
+-	{ "activatePopup()", &slot_0, QMetaData::Public }
+-    };
+-    metaObj = QMetaObject::new_metaobject(
+-	"WordBox", parentObject,
+-	slot_tbl, 1,
+-	0, 0,
+-#ifndef QT_NO_PROPERTIES
+-	0, 0,
+-	0, 0,
+-#endif // QT_NO_PROPERTIES
+-	0, 0 );
+-    cleanUp_WordBox.setMetaObject( metaObj );
+-    return metaObj;
+-}
+-
+-void* WordBox::qt_cast( const char* clname )
+-{
+-    if ( !qstrcmp( clname, "WordBox" ) )
+-	return this;
+-    return QLineEdit::qt_cast( clname );
+-}
+-
+-bool WordBox::qt_invoke( int _id, QUObject* _o )
+-{
+-    switch ( _id - staticMetaObject()->slotOffset() ) {
+-    case 0: activatePopup(); break;
+-    default:
+-	return QLineEdit::qt_invoke( _id, _o );
+-    }
+-    return TRUE;
+-}
+-
+-bool WordBox::qt_emit( int _id, QUObject* _o )
+-{
+-    return QLineEdit::qt_emit(_id,_o);
+-}
+-#ifndef QT_NO_PROPERTIES
+-
+-bool WordBox::qt_property( int id, int f, QVariant* v)
+-{
+-    return QLineEdit::qt_property( id, f, v);
+-}
+-
+-bool WordBox::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+-#endif // QT_NO_PROPERTIES
+-
+-
+-const char *NoSizeWidgetStack::className() const
+-{
+-    return "NoSizeWidgetStack";
+-}
+-
+-QMetaObject *NoSizeWidgetStack::metaObj = 0;
+-static QMetaObjectCleanUp cleanUp_NoSizeWidgetStack( "NoSizeWidgetStack", &NoSizeWidgetStack::staticMetaObject );
+-
+-#ifndef QT_NO_TRANSLATION
+-QString NoSizeWidgetStack::tr( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "NoSizeWidgetStack", s, c, QApplication::DefaultCodec );
+-    else
+-	return QString::fromLatin1( s );
+-}
+-#ifndef QT_NO_TRANSLATION_UTF8
+-QString NoSizeWidgetStack::trUtf8( const char *s, const char *c )
+-{
+-    if ( qApp )
+-	return qApp->translate( "NoSizeWidgetStack", s, c, QApplication::UnicodeUTF8 );
+-    else
+-	return QString::fromUtf8( s );
+-}
+-#endif // QT_NO_TRANSLATION_UTF8
+-
+-#endif // QT_NO_TRANSLATION
+-
+-QMetaObject* NoSizeWidgetStack::staticMetaObject()
+-{
+-    if ( metaObj )
+-	return metaObj;
+-    QMetaObject* parentObject = QWidgetStack::staticMetaObject();
+-    metaObj = QMetaObject::new_metaobject(
+-	"NoSizeWidgetStack", parentObject,
+-	0, 0,
+-	0, 0,
+-#ifndef QT_NO_PROPERTIES
+-	0, 0,
+-	0, 0,
+-#endif // QT_NO_PROPERTIES
+-	0, 0 );
+-    cleanUp_NoSizeWidgetStack.setMetaObject( metaObj );
+-    return metaObj;
+-}
+-
+-void* NoSizeWidgetStack::qt_cast( const char* clname )
+-{
+-    if ( !qstrcmp( clname, "NoSizeWidgetStack" ) )
+-	return this;
+-    return QWidgetStack::qt_cast( clname );
+-}
+-
+-bool NoSizeWidgetStack::qt_invoke( int _id, QUObject* _o )
+-{
+-    return QWidgetStack::qt_invoke(_id,_o);
+-}
+-
+-bool NoSizeWidgetStack::qt_emit( int _id, QUObject* _o )
+-{
+-    return QWidgetStack::qt_emit(_id,_o);
+-}
+-#ifndef QT_NO_PROPERTIES
+-
+-bool NoSizeWidgetStack::qt_property( int id, int f, QVariant* v)
+-{
+-    return QWidgetStack::qt_property( id, f, v);
+-}
+-
+-bool NoSizeWidgetStack::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+-#endif // QT_NO_PROPERTIES
+--- zbedic-1.2.2/zbedic/src/settings.cpp	2007-08-06 02:28:13.000000000 +0800
++++ zbedic-1.2.2/zbedic/src/settings.cpp	2011-10-31 15:43:41.917155005 +0800
+@@ -22,6 +22,7 @@
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ****************************************************************************/
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ 
+ #include <qlabel.h>
+@@ -139,7 +140,7 @@
+ 
+ ZBEDicSettings::ZBEDicSettings( QWidget *parent ): QTabDialog( parent, "options", true )
+ {
+-  setCaption( tr( "ZBEDic Settings (v. " VERSION ")" ) );
++  setCaption( tr( "ZBEDic Settings (v.1.2-2 )" ) );
+ 
+ }
+ 
+--- zbedic-1.2.2/zbedic/src/utf8.h	1970-01-01 07:00:00.000000000 +0700
++++ zbedic-1.2.2/zbedic/src/utf8.h	2011-10-31 15:29:44.689003413 +0800
+@@ -0,0 +1,38 @@
++/****************************************************************************
++ * utf8.h
++ *
++ * The content of this file is based on 9libs library
++ *
++ * The authors of this software are Rob Pike and Howard Trickey.
++ *		Copyright (c) 1998 by Lucent Technologies.
++ * Permission to use, copy, modify, and distribute this software for any
++ * purpose without fee is hereby granted, provided that this entire notice
++ * is included in all copies of any software which is or includes a copy
++ * or modification of this software and in all copies of the supporting
++ * documentation for such software.
++ * THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED
++ * WARRANTY.  IN PARTICULAR, NEITHER THE AUTHORS NOR LUCENT TECHNOLOGIES MAKE ANY
++ * REPRESENTATION OR WARRANTY OF ANY KIND CONCERNING THE MERCHANTABILITY
++ * OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
++ ****************************************************************************/
++
++#ifndef _UTF8_H
++#define _UTF8_H
++
++#include <string>
++using namespace std;
++
++class Utf8 {
++	public:
++		static int tolower(const char* s, char* buf, int buflen);
++		static int toupper(const char* s, char* buf, int buflen);
++
++		static int tolower(const string&, string&);
++		static int toupper(const string&, string&);
++
++		static unsigned int chartorune(const char** s);
++		static int runetochar(char* s, int rune);
++                static unsigned int runetoupper(unsigned int c);                
++};
++
++#endif

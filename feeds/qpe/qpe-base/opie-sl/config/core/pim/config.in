@@ -1,0 +1,7 @@
+  source core/pim/addressbook/config.in
+  source core/pim/datebook/config.in
+  source core/pim/notes/config.in
+  source core/pim/osearch/config.in
+  source core/pim/today/config.in
+  source core/pim/todo/config.in
+

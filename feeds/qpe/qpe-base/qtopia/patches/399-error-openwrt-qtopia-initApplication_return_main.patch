@@ -1,0 +1,85 @@
+#
+# 使用openwrt编译器gcc-4.3.3+cs_eglibc-2.8_eabi(无论是arm_v4t或者arm_v7)编译的qtopia，
+# 首次启动qpe/或者重启restart/shutdown都会中断停止运行，出现Illegal instruction错误。
+#
+# Illegal instruction错误的原因很多，大部分把责任归于EABI，如toolchain的EABI，kernel的EABI等;
+# toolchain-arm_v4t_gcc-4.3.3+cs_eglibc-2.8_eabi
+# 	: 与指令集无关，arm_v4t，arm_v7都出错
+# 	: 与libc库也无关，eglibc和uClibc也都出错
+# 	: 可能和gcc-4.3.3有关！期待升级到最新的AA使用新的gcc
+#
+# 问题出在./qtopia/src/server/main.cpp，
+# 从initApplication()函数 return后回不到main()函数中！
+# 既然这样，修复时就直接跳转instead_return_to_main处理mian后续的工作，然后直接退出
+#
+--- qtopia-free-2.1.1/src/server/main.cpp.orig	2012-06-27 10:31:31.886345279 +0800
++++ qtopia-free-2.1.1/src/server/main.cpp	2012-06-27 11:06:08.998346238 +0800
+@@ -608,6 +608,48 @@
+ };
+ #endif
+ 
++static int instead_return_to_main(int ret)
++{
++	qWarning("exiting...");
++#ifndef Q_OS_WIN32
++
++#ifdef Q_WS_QWS
++	// Have we been asked to restart?
++	if ( ServerApplication::doRestart ) {
++		qWarning("restarting...");
++		for ( int fd = 3; fd < 100; fd++ )
++			close( fd );
++# if defined(QT_DEMO_SINGLE_FLOPPY)
++		execl( "/sbin/init", "qpe", 0 );
++# elif defined(QT_QWS_CASSIOPEIA)
++		execl( "/bin/sh", "sh", 0 );
++# else
++		execl( (QPEApplication::qpeDir()+"bin/qpe").latin1(), "qpe", 0 );
++# endif
++	}
++#endif
++
++	// Kill them. Kill them all.
++	setpgid( getpid(), getppid() );
++	killpg( getpid(), SIGTERM );
++	Global::sleep( 1 );
++	killpg( getpid(), SIGKILL );
++
++#else // WIN32
++
++	if ( DesktopApplication::doRestart ) {
++		qDebug("Trying to restart");
++		execl( (QPEApplication::qpeDir()+"bin\\qpe").latin1(), "qpe", 0 );
++	}
++
++#endif // WIN32
++
++	qWarning("exit...");
++
++	//return ret;
++	::exit(ret);
++}
++
+ int initApplication( int argc, char ** argv )
+ {
+ #ifdef QT_QWS_CASSIOPEIA
+@@ -646,7 +688,8 @@
+ # if defined(Q_OS_UNIX) 
+     if ( firstUse() ) {
+ 	a.restart();
+-	return 0;
++	instead_return_to_main(0);
++	//return 0;
+     }
+ # endif
+ #endif
+@@ -687,7 +730,8 @@
+     qDebug("exiting...");
+     delete s;
+ 
+-    return rv;
++    instead_return_to_main(rv);
++    //return rv;
+ }
+ 
+ #ifndef Q_OS_WIN32

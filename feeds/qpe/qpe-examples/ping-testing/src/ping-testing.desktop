@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaSettings
+Context=Ping
+Comment[Desktop Entry/Name]=Use soft hyphen (char U00AD) to indicate hyphenation
+[Desktop Entry]
+Exec=ping-testing
+Icon=ping-testing
+Type=Application
+Name[]=Ping
+CanFastload=0

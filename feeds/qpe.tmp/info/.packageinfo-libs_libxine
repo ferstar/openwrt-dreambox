@@ -1,0 +1,21 @@
+Source-Makefile: feeds/qpe/libs/libxine/Makefile
+Package: libxine
+Submenu: libs
+Version: 1.1.1-2
+Depends: +alsa-lib +zlib +libfreetype
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: xine libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xine-lib-1.1.1.tar.gz
+Type: ipkg
+Description:   xine is a free multimedia player. It plays back CDs, DVDs, and VCDs.
+  It also decodes multimedia files like AVI, MOV, WMV, and MP3 
+  from local disk drives, and displays multimedia streamed over the Internet.
+  It interprets many of the most common multimedia formats available – 
+  and some of the most uncommon formats, too.
+http://www.xine-project.org/
+@@
+
+

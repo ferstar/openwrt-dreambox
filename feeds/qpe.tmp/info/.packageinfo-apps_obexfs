@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/apps/obexfs/Makefile
+Package: obexfs
+Submenu: apps
+Version: 0.12-1
+Depends: +kmod-fuse +libfuse +libusb +fuse-utils +libopenobex +libobexftp
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: (ObexFS)FUSE based filesystem using ObexFTP
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: obexfs-0.12.tar.gz
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+

@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-host/qt3/Makefile
+Package: qt3
+Submenu: qpe-host
+Version: 3.3.5-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt-x11-3.3.5 tools
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-x11-free-3.3.5.tar.gz
+Type: ipkg
+Description:   qt-x11-3.3.5 tools
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+

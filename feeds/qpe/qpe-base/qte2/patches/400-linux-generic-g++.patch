@@ -1,0 +1,80 @@
+--- qt-2.3.10/configs/linux-generic-g++-shared.orig	2005-01-23 22:03:34.000000000 +0800
++++ qt-2.3.10/configs/linux-generic-g++-shared	2005-01-23 22:03:36.000000000 +0800
+@@ -38,7 +38,7 @@
+ # Linking applications
+ SYSCONF_LINK		= g++
+ SYSCONF_LFLAGS		= 
+-SYSCONF_LIBS		= 
++SYSCONF_LIBS		= -lm
+ 
+ # Link flags for shared objects
+ SYSCONF_LFLAGS_SHOBJ	= -shared
+@@ -60,7 +60,7 @@
+ #   - Place target in $(DESTDIR) - which has a trailing /
+ #   - Usually needs to incorporate $(VER_MAJ), $(VER_MIN) and $(VER_PATCH)
+ #
+-SYSCONF_LINK_SHLIB	= gcc
++SYSCONF_LINK_SHLIB	= g++
+ SYSCONF_LINK_TARGET_SHARED	= lib$(TARGET).so.$(VER_MAJ).$(VER_MIN).$(VER_PATCH)
+ SYSCONF_LINK_LIB_SHARED	=  $(SYSCONF_LINK_SHLIB) -shared -Wl,-soname,lib$(TARGET).so.$(VER_MAJ) \
+ 				     $(LFLAGS) -o $(SYSCONF_LINK_TARGET_SHARED) \
+--- qt-2.3.10/configs/linux-generic-g++-shared-debug.orig	2005-01-23 22:03:34.000000000 +0800
++++ qt-2.3.10/configs/linux-generic-g++-shared-debug	2005-01-23 22:03:36.000000000 +0800
+@@ -38,7 +38,7 @@
+ # Linking applications
+ SYSCONF_LINK		= g++
+ SYSCONF_LFLAGS		= 
+-SYSCONF_LIBS		= 
++SYSCONF_LIBS		= -lm
+ 
+ # Link flags for shared objects
+ SYSCONF_LFLAGS_SHOBJ	= -shared
+@@ -60,7 +60,7 @@
+ #   - Place target in $(DESTDIR) - which has a trailing /
+ #   - Usually needs to incorporate $(VER_MAJ), $(VER_MIN) and $(VER_PATCH)
+ #
+-SYSCONF_LINK_SHLIB	= gcc
++SYSCONF_LINK_SHLIB	= g++
+ SYSCONF_LINK_TARGET_SHARED	= lib$(TARGET).so.$(VER_MAJ).$(VER_MIN).$(VER_PATCH)
+ SYSCONF_LINK_LIB_SHARED	=  $(SYSCONF_LINK_SHLIB) -shared -Wl,-soname,lib$(TARGET).so.$(VER_MAJ) \
+ 				     $(LFLAGS) -o $(SYSCONF_LINK_TARGET_SHARED) \
+--- qt-2.3.10/configs/linux-generic-g++-static.orig	2005-01-23 22:03:34.000000000 +0800
++++ qt-2.3.10/configs/linux-generic-g++-static	2005-01-23 22:03:36.000000000 +0800
+@@ -38,7 +38,7 @@
+ # Linking applications
+ SYSCONF_LINK		= g++
+ SYSCONF_LFLAGS		= 
+-SYSCONF_LIBS		= 
++SYSCONF_LIBS		= -lm
+ 
+ # Link flags for shared objects
+ SYSCONF_LFLAGS_SHOBJ	= -shared
+@@ -60,7 +60,7 @@
+ #   - Place target in $(DESTDIR) - which has a trailing /
+ #   - Usually needs to incorporate $(VER_MAJ), $(VER_MIN) and $(VER_PATCH)
+ #
+-SYSCONF_LINK_SHLIB	= gcc
++SYSCONF_LINK_SHLIB	= g++
+ SYSCONF_LINK_TARGET_SHARED	= lib$(TARGET).so.$(VER_MAJ).$(VER_MIN).$(VER_PATCH)
+ SYSCONF_LINK_LIB_SHARED	=  $(SYSCONF_LINK_SHLIB) -shared -Wl,-soname,lib$(TARGET).so.$(VER_MAJ) \
+ 				     $(LFLAGS) -o $(SYSCONF_LINK_TARGET_SHARED) \
+--- qt-2.3.10/configs/linux-generic-g++-static-debug.orig	2005-01-23 22:03:34.000000000 +0800
++++ qt-2.3.10/configs/linux-generic-g++-static-debug	2005-01-23 22:03:36.000000000 +0800
+@@ -38,7 +38,7 @@
+ # Linking applications
+ SYSCONF_LINK		= g++
+ SYSCONF_LFLAGS		= 
+-SYSCONF_LIBS		= 
++SYSCONF_LIBS		= -lm
+ 
+ # Link flags for shared objects
+ SYSCONF_LFLAGS_SHOBJ	= -shared
+@@ -60,7 +60,7 @@
+ #   - Place target in $(DESTDIR) - which has a trailing /
+ #   - Usually needs to incorporate $(VER_MAJ), $(VER_MIN) and $(VER_PATCH)
+ #
+-SYSCONF_LINK_SHLIB	= gcc
++SYSCONF_LINK_SHLIB	= g++
+ SYSCONF_LINK_TARGET_SHARED	= lib$(TARGET).so.$(VER_MAJ).$(VER_MIN).$(VER_PATCH)
+ SYSCONF_LINK_LIB_SHARED	=  $(SYSCONF_LINK_SHLIB) -shared -Wl,-soname,lib$(TARGET).so.$(VER_MAJ) \
+ 				     $(LFLAGS) -o $(SYSCONF_LINK_TARGET_SHARED) \

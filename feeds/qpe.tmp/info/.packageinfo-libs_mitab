@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/libs/mitab/Makefile
+Package: mitab
+Submenu: libs
+Version: 1.7.0-1
+Depends: 
+Provides: 
+Section: libs-
+Category: Qt/Qtopia
+Title: MITAB MapInfo Library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: mitab-1.7.0.tar.gz
+Type: ipkg
+Description:   MITAB is an Open Source (i.e. Free!) C++ library 
+  to read and write MapInfo .TAB (binary) and .MIF/MID files.
+  It is based on the OGR library which is an implementation 
+  of the Open GIS Consortium Simple Feature specification.
+http://mitab.maptools.org
+@@
+
+

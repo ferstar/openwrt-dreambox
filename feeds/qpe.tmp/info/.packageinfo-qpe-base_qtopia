@@ -1,0 +1,110 @@
+Source-Makefile: feeds/qpe/qpe-base/qtopia/Makefile
+Package: qtopia
+Submenu: qpe-base
+Version: 2.1.1-1
+Depends: +qpe-build +qte2
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Qtopia-free-2.1.1
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description:   qtopia-free-2.1.1
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/qtopia/Config.in"
+@@
+
+Package: qtopia-support-thread
+Submenu: qpe-base
+Default: n
+Version: 2.1.1-1
+Depends: qtopia +qte2-support-thread +libpthread
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build with threading support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build with threading support
+@@
+
+Package: qtopia-support-qvfb
+Submenu: qpe-base
+Default: n
+Version: 2.1.1-1
+Depends: qtopia +qte2-support-qvfb
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build with the X11-based Qt Virtual Frame Buffer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build with the X11-based Qt Virtual Frame Buffer
+@@
+
+Package: qtopia-support-module-freetype
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build freetype module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build freetype module into Qtopia
+@@
+
+Package: qtopia-support-module-libmad
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libmad module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libmad module into Qtopia
+@@
+
+Package: qtopia-support-module-libffmpeg
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libffmpeg module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libffmpeg module into Qtopia
+@@
+
+Package: qtopia-support-module-libamr
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libamr module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libamr module into Qtopia
+@@
+
+

@@ -1,0 +1,20 @@
+--- opie-1.2.5/noncore/games/sfcave-sdl/bfont.cpp.orig	2012-08-10 10:58:18.773706704 +0800
++++ opie-1.2.5/noncore/games/sfcave-sdl/bfont.cpp	2012-08-10 11:02:28.701706734 +0800
+@@ -188,7 +188,7 @@
+     int pos(-1),i(0);
+ 
+     /* Calculate the space occupied by the text without spaces */
+-    while ((p=strchr(&text[pos+1],' ')) != NULL)
++    while ((p=strchr( (char *)(&text[pos+1]),' ')) != NULL)
+     {
+         i++;
+         pos = p - text;
+@@ -221,7 +221,7 @@
+             pos = -1;
+             while ( spaces > 0 )
+             {
+-                p = strstr(&text[pos+1]," ");
++                p = strstr( (char *)(&text[pos+1])," ");
+                 strtmp = NULL;
+                 strtmp = (char *) calloc ( (p - &text[pos+1]) + 1,sizeof(char));
+                 if (strtmp != NULL)

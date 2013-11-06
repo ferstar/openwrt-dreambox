@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaApplications
+Context=Qt Starter
+Comment[Desktop Entry/Name]=Use soft hyphen (char U00AD) to indicate hyphenation
+[Desktop Entry]
+Comment[]=Qt Starter
+Exec=qt-starter
+Icon=qt-starter
+Type=Application
+Name[]=Qt Starter

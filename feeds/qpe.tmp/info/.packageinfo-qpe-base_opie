@@ -1,0 +1,216 @@
+Source-Makefile: feeds/qpe/qpe-base/opie/Makefile
+Package: opie
+Submenu: qpe-base
+Version: 1.2.5-1
+Depends: +qpe-build +qte2 +libsysfs +libpng +libjpeg +zlib @!PACKAGE_qtopia
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Open Palmtop Integrated Environment
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description:   Opie - Open Palmtop Integrated Environment
+  Applications and libraries for mobile devices.
+http://opie.sourceforge.net/
+@@
+Config:
+	source "feeds/qpe/qpe-base/opie/Config.in"
+@@
+
+Package: opie-have-sqlite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libsqlite3
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: SQLite PIM backends(libsqlite3)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: SQLite PIM backends(libsqlite3)
+@@
+
+Package: opie-have-freetype
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libfreetype
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: libfreetype font engine
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: libfreetype font engine
+@@
+
+Package: opie-have-libsword
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libsword
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: The SWORD API/library(libsword)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: The SWORD API/library(libsword)
+@@
+
+Package: opie-have-libetpan
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libetpan
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Mail Framework for C Language(libetpan)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Mail Framework for C Language(libetpan)
+@@
+
+Package: opie-have-libpcap
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpcap
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: packet capture library(libpcap)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: packet capture library(libpcap)
+@@
+
+Package: opie-have-bluez-libs
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +bluez-libs
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Bluetooth library(bluez-libs)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Bluetooth library(bluez-libs)
+@@
+
+Package: opie-have-xine-lib
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libxine
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Xine libraries(xine-lib)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Xine libraries(xine-lib)
+@@
+
+Package: opie-have-alsa-lib
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +alsa-lib
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Advanced Linux Sound Architecture libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Advanced Linux Sound Architecture libraries
+@@
+
+Package: opie-have-flite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +flite
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Text-to-speech for embedded systems
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Text-to-speech for embedded systems
+@@
+
+Package: opie-have-obexftp
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libopenobex +libobexftp
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: ObexFTP libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: ObexFTP libraries
+@@
+
+Package: opie-have-libpam
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpam @BROKEN
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (libpam)Linux-PAM
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (libpam)Linux-PAM
+@@
+
+Package: opie-have-libpcsclite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpcsclite
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (libpcsclite) PC/SC Lite
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (libpcsclite) PC/SC Lite
+@@
+
+Package: opie-have-opkg
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libopkg
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (opkg)lightweight package management system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (opkg)lightweight package management system
+@@
+
+

@@ -1,0 +1,484 @@
+<!DOCTYPE QtCreatorProject>
+<qtcreator>
+ <data>
+  <variable>RunConfiguration0-BaseEnvironmentBase</variable>
+  <value type="int">2</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-CommandLineArguments</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>RunConfiguration0-ProFile</variable>
+  <value type="QString">qt-map.pro</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-RunConfiguration.name</variable>
+  <value type="QString">qt-map</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UseDyldImageSuffix</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UseTerminal</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UserEnvironmentChanges</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UserSetName</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UserSetWorkingDirectory</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-UserWorkingDirectory</variable>
+  <value type="QString"></value>
+ </data>
+ <data>
+  <variable>RunConfiguration0-type</variable>
+  <value type="QString">Qt4ProjectManager.Qt4RunConfiguration</value>
+ </data>
+ <data>
+  <variable>activeRunConfiguration</variable>
+  <value type="int">0</value>
+ </data>
+ <data>
+  <variable>activebuildconfiguration</variable>
+  <value type="QString">Debug</value>
+ </data>
+ <data>
+  <variable>buildConfiguration-Debug</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
+   <value key="QtVersionId" type="int">0</value>
+   <value key="ToolChain" type="int">0</value>
+   <value key="addQDumper" type=""></value>
+   <value key="buildConfiguration" type="int">2</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildConfiguration-Release</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
+   <value key="QtVersionId" type="int">0</value>
+   <value key="ToolChain" type="int">0</value>
+   <value key="addQDumper" type=""></value>
+   <value key="buildConfiguration" type="int">0</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Debug-buildstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">CCACHE_DIR=/var/cache/ccache</value>
+    <value type="QString">CCACHE_UMASK=002</value>
+    <value type="QString">CVS_RSH=ssh</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-zeLAAg2zKU,guid=18dab3f5aca7205cf6f758004d6b3365</value>
+    <value type="QString">DESKTOP_SESSION=default</value>
+    <value type="QString">DISPLAY=:0.0</value>
+    <value type="QString">GDMSESSION=default</value>
+    <value type="QString">GDM_LANG=zh_CN.UTF-8</value>
+    <value type="QString">GDM_XSERVER_LOCATION=local</value>
+    <value type="QString">GNOME_KEYRING_PID=3205</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-KOYld3/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/gpg-KFxaXX/S.gpg-agent:3214:1</value>
+    <value type="QString">GS_LIB=/root/.fonts</value>
+    <value type="QString">GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/root/.gtkrc-2.0:/root/.kde/share/config/gtkrc-2.0</value>
+    <value type="QString">GTK_IM_MODULE=scim-bridge</value>
+    <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/root/.gtkrc:/root/.kde/share/config/gtkrc</value>
+    <value type="QString">G_BROKEN_FILENAMES=1</value>
+    <value type="QString">HISTSIZE=1000</value>
+    <value type="QString">HOME=/root</value>
+    <value type="QString">HOSTNAME=localhost.localdomain</value>
+    <value type="QString">INPUTRC=/etc/inputrc</value>
+    <value type="QString">KDEDIRS=/usr</value>
+    <value type="QString">KDE_FULL_SESSION=true</value>
+    <value type="QString">KDE_IS_PRELINKED=1</value>
+    <value type="QString">KDE_MULTIHEAD=false</value>
+    <value type="QString">KDE_SESSION_UID=0</value>
+    <value type="QString">LANG=zh_CN.UTF-8</value>
+    <value type="QString">LESSOPEN=|/usr/bin/lesspipe.sh %s</value>
+    <value type="QString">LOGNAME=root</value>
+    <value type="QString">MAIL=/var/spool/mail/root</value>
+    <value type="QString">PATH=/opt/qtsdk-2010.02/qt/bin:/usr/lib/qt-3.3/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/root/arm-2007q1/bin:/root/arm-2009q1/bin:/disk2/root/xgl/usr/local/arm/4.3.2/bin:/lib/qt-qvfb-lib/bin:/disk2/lib/qt-qvfb-4.6.3-lib/bin:/root/bin</value>
+    <value type="QString">PWD=/root</value>
+    <value type="QString">QTDIR=/opt/qtsdk-2010.02/qt</value>
+    <value type="QString">QTINC=/usr/lib/qt-3.3/include</value>
+    <value type="QString">QTLIB=/usr/lib/qt-3.3/lib</value>
+    <value type="QString">QT_IM_MODULE=scim</value>
+    <value type="QString">SDL_AUDIODRIVER=esd</value>
+    <value type="QString">SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3270,unix/unix:/tmp/.ICE-unix/3270</value>
+    <value type="QString">SHELL=/bin/bash</value>
+    <value type="QString">SHLVL=2</value>
+    <value type="QString">SSH_AGENT_PID=3175</value>
+    <value type="QString">SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-omZLZp3056/agent.3056</value>
+    <value type="QString">TERM=dumb</value>
+    <value type="QString">USER=root</value>
+    <value type="QString">WINDOWPATH=7</value>
+    <value type="QString">XAUTHORITY=/tmp/.gdmC1NMRV</value>
+    <value type="QString">XCURSOR_THEME=default</value>
+    <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
+    <value type="QString">XDG_MENU_PREFIX=kde-</value>
+    <value type="QString">XDG_SESSION_COOKIE=a9c21b7ddbb898c0985cd3004a13a100-1298871140.100393-444134497</value>
+    <value type="QString">XMODIFIERS=@im=SCIM</value>
+    <value type="QString">_=/usr/bin/start_kdeinit_wrapper</value>
+   </valuelist>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">/disk2/root/qt-map/qt-map.pro</value>
+    <value type="QString">-spec</value>
+    <value type="QString">linux-g++</value>
+    <value type="QString">-r</value>
+    <value type="QString">CONFIG+=debug</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">/opt/qtsdk-2010.02/qt/bin/qmake</value>
+   <value key="abstractProcess.enabled" type="bool">false</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/disk2/root/qt-map</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Debug-buildstep1</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">CCACHE_DIR=/var/cache/ccache</value>
+    <value type="QString">CCACHE_UMASK=002</value>
+    <value type="QString">CVS_RSH=ssh</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-zeLAAg2zKU,guid=18dab3f5aca7205cf6f758004d6b3365</value>
+    <value type="QString">DESKTOP_SESSION=default</value>
+    <value type="QString">DISPLAY=:0.0</value>
+    <value type="QString">GDMSESSION=default</value>
+    <value type="QString">GDM_LANG=zh_CN.UTF-8</value>
+    <value type="QString">GDM_XSERVER_LOCATION=local</value>
+    <value type="QString">GNOME_KEYRING_PID=3205</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-KOYld3/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/gpg-KFxaXX/S.gpg-agent:3214:1</value>
+    <value type="QString">GS_LIB=/root/.fonts</value>
+    <value type="QString">GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/root/.gtkrc-2.0:/root/.kde/share/config/gtkrc-2.0</value>
+    <value type="QString">GTK_IM_MODULE=scim-bridge</value>
+    <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/root/.gtkrc:/root/.kde/share/config/gtkrc</value>
+    <value type="QString">G_BROKEN_FILENAMES=1</value>
+    <value type="QString">HISTSIZE=1000</value>
+    <value type="QString">HOME=/root</value>
+    <value type="QString">HOSTNAME=localhost.localdomain</value>
+    <value type="QString">INPUTRC=/etc/inputrc</value>
+    <value type="QString">KDEDIRS=/usr</value>
+    <value type="QString">KDE_FULL_SESSION=true</value>
+    <value type="QString">KDE_IS_PRELINKED=1</value>
+    <value type="QString">KDE_MULTIHEAD=false</value>
+    <value type="QString">KDE_SESSION_UID=0</value>
+    <value type="QString">LANG=zh_CN.UTF-8</value>
+    <value type="QString">LESSOPEN=|/usr/bin/lesspipe.sh %s</value>
+    <value type="QString">LOGNAME=root</value>
+    <value type="QString">MAIL=/var/spool/mail/root</value>
+    <value type="QString">PATH=/opt/qtsdk-2010.02/qt/bin:/usr/lib/qt-3.3/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/root/arm-2007q1/bin:/root/arm-2009q1/bin:/disk2/root/xgl/usr/local/arm/4.3.2/bin:/lib/qt-qvfb-lib/bin:/disk2/lib/qt-qvfb-4.6.3-lib/bin:/root/bin</value>
+    <value type="QString">PWD=/root</value>
+    <value type="QString">QTDIR=/opt/qtsdk-2010.02/qt</value>
+    <value type="QString">QTINC=/usr/lib/qt-3.3/include</value>
+    <value type="QString">QTLIB=/usr/lib/qt-3.3/lib</value>
+    <value type="QString">QT_IM_MODULE=scim</value>
+    <value type="QString">SDL_AUDIODRIVER=esd</value>
+    <value type="QString">SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3270,unix/unix:/tmp/.ICE-unix/3270</value>
+    <value type="QString">SHELL=/bin/bash</value>
+    <value type="QString">SHLVL=2</value>
+    <value type="QString">SSH_AGENT_PID=3175</value>
+    <value type="QString">SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-omZLZp3056/agent.3056</value>
+    <value type="QString">TERM=dumb</value>
+    <value type="QString">USER=root</value>
+    <value type="QString">WINDOWPATH=7</value>
+    <value type="QString">XAUTHORITY=/tmp/.gdmC1NMRV</value>
+    <value type="QString">XCURSOR_THEME=default</value>
+    <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
+    <value type="QString">XDG_MENU_PREFIX=kde-</value>
+    <value type="QString">XDG_SESSION_COOKIE=a9c21b7ddbb898c0985cd3004a13a100-1298871140.100393-444134497</value>
+    <value type="QString">XMODIFIERS=@im=SCIM</value>
+    <value type="QString">_=/usr/bin/start_kdeinit_wrapper</value>
+   </valuelist>
+   <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">-w</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/disk2/root/qt-map</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Debug-cleanstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">CCACHE_DIR=/var/cache/ccache</value>
+    <value type="QString">CCACHE_UMASK=002</value>
+    <value type="QString">CVS_RSH=ssh</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-zeLAAg2zKU,guid=18dab3f5aca7205cf6f758004d6b3365</value>
+    <value type="QString">DESKTOP_SESSION=default</value>
+    <value type="QString">DISPLAY=:0.0</value>
+    <value type="QString">GDMSESSION=default</value>
+    <value type="QString">GDM_LANG=zh_CN.UTF-8</value>
+    <value type="QString">GDM_XSERVER_LOCATION=local</value>
+    <value type="QString">GNOME_KEYRING_PID=3205</value>
+    <value type="QString">GNOME_KEYRING_SOCKET=/tmp/keyring-KOYld3/socket</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/gpg-KFxaXX/S.gpg-agent:3214:1</value>
+    <value type="QString">GS_LIB=/root/.fonts</value>
+    <value type="QString">GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/root/.gtkrc-2.0:/root/.kde/share/config/gtkrc-2.0</value>
+    <value type="QString">GTK_IM_MODULE=scim-bridge</value>
+    <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/root/.gtkrc:/root/.kde/share/config/gtkrc</value>
+    <value type="QString">G_BROKEN_FILENAMES=1</value>
+    <value type="QString">HISTSIZE=1000</value>
+    <value type="QString">HOME=/root</value>
+    <value type="QString">HOSTNAME=localhost.localdomain</value>
+    <value type="QString">INPUTRC=/etc/inputrc</value>
+    <value type="QString">KDEDIRS=/usr</value>
+    <value type="QString">KDE_FULL_SESSION=true</value>
+    <value type="QString">KDE_IS_PRELINKED=1</value>
+    <value type="QString">KDE_MULTIHEAD=false</value>
+    <value type="QString">KDE_SESSION_UID=0</value>
+    <value type="QString">LANG=zh_CN.UTF-8</value>
+    <value type="QString">LESSOPEN=|/usr/bin/lesspipe.sh %s</value>
+    <value type="QString">LOGNAME=root</value>
+    <value type="QString">MAIL=/var/spool/mail/root</value>
+    <value type="QString">PATH=/opt/qtsdk-2010.02/qt/bin:/usr/lib/qt-3.3/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/root/arm-2007q1/bin:/root/arm-2009q1/bin:/disk2/root/xgl/usr/local/arm/4.3.2/bin:/lib/qt-qvfb-lib/bin:/disk2/lib/qt-qvfb-4.6.3-lib/bin:/root/bin</value>
+    <value type="QString">PWD=/root</value>
+    <value type="QString">QTDIR=/opt/qtsdk-2010.02/qt</value>
+    <value type="QString">QTINC=/usr/lib/qt-3.3/include</value>
+    <value type="QString">QTLIB=/usr/lib/qt-3.3/lib</value>
+    <value type="QString">QT_IM_MODULE=scim</value>
+    <value type="QString">SDL_AUDIODRIVER=esd</value>
+    <value type="QString">SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3270,unix/unix:/tmp/.ICE-unix/3270</value>
+    <value type="QString">SHELL=/bin/bash</value>
+    <value type="QString">SHLVL=2</value>
+    <value type="QString">SSH_AGENT_PID=3175</value>
+    <value type="QString">SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-omZLZp3056/agent.3056</value>
+    <value type="QString">TERM=dumb</value>
+    <value type="QString">USER=root</value>
+    <value type="QString">WINDOWPATH=7</value>
+    <value type="QString">XAUTHORITY=/tmp/.gdmC1NMRV</value>
+    <value type="QString">XCURSOR_THEME=default</value>
+    <value type="QString">XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
+    <value type="QString">XDG_MENU_PREFIX=kde-</value>
+    <value type="QString">XDG_SESSION_COOKIE=a9c21b7ddbb898c0985cd3004a13a100-1298871140.100393-444134497</value>
+    <value type="QString">XMODIFIERS=@im=SCIM</value>
+    <value type="QString">_=/usr/bin/start_kdeinit_wrapper</value>
+   </valuelist>
+   <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">clean</value>
+    <value type="QString">-w</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">/usr/bin/make</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
+   <value key="abstractProcess.workingDirectory" type="QString">/disk2/root/qt-map</value>
+   <value key="cleanConfig" type="bool">true</value>
+   <valuelist key="makeargs" type="QVariantList">
+    <value type="QString">clean</value>
+   </valuelist>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Release-buildstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">ALLUSERSPROFILE=C:\Documents and Settings\All Users</value>
+    <value type="QString">ALTIUMPATH=D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">APPDATA=C:\Documents and Settings\李进\Application Data</value>
+    <value type="QString">AVR32_HOME=C:\WinAVR-20100110</value>
+    <value type="QString">CARBON_MEM_DISABLE=1</value>
+    <value type="QString">CLIENTNAME=Console</value>
+    <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
+    <value type="QString">COMPUTERNAME=RAT-TECH</value>
+    <value type="QString">COMSPEC=C:\WINDOWS\system32\cmd.exe</value>
+    <value type="QString">FP_NO_HOST_CHECK=NO</value>
+    <value type="QString">HOMEDRIVE=C:</value>
+    <value type="QString">HOMEPATH=\Documents and Settings\李进</value>
+    <value type="QString">LOGONSERVER=\\RAT-TECH</value>
+    <value type="QString">NUMBER_OF_PROCESSORS=4</value>
+    <value type="QString">OS=Windows_NT</value>
+    <value type="QString">PATH=C:\Qt\2010.02.1\mingw\bin;C:\Qt\2010.02.1\qt\bin;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;c:\Program Files\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;C:\Program Files\Common Files\Adobe\AGL;C:\Program Files\IDM Computer Solutions\UltraEdit-32;D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH</value>
+    <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
+    <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 10, GenuineIntel</value>
+    <value type="QString">PROCESSOR_LEVEL=6</value>
+    <value type="QString">PROCESSOR_REVISION=170a</value>
+    <value type="QString">PROGRAMFILES=C:\Program Files</value>
+    <value type="QString">QTDIR=C:/Qt/2010.02.1/qt</value>
+    <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SYSTEMDRIVE=C:</value>
+    <value type="QString">SYSTEMROOT=C:\WINDOWS</value>
+    <value type="QString">TEMP=c:\mytemp</value>
+    <value type="QString">TMP=c:\mytemp</value>
+    <value type="QString">USERDOMAIN=RAT-TECH</value>
+    <value type="QString">USERNAME=李进</value>
+    <value type="QString">USERPROFILE=C:\Documents and Settings\李进</value>
+    <value type="QString">WINDIR=C:\WINDOWS</value>
+   </valuelist>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">F:/QT-project/qt-map/qt-map.pro</value>
+    <value type="QString">-spec</value>
+    <value type="QString">win32-g++</value>
+    <value type="QString">-r</value>
+    <value type="QString">CONFIG+=release</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">c:/qt/2010.02.1/qt/bin/qmake.exe</value>
+   <value key="abstractProcess.enabled" type="bool">false</value>
+   <value key="abstractProcess.workingDirectory" type="QString">F:/QT-project/qt-map</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Release-buildstep1</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">ALLUSERSPROFILE=C:\Documents and Settings\All Users</value>
+    <value type="QString">ALTIUMPATH=D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">APPDATA=C:\Documents and Settings\李进\Application Data</value>
+    <value type="QString">AVR32_HOME=C:\WinAVR-20100110</value>
+    <value type="QString">CARBON_MEM_DISABLE=1</value>
+    <value type="QString">CLIENTNAME=Console</value>
+    <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
+    <value type="QString">COMPUTERNAME=RAT-TECH</value>
+    <value type="QString">COMSPEC=C:\WINDOWS\system32\cmd.exe</value>
+    <value type="QString">FP_NO_HOST_CHECK=NO</value>
+    <value type="QString">HOMEDRIVE=C:</value>
+    <value type="QString">HOMEPATH=\Documents and Settings\李进</value>
+    <value type="QString">LOGONSERVER=\\RAT-TECH</value>
+    <value type="QString">NUMBER_OF_PROCESSORS=4</value>
+    <value type="QString">OS=Windows_NT</value>
+    <value type="QString">PATH=C:\Qt\2010.02.1\mingw\bin;C:\Qt\2010.02.1\qt\bin;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;c:\Program Files\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;C:\Program Files\Common Files\Adobe\AGL;C:\Program Files\IDM Computer Solutions\UltraEdit-32;D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH</value>
+    <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
+    <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 10, GenuineIntel</value>
+    <value type="QString">PROCESSOR_LEVEL=6</value>
+    <value type="QString">PROCESSOR_REVISION=170a</value>
+    <value type="QString">PROGRAMFILES=C:\Program Files</value>
+    <value type="QString">QTDIR=C:/Qt/2010.02.1/qt</value>
+    <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SYSTEMDRIVE=C:</value>
+    <value type="QString">SYSTEMROOT=C:\WINDOWS</value>
+    <value type="QString">TEMP=c:\mytemp</value>
+    <value type="QString">TMP=c:\mytemp</value>
+    <value type="QString">USERDOMAIN=RAT-TECH</value>
+    <value type="QString">USERNAME=李进</value>
+    <value type="QString">USERPROFILE=C:\Documents and Settings\李进</value>
+    <value type="QString">WINDIR=C:\WINDOWS</value>
+   </valuelist>
+   <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">-w</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">C:/Qt/2010.02.1/mingw/bin/mingw32-make.exe</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
+   <value key="abstractProcess.workingDirectory" type="QString">F:/QT-project/qt-map</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfiguration-Release-cleanstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">ALLUSERSPROFILE=C:\Documents and Settings\All Users</value>
+    <value type="QString">ALTIUMPATH=D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">APPDATA=C:\Documents and Settings\李进\Application Data</value>
+    <value type="QString">AVR32_HOME=C:\WinAVR-20100110</value>
+    <value type="QString">CARBON_MEM_DISABLE=1</value>
+    <value type="QString">CLIENTNAME=Console</value>
+    <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
+    <value type="QString">COMPUTERNAME=RAT-TECH</value>
+    <value type="QString">COMSPEC=C:\WINDOWS\system32\cmd.exe</value>
+    <value type="QString">FP_NO_HOST_CHECK=NO</value>
+    <value type="QString">HOMEDRIVE=C:</value>
+    <value type="QString">HOMEPATH=\Documents and Settings\李进</value>
+    <value type="QString">LOGONSERVER=\\RAT-TECH</value>
+    <value type="QString">NUMBER_OF_PROCESSORS=4</value>
+    <value type="QString">OS=Windows_NT</value>
+    <value type="QString">PATH=C:\Qt\2010.02.1\mingw\bin;C:\Qt\2010.02.1\qt\bin;C:\WinAVR-20100110\bin;C:\WinAVR-20100110\utils\bin;c:\Program Files\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;C:\Program Files\Common Files\Adobe\AGL;C:\Program Files\IDM Computer Solutions\UltraEdit-32;D:\Program Files\Altium Designer Winter 09\System</value>
+    <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH</value>
+    <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
+    <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 10, GenuineIntel</value>
+    <value type="QString">PROCESSOR_LEVEL=6</value>
+    <value type="QString">PROCESSOR_REVISION=170a</value>
+    <value type="QString">PROGRAMFILES=C:\Program Files</value>
+    <value type="QString">QTDIR=C:/Qt/2010.02.1/qt</value>
+    <value type="QString">SESSIONNAME=Console</value>
+    <value type="QString">SYSTEMDRIVE=C:</value>
+    <value type="QString">SYSTEMROOT=C:\WINDOWS</value>
+    <value type="QString">TEMP=c:\mytemp</value>
+    <value type="QString">TMP=c:\mytemp</value>
+    <value type="QString">USERDOMAIN=RAT-TECH</value>
+    <value type="QString">USERNAME=李进</value>
+    <value type="QString">USERPROFILE=C:\Documents and Settings\李进</value>
+    <value type="QString">WINDIR=C:\WINDOWS</value>
+   </valuelist>
+   <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>
+   <valuelist key="abstractProcess.arguments" type="QVariantList">
+    <value type="QString">clean</value>
+    <value type="QString">-w</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString">C:/Qt/2010.02.1/mingw/bin/mingw32-make.exe</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
+   <value key="abstractProcess.workingDirectory" type="QString">F:/QT-project/qt-map</value>
+   <value key="cleanConfig" type="bool">true</value>
+   <valuelist key="makeargs" type="QVariantList">
+    <value type="QString">clean</value>
+   </valuelist>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildconfigurations</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">Debug</value>
+   <value type="QString">Release</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>buildstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString"></value>
+   <value key="mkspec" type="QString"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildstep1</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>buildsteps</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">trolltech.qt4projectmanager.qmake</value>
+   <value type="QString">trolltech.qt4projectmanager.make</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>cleanstep0</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString"></value>
+   <value key="clean" type="bool">true</value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>cleansteps</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">trolltech.qt4projectmanager.make</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>defaultFileEncoding</variable>
+  <value type="QByteArray">System</value>
+ </data>
+ <data>
+  <variable>project</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+</qtcreator>

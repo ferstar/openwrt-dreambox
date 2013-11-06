@@ -1,0 +1,11 @@
+--- libmng-1.0.10/makefiles/makefile.linux.orig	2012-09-18 11:53:46.762796610 +0800
++++ libmng-1.0.10/makefiles/makefile.linux	2012-09-18 11:54:04.230796611 +0800
+@@ -111,7 +111,7 @@
+     -lz -lm -lc
+ 
+ install: libmng.a libmng.so.$(MNGVER)
+-	-@mkdir $(INCPATH) $(LIBPATH)
++	-@mkdir -pv $(INCPATH) $(LIBPATH)
+ 	cp libmng.h libmng_conf.h libmng_types.h $(INCPATH)
+ 	chmod 644 $(INCPATH)/libmng.h $(INCPATH)/libmng_conf.h $(INCPATH)/libmng_types.h
+ 	cp libmng.a libmng.so.$(MNGVER) $(LIBPATH)

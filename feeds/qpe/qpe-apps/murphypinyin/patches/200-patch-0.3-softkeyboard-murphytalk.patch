@@ -1,0 +1,1369 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- MurphyPinyin/PinyinFrame.cpp	2004-08-01 01:20:19.000000000 +0800
++++ mpy-0.3/PinyinFrame.cpp	2004-08-02 11:04:25.000000000 +0800
+@@ -24,13 +24,16 @@
+ #include <qpainter.h>
+ #include <qlist.h>
+ #include <qbitmap.h>
++#include <qfontmetrics.h>
+ #include <qlayout.h>
++#include <qpalette.h>
+ #include <qvbox.h>
+ #include <qhbuttongroup.h>
+ #include <qpushbutton.h>
+ #include <qmessagebox.h>
+ #include <qcolor.h> 
+ #include <qpen.h>
++#include <qtimer.h>
+ #include <qwindowsystem_qws.h>
+ #include <qpe/qpeapplication.h>
+ #include <qnamespace.h>
+@@ -40,21 +43,21 @@
+ 
+ const char table_file[]=
+ #ifdef X86
+-"/root/pinyin_table.txt";
++"/home/chyang/pinyin_table.txt";
+ #else
+ "/home/zaurus/.murphytalk/pinyin_table.txt";
+ #endif
+ 
+ const char phrase_index_file[]=
+ #ifdef X86
+-"/root/murphytalk_phrase_idx.txt";
++"/home/chyang/murphytalk_phrase_idx.txt";
+ #else
+ "/home/zaurus/.murphytalk/murphytalk_phrase_idx.txt";
+ #endif
+ 
+ const char config_file[]=
+ #ifdef X86
+-"/root/murphytalk.conf";
++"/home/chyang/murphytalk.conf";
+ #else
+ "/etc/murphytalk.conf";
+ #endif
+@@ -62,7 +65,7 @@
+ 
+ /* XPM */
+ static const char * pix_prev[] = {
+-"16 13 3 1",
++"16 11 3 1",
+ " 	c #C0C0C0C0C0C0",
+ "#	c #000000000000",
+ ".	c #00000000FFFF",
+@@ -72,8 +75,6 @@
+ "       #..#     ",
+ "      #...#     ",
+ "     #....#     ",
+-"    #.....#     ",
+-"     #....#     ",
+ "      #...#     ",
+ "       #..#     ",
+ "        #.#     ",
+@@ -81,7 +82,7 @@
+ "          #     "};
+ 
+ static const char * pix_next[] = {
+-"16 13 3 1",
++"16 11 3 1",
+ " 	c #C0C0C0C0C0C0",
+ "#	c #000000000000",
+ ".	c #00000000FFFF",
+@@ -91,8 +92,6 @@
+ "     #..#       ",
+ "     #...#      ",
+ "     #....#     ",
+-"     #.....#    ",
+-"     #....#     ",
+ "     #...#      ",
+ "     #..#       ",
+ "     #.#        ",
+@@ -106,7 +105,25 @@
+ const unsigned short YING  = 0x82f1;   //Hanzi : English
+ 
+ const char ABOUT[]="About";
+-
++static const char * kb_xpm[] = {
++"28 13 4 1",
++"       c None",
++".      c #4C4C4C",
++"+      c #FFF7DD",
++"@      c #D6CFBA",
++" .......................... ",
++" .+++.+++.+++.+++.+++.++++. ",
++" .+@@.+@@.+@@.+@@.+@@.+@@@. ",
++" .......................... ",
++" .+++++.+++.+++.+++.++++++. ",
++" .+@@@@.+@@.+@@.+@@.+@@@@@. ",
++" .......................... ",
++" .++++++.+++.+++.+++.+++++. ",
++" .+@@@@@.+@@.+@@.+@@.+@@@@. ",
++" .......................... ",
++" .++++.++++++++++++++.++++. ",
++" .+@@@.+@@@@@@@@@@@@@.+@@@. ",
++" .......................... "};
+ const char MAKEPHRASE_OPEN [] = "\xe3\x80\x90\xe9\x80\xa0\xe8\xaf\x8d\x20";
+ const char MAKEPHRASE_CLOSE[] = "\xe3\x80\x91";
+ 
+@@ -120,7 +137,12 @@
+ 
+ QPinyinFrame::QPinyinFrame(QWidget* parent, const char* name, WFlags f) :
+ 	QFrame(parent,name,f),m_engine(table_file,phrase_index_file),
+-	m_bEnglishMode(false),m_bMakingPhrase(false)
++	m_bEnglishMode(false),m_bMakingPhrase(false),m_bShowKeyboard(0),
++	keyHeight(13),PickHeight(33),xoffs(0),pressedKey(-1),
++	shift(0),ctrl(0),alt(0),lock(0),useLargeKeys(TRUE),
++	useOptiKeys(0),modifiers(0),pressed(0),
++	pressTid(0),qkeycode(0),unicode(-1)
++
+ {
+ 	(new QHBoxLayout(this))->setAutoAdd(TRUE);
+ 	QPEApplication::grabKeyboard(); 
+@@ -130,16 +152,25 @@
+ 
+ 	String font_name=config.get_as_string("font");
+ 	int    font_size=config.get_as_int("font-size");
+-
++	m_bShowKeyboard = config.get_as_int("keyboard");
+ 	printX86("from config -> font=%s\n",font_name.c_str());
+ 	printX86("from config -> font-size=%d\n",font_size);
+-
++	printX86("from config -> keyboard=%d\n",m_bShowKeyboard);
++	
+ 	if(font_name.size()>0){
+ 		if(font_size<=0){
+ 			font_size=font().pointSize();
+ 		}
+ 		setFont(QFont(font_name.c_str(),font_size));
+ 	}	
++
++	screen_rect=QApplication::desktop()->rect(); 
++	defaultKeyWidth=screen_rect.width()/15;
++	m_kbd_rect=QRect(0,32,screen_rect.width(),65);
++	repeatTimer = new QTimer(this);
++
++	QObject::connect ( repeatTimer, SIGNAL(timeout()),this,SLOT(repeat()));
++	setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Preferred));
+ }
+ 
+ QPinyinFrame::~QPinyinFrame()
+@@ -148,6 +179,20 @@
+ 	QPEApplication::ungrabKeyboard(); 
+ }
+ 
++void QPinyinFrame::resizeEvent(QResizeEvent*)
++{
++   int nk;
++   if ( useOptiKeys ) {
++       nk = 15;
++   } else if ( useLargeKeys ) {
++       nk = 15;
++   } else {
++       nk = 19;
++   }
++   defaultKeyWidth = screen_rect.width()/nk;
++   xoffs = (screen_rect.width()-defaultKeyWidth*nk)/2;
++}
++
+ QSize QPinyinFrame::sizeHint() const
+ {
+ 	QPinyinFrame *This=const_cast<QPinyinFrame*>(this);
+@@ -161,100 +206,105 @@
+ int QPinyinFrame::init_gui_dimention()
+ {
+ 	static int sHeight = -1;
++	int width=screen_rect.width();
+ 
+-	if(sHeight>0)      return sHeight;
++	if(sHeight>0)     
++		if(m_bShowKeyboard) 
++			return sHeight+65;
++		else 
++			return sHeight;
+ 
+ #if 0
+ 	QPixmap next((const char **)pix_next);
+ 	printX86("direction pix (%d,%d)\n",next.width(),next.height());
+ #endif
+-	const int pix_width=16,pix_height=13;
++	const int pix_width=16,pix_height=11;
+ 
+ 	QPainter painter(this);	
+ 	QFontMetrics metric=painter.fontMetrics();
+ 	QRect rect = metric.boundingRect(QChar(ZHONG));
+ 
+-	int width=640;
+ 	printX86("text metric is %d,%d\n",rect.width(),rect.height());
+ 
+ 	int x=PINYIN_X;
+ 	int y=PINYIN_Y;
+ 	painter.drawText(x,rect.height(),QChar(m_bEnglishMode?YING:ZHONG));
+        	m_indicator_rect=QRect(x,y,rect.width(),rect.height());
+-	printX86("indicator rect(%d,%d,%d,%d)\n",m_indicator_rect.left(),m_indicator_rect.top(),m_indicator_rect.width(),m_indicator_rect.height());
+-
+-	//horizonal line which seperates pinyin and hanzi candidates
+-	y+=rect.height()+2;
+-	QRect about = metric.boundingRect(QString(ABOUT));
+-	m_about_rect = QRect(width-2-about.width(),PINYIN_Y,about.width(),about.height());
+-	printX86("about rect(%d,%d,%d,%d)\n",m_about_rect.left(),m_about_rect.top(),m_about_rect.width(),m_about_rect.height());
+-
+-	///////////////////////////////////////////////
+-	//the second row --  hanzi candicates
+-	y+=2;
++		printX86("indicator rect(%d,%d,%d,%d)\n",m_indicator_rect.left(),m_indicator_rect.top(),m_indicator_rect.width(),m_indicator_rect.height());
+ 
+-	m_leftbtn_rect=QRect(x,y+2,pix_width,pix_height);		
+-	printX86("left btn rect(%d,%d,%d,%d)\n",m_leftbtn_rect.left(),m_leftbtn_rect.top(),m_leftbtn_rect.width(),
+-		       m_leftbtn_rect.height());
+-
+-	m_rightbtn_rect=QRect(width-2-pix_width,y+2,pix_width,pix_height);		
+-	printX86("right btn rect(%d,%d,%d,%d)\n",m_rightbtn_rect.left(),m_rightbtn_rect.top(),m_rightbtn_rect.width(),
+-		       m_rightbtn_rect.height());
+-
+-	sHeight=y+rect.height()+5;
+-
+-	return sHeight;
+-}
+-
+-bool QPinyinFrame::filter (int unicode, int keycode, int modifiers, bool isPress, bool autoRepeat)
+-{   
+-	if (!isHidden()&& isPress) {
+-		if(m_bEnglishMode){
+-			if(unicode == 9 && keycode == Qt::Key_Tab){
+-				m_bEnglishMode = false;
+-				update();			
+-			}
+-			else{
+-				SendKey(unicode,keycode); 
++		//horizonal line which seperates pinyin and hanzi candidates
++		y+=rect.height()+2;
++		QRect about = metric.boundingRect(QString(ABOUT));
++		m_about_rect = QRect(width-2-about.width(),PINYIN_Y,about.width(),about.height());
++		m_kbdbtn_rect=QRect(width-2-about.width()-24,PINYIN_Y,28,13);
++		printX86("about rect(%d,%d,%d,%d)\n",m_about_rect.left(),m_about_rect.top(),m_about_rect.width(),m_about_rect.height());
++
++		///////////////////////////////////////////////
++		//the second row --  hanzi candicates
++		y+=2;
++
++		m_leftbtn_rect=QRect(x,y,pix_width,pix_height);		
++		printX86("left btn rect(%d,%d,%d,%d)\n",m_leftbtn_rect.left(),m_leftbtn_rect.top(),m_leftbtn_rect.width(),
++			       m_leftbtn_rect.height());
++
++		m_rightbtn_rect=QRect(width-2-pix_width,y,pix_width,pix_height);		
++		printX86("right btn rect(%d,%d,%d,%d)\n",m_rightbtn_rect.left(),m_rightbtn_rect.top(),m_rightbtn_rect.width(),
++			       m_rightbtn_rect.height());
++
++		m_cand_rect=QRect(0,y,width-2,rect.height()+2);
++		printX86("candidate rect(%d,%d,%d,%d)\n",m_cand_rect.left(),m_cand_rect.top(),m_cand_rect.width(),m_cand_rect.height());
++		sHeight=y+rect.height()+5;
++
++		return sHeight;
++	}
++
++	bool QPinyinFrame::filter (int unicode, int keycode, int modifiers, bool isPress, bool autoRepeat)
++	{   
++		if (!isHidden()&& isPress) {
++			if(m_bEnglishMode){
++				if(unicode == 9 && keycode == Qt::Key_Tab){
++					m_bEnglishMode = false;
++					update();			
++				}
++				else{
++					SendKey(unicode,keycode); 
++				}
++				return true;		
+ 			}
+-			return true;		
+-		}
+ 
+-		if (GetKey (unicode, keycode))
+-			return true;
++			if (GetKey (unicode, keycode))
++				return true;
++			else
++				return false;
++		} 
+ 		else
+ 			return false;
+-	} 
+-	else
+-		return false;
+-}   
+-
+-void QPinyinFrame::paintEvent(QPaintEvent * e)
+-{
+-	QFrame::paintEvent(e);
+-	
+-	QPainter painter(this);
+-	painter.setClipRect (e->rect ());
++	}   
+ 
+-	//FIXME: how to get screen size
+-	unsigned int width  = 640;
++	void QPinyinFrame::paintEvent(QPaintEvent * e)
++	{
++		unsigned int width  = screen_rect.width();
++		QFrame::paintEvent(e);
++		
++		QPainter painter(this);
++		painter.setClipRect (e->rect ());
+ 
+-	///////////////////////////////////////////////
+-	//the first row - pinyin inputed 
++		///////////////////////////////////////////////
++		//the first row - pinyin inputed 
+ 
+-	QFontMetrics metric=painter.fontMetrics();
+-	QRect rect = metric.boundingRect(QChar(ZHONG));
++		QFontMetrics metric=painter.fontMetrics();
++		QRect rect = metric.boundingRect(QChar(ZHONG));
+ 
+-	int x=PINYIN_X;
+-	int y=PINYIN_Y;
+-	painter.drawText(x,rect.height(),QChar(m_bEnglishMode?YING:ZHONG));
++		int x=PINYIN_X;
++		int y=PINYIN_Y;
++		painter.drawText(x,rect.height(),QChar(m_bEnglishMode?YING:ZHONG));
+ 
+-	QPen penGray (QColor(128,128,128));
+-	QPen penWhite(QColor(255,255,255));
+-	QPen penText (QColor(0,0,0));
+-	QPen penPage (QColor(0,0,255));
++		QPen penGray (QColor(128,128,128));
++		QPen penWhite(QColor(255,255,255));
++		QPen penText (QColor(0,0,0));
++		QPen penPage (QColor(0,0,255));
+ 
+-	//vertical line which seperates chinese/english indicator with pinyin inputed
++		//vertical line which seperates chinese/english indicator with pinyin inputed
+ 	painter.setPen(penGray);
+ 	painter.drawLine(x+rect.width()+2,y,x+rect.width()+2,y+rect.height());
+ 	painter.setPen(penWhite);
+@@ -300,6 +350,8 @@
+ 	QRect about = metric.boundingRect(QString(ABOUT));
+ 	painter.drawText(width-2-about.width(),rect.height(),QString(ABOUT));
+ 	painter.drawLine(width-2-about.width(),rect.height()+1,width-2,rect.height()+1);
++	
++	painter.drawPixmap(width-2-about.width()-28,rect.height()-10,QPixmap((const char**)kb_xpm));
+ 
+ 	///////////////////////////////////////////////
+ 	//the second row --  hanzi candicates
+@@ -312,7 +364,7 @@
+ 
+ 	if(m_ime_info.prev_page_available()){
+ 		QPixmap prev((const char **)pix_prev);
+-		painter.drawPixmap(x,y+2,prev);
++		painter.drawPixmap(x,y,prev);
+ 		x+=prev.width()+2;
+ 	}
+ 
+@@ -331,38 +383,44 @@
+ 			str+=get_char(i);
+ 		}
+ 		hanzi=metric.boundingRect(str);
+-
+-		if(xx+hanzi.width()>=(unsigned int)m_rightbtn_rect.left()){//no space for this hanzi and right button
++		cand_width=hanzi.width();
++		if(xx+cand_width>=(unsigned int)m_rightbtn_rect.left()){//no space for this hanzi and right button
+ 			if(i<m_ime_info.candidates_count-1){ //but we need another page
+ 				break; //so give up to draw this hanzi
+ 			}
+ 			else{
+ 				//this is the last page,do not need to show next button
+ 				//so just check if the left space is enough to show this hanzi
+-				if(xx+hanzi.width()>width){
++				if(xx+cand_width>width){
+ 					break;//Ooops
+ 				}			
+ 			}			
+ 		}
+ 		
+ 		painter.drawText(xx,yy,str);		
+-		xx+=hanzi.width()+10;
++		xx+=cand_width+10;
+ 		m_ime_info.candidates_on_page++;
+ 	}
+ 
+ 	if(m_ime_info.next_page_available()){
+ 		QPixmap next((const char **)pix_next);
+-		painter.drawPixmap(width-2-next.width(),y+2,next);
++		painter.drawPixmap(width-2-next.width(),y,next);
+ 	}
++	if(m_bShowKeyboard)
++		drawKeyboard(painter,-1);
+ }
+ 
+ bool QPinyinFrame::prev_page()
+ {
+ 	if(m_ime_info.prev_page_available()){		
+ 		printX86("prev page,firt visible index %d->",m_ime_info.first_visible);	
+-		m_ime_info.first_visible-=m_ime_info.candidates_on_prev_page;
++		if(m_ime_info.first_visible<m_ime_info.candidates_on_prev_page)
++			 m_ime_info.first_visible=0;
++		else
++			m_ime_info.first_visible-=m_ime_info.candidates_on_prev_page;
+ 		printX86("%d\n",m_ime_info.first_visible);	
+-		update();	
++		//update();	
++		repaint(m_cand_rect);//0,0,m_cand_rect.right(),m_cand_rect.bottom());
+ 		return true;		
+ 	}	
+ 	else{
+@@ -377,7 +435,8 @@
+ 		m_ime_info.candidates_on_prev_page=m_ime_info.candidates_on_page;
+ 		m_ime_info.first_visible+=m_ime_info.candidates_on_page;
+ 		printX86("%d\n",m_ime_info.first_visible);	
+-		update();	
++		//update();	
++		repaint(m_cand_rect);//0,0,m_cand_rect.right(),m_cand_rect.bottom());
+ 		return true;		
+ 	}	
+ 	else{
+@@ -569,7 +628,8 @@
+ 	
+ 
+ 	if(bUpdate){
+-		update();
++		//update();
++		repaint(0,0,m_cand_rect.right(),m_cand_rect.bottom());
+ 	}
+ 	
+ 	if(!bKeyProcessed){
+@@ -592,6 +652,7 @@
+ 	QFrame::hide ();
+ 	QPEApplication::ungrabKeyboard(); 
+ 	resetState();
++	sched_yield();
+ 	m_engine.save_table();	
+ 	//qwsServer->setKeyboardFilter (NULL);
+ }
+@@ -613,6 +674,7 @@
+ 	int x=m->x();
+ 	int y=m->y();
+ 
++	printX86("x=%d y=%d\n",x,y);
+ 	if(hit_test_helper(x,y,m_about_rect)){
+ 		//show about infomation
+ 		QMessageBox::information(this,"About",
+@@ -624,21 +686,51 @@
+ 					 "written by James Su(suzhe@tsinghua.org.cn)<br><br>"
+ 					 "This small piece of cake is released under GPL;)");
+ 	}	
+-	else if(hit_test_helper(x,y,m_leftbtn_rect)){
+-		prev_page();		
+-	}	
+-	else if(hit_test_helper(x,y,m_rightbtn_rect)){
+-		next_page();		
+-	}	
++	else if(hit_test_helper(x,y,m_cand_rect)) {
++		printX86("candrect x %d y %d width %d height %d",m_cand_rect.x(),m_cand_rect.y(),m_cand_rect.width(),m_cand_rect.height());
++		int width=0,i=0;	
++		if(m_ime_info.prev_page_available())
++			width+=m_leftbtn_rect.width();
++			
++		if(m_ime_info.prev_page_available()&&
++			hit_test_helper(x,y,m_leftbtn_rect)){
++			prev_page();
++		}else if(m_ime_info.next_page_available()&&
++			hit_test_helper(x,y,m_rightbtn_rect)){
++			next_page();
++		}else { //we are hit the number area of the displayed candidates
++			if((i=m_ime_info.candidates_on_page)>0){
++			width=x-width;
++			i=width/(cand_width+10);		
++			printX86("index=%d,m_cand_rect.width()=%d,x=%d,m_ime_info.candidates_on_page=%d,cand_width=%d\n",i,width,x,m_ime_info.candidates_on_page,cand_width);
++			commit_selection('1'+i);
++			bUpdate=true;
++			}
++		}
++	}
+ 	else if(hit_test_helper(x,y,m_indicator_rect)){
+ 		//switch between English/Chinese mode
+ 		m_bEnglishMode=!m_bEnglishMode;
+ 		bUpdate=true;
++	}else if(hit_test_helper(x,y,m_kbdbtn_rect)) {
++		m_bShowKeyboard=!m_bShowKeyboard;
++		Global::hideInputMethod();
++		Global::showInputMethod();
++	}
++	else if(m_bShowKeyboard&&hit_test_helper(x,y,m_kbd_rect)) {
++		if(pressTid==0)
++			clearHighlight();
++#if defined(Q_WS_QWS)|| defined(_WS_QWS_)
++		if(unicode!=-1)	{
++			emit key(unicode,qkeycode,modifiers,false,false);
++			repeatTimer->stop();
++		}
++#endif
++		pressed = FALSE;
+ 	}
+ 
+-
+ 	if(bUpdate){
+-		update();
++		repaint(0,0,m_cand_rect.right(),m_cand_rect.bottom());
+ 	}
+ }
+ 
+@@ -651,6 +743,670 @@
+ 	qwsServer->sendKeyEvent ( u , c, 0, true, false);
+ 	qwsServer->sendKeyEvent ( u , c, 0, false, false);
+ }
++
++//PC keyboard layout and scancodes
++
++/*
++  Format: length, code, length, code, ..., 0
++  
++  length is measured in half the width of a standard key.
++  If code < 0x80, code gives the ASCII value of the key
++  
++  If code >= 0x80, the key is looked up in specialM[].
++  
++ */
++
++static const uchar * const keyboard_opti[5] = { 
++    (const uchar *const) "\001\223\003\240\002\20\002\41\002\26\002\62\002\56\002\45\002\54\003\200\001\223\002\226\002\235\002\234\002\236",
++    (const uchar *const) "\001\223\003\201\004\207\002\30\002\24\002\43\004\207\003\203\001\223\006\002\002\065",
++    (const uchar *const) "\001\223\003\202\002\60\002\37\002\23\002\22\002\36\002\21\002\55\003\203\001\223\006\005\002\055",
++    (const uchar *const) "\001\223\003\205\004\207\002\27\002\61\002\40\004\207\003\204\001\223\006\010\002\014",
++    (const uchar *const) "\001\223\003\206\002\44\002\31\002\57\002\42\002\46\002\25\002\207\003\204\001\223\002\013\002\064\002\015\002\230"
++};
++
++
++static const uchar * const keyboard_standard[5] = {
++
++#ifdef USE_SMALL_BACKSPACE
++    (const uchar *const)"\002\240\002`\0021\0022\0023\0024\0025\0026\0027\0028\0029\0020\002-\002=\002\200\002\223\002\215\002\216\002\217",
++#else
++    (const uchar *const)"\002\051\0021\0022\0023\0024\0025\0026\0027\0028\0029\0020\002-\002=\004\200\002\223\002\215\002\216\002\217",
++#endif
++    //~ + 123...+ BACKSPACE //+ INSERT + HOME + PGUP
++
++    (const uchar *const)"\003\201\002q\002w\002e\002r\002t\002y\002u\002i\002o\002p\002[\002]\002\\\001\224\002\223\002\221\002\220\002\222",
++    //TAB + qwerty..  + backslash //+ DEL + END + PGDN
++
++    (const uchar *const)"\004\202\002a\002s\002d\002f\002g\002h\002j\002k\002l\002;\002'\004\203",
++    //CAPS + asdf.. + RETURN 
++
++    (const uchar *const)"\005\204\002z\002x\002c\002v\002b\002n\002m\002,\002.\002/\005\204\002\223\002\223\002\211",
++    //SHIFT + zxcv... //+ UP
++
++    (const uchar *const)"\003\205\003\206\022\207\003\206\003\205\002\223\002\212\002\213\002\214" 
++    //CTRL + ALT + SPACE //+ LEFT + DOWN + RIGHT
++    
++};
++
++
++struct ShiftMap {
++    char normal;
++    char shifted;
++};
++
++
++static const ShiftMap shiftMap[] = {
++    { '`', '~' },
++    { '1', '!' },
++    { '2', '@' },
++    { '3', '#' },
++    { '4', '$' },
++    { '5', '%' },
++    { '6', '^' },
++    { '7', '&' },
++    { '8', '*' },
++    { '9', '(' },
++    { '0', ')' },
++    { '-', '_' },
++    { '=', '+' },
++    { '\\', '|' },
++    { '[', '{' },
++    { ']', '}' },
++    { ';', ':' },
++    { '\'', '"' },
++    { ',', '<' },
++    { '.', '>' },
++    { '/', '?' }
++};
++
++
++/* XPM */
++static const char * const uparrow_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++"....a....",
++"...aaa...",
++"..aaaaa..",
++"....a....",
++"....a....",
++"....a....",
++"....a....",
++"........."};
++/* XPM */
++static const char * const leftarrow_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++".........",
++"...a.....",
++"..aa.....",
++".aaaaaaa.",
++"..aa.....",
++"...a.....",
++".........",
++"........."};
++/* XPM */
++static const char * const downarrow_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++"....a....",
++"....a....",
++"....a....",
++"....a....",
++"..aaaaa..",
++"...aaa...",
++"....a....",
++"........."};
++/* XPM */
++static const char * const rightarrow_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++".........",
++".....a...",
++".....aa..",
++".aaaaaaa.",
++".....aa..",
++".....a...",
++".........",
++"........."};
++/* XPM */
++static const char * const insert_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++"a........",
++"a.aaa.aaa",
++"a.a.a.a..",
++"a.a.a..a.",
++"a.a.a...a",
++"a.a.a.aaa",
++".........",
++"........."};
++/* XPM */
++static const char * const delete_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++"aa......a",
++"a.a.aaa.a",
++"a.a.a.a.a",
++"a.a.aaa.a.",
++"a.a.a...a",
++"aaa.aaa.a",
++".........",
++"........."};
++/* XPM */
++static const char * const home_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++"....a....",
++"...a.a...",
++"..a...a..",
++".a.....a.",
++"aa.aaa.aa",
++".a.a.a.a.",
++".a.a.a.a.",
++".aaaaaaa.",
++"........."};
++/* XPM */
++static const char * const end_xpm[]={
++"10 9 2 1",
++"a c #000000",
++". c None",
++"..........",
++"aa.......a",
++"a..aaa.aaa",
++"aa.a.a.a.a",
++"a..a.a.a.a",
++"a..a.a.a.a",
++"aa.a.a.aaa",
++"..........",
++".........."};
++/* XPM */
++static const char * const pageup_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".aaa.aaa.",
++".a.a.a.a.",
++".aaa..aa.",
++".a...aaa.",
++".........",
++".a.a.aaa.",
++".a.a.a.a.",
++".aaa.aaa.",
++".....a..."};
++/* XPM */
++static const char * const pagedown_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".aaa.aaa.",
++".a.a.a.a.",
++".aaa..aa.",
++".a...aaa.",
++".........",
++"...a.....",
++".aaa.aaa.",
++".a.a.a.a.",
++".aaa.a.a."};
++/* XPM */
++static const char * const expand_xpm[]={
++"4 9 2 1",
++"a c #408040",
++". c None",
++"a...",
++"aa..",
++"aaa.",
++"aaaa",
++"aaaa",
++"aaaa",
++"aaa.",
++"aa..",
++"a..."};
++/* XPM */
++#ifdef USE_SMALL_BACKSPACE
++static const char * const backspace_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++".........",
++"...a.....",
++"..aa.....",
++".aaaaaaaa",
++"..aa.....",
++"...a.....",
++".........",
++"........."};
++#else
++static const char * const backspace_xpm[]={
++"21 9 2 1",
++"a c #000000",
++". c None",
++".....................",
++".....................",
++".....aaa..a..........",
++".a...a..a.a.a.aaa.aaa",
++"aaaa.aaa..aa..aa..a.a",
++".a...a..a.aaa..aa.a.a",
++".....aaaa.a.a.aaa.aa.",
++"..................a..",
++"....................."};
++#endif
++/* XPM */
++static const char * const escape_xpm[]={
++"9 9 2 1",
++"a c #000000",
++". c None",
++".........",
++".........",
++".aa.aa.aa",
++".a..a..a.",
++".aa.aa.a.",
++".a...a.a.",
++".aa.aa.aa",
++".........",
++"........."};
++
++
++enum { BSCode = 0x80, TabCode, CapsCode, RetCode, 
++       ShiftCode, CtrlCode, AltCode, SpaceCode, BackSlash,
++       UpCode, LeftCode, DownCode, RightCode, Blank, Expand,
++       Opti, ResetDict,
++       Divide, Multiply, Add, Subtract, Decimal, Equal,
++       Percent, Sqrt, Inverse, Escape };
++
++typedef struct SpecialMap {
++    int qcode;
++    ushort unicode;
++    const char * label;
++    const char * const *xpm;
++};
++
++
++static const SpecialMap specialM[] = {
++    {	Qt::Key_Backspace,	8,	"<",     backspace_xpm },
++    {	Qt::Key_Tab,		9,	"Tab",   NULL }, // No tr
++    {	Qt::Key_CapsLock,	0xffff,	"Caps",  NULL }, // No tr
++    {	Qt::Key_Return,		13,	"Ret",   NULL }, // No tr
++    {	Qt::Key_Shift,		0xffff,	"Shift", NULL }, // No tr
++    {	Qt::Key_Control,	0xffff,	"Ctrl",  NULL }, // No tr
++    {	Qt::Key_Alt,		0xffff,	"Alt",   NULL }, // No tr
++    {	Qt::Key_Space,		' ',	"",      NULL },
++    {	BackSlash,		43,	"\\",    NULL },
++
++    // Need images?
++    {	Qt::Key_Up,		0xffff,	"^",     uparrow_xpm },
++    {	Qt::Key_Left,		0xffff,	"<",     leftarrow_xpm },
++    {	Qt::Key_Down,		0xffff,	"v",     downarrow_xpm },
++    {	Qt::Key_Right,		0xffff,	">",     rightarrow_xpm },
++    {	Qt::Key_Insert,		0xffff,	"I",     insert_xpm },
++    {	Qt::Key_Home,		0xffff,	"H",     home_xpm },
++    {	Qt::Key_PageUp,		0xffff,	"U",     pageup_xpm },
++    {	Qt::Key_End,		0xffff,	"E",     end_xpm },
++    {	Qt::Key_Delete,		0xffff,	"X",     delete_xpm },
++    {	Qt::Key_PageDown,	0xffff,	"D",     pagedown_xpm },
++    {	Blank,			0,	" ",     NULL },
++    {	Expand,			0xffff,	"->",    expand_xpm },
++    {	Opti,			0xffff,	"#",     NULL },
++    {	ResetDict,		0xffff,	"R",     NULL },
++   
++    // number pad stuff
++    {	Divide,			0,	"/",     NULL },
++    {	Multiply,		0,	"*",     NULL },
++    {	Add,			0,	"+",     NULL },
++    {	Subtract,		0,	"-",     NULL },
++    {	Decimal,		0,	".",     NULL },
++    {	Equal,			0,	"=",     NULL },
++    {	Percent,		0,	"%",     NULL },
++    {	Sqrt,			0,	"^1/2",	 NULL },
++    {	Inverse,		0,	"1/x",	 NULL },
++
++    {	Escape,			27,	"ESC",	 escape_xpm }
++};
++
++
++/*
++  return scancode and width of first key in row \a j if \a j >= 0,
++  or next key on current row if \a j < 0.
++  
++*/
++int useOptiKeys=0;
++int getKey( int &w, int j ) {
++    static const uchar *row = 0;
++    static int key_i = 0;
++    static int scancode = 0;
++    static int half = 0;
++    
++    if ( j >= 0 && j < 5 ) {
++	if (useOptiKeys)
++    	    row = keyboard_opti[j];
++	else
++    	    row = keyboard_standard[j];
++	half=0;
++    }
++
++    if ( !row || !*row ) {
++	return 0;    
++    } else if ( row[1] >= 0x80 ) {
++	scancode = row[1];
++	w = (row[0] * w + (half++&1)) / 2;
++	row += 2;
++	return scancode;
++    } else if ( key_i <= 0 ) {
++	key_i = row[0]/2;
++	scancode = row[1];
++    }
++    key_i--;
++    if ( key_i <= 0 )
++	row += 2;
++    return scancode++;
++}
++
++static int keycode( int i2, int j, const uchar **keyboard )
++{
++    if ( j <0 || j >= 5 )
++        return 0;
++                                                                                
++    const uchar *row = keyboard[j];
++                                                                                
++    while ( *row && *row <= i2 ) {
++        i2 -= *row;
++        row += 2;
++    }
++                                                                                
++    if ( !*row ) return 0;
++                                                                                
++    int k;
++    if ( row[1] >= 0x80 ) {
++        k = row[1];
++    } else {
++        k = row[1]+i2/2;
++    }
++                                                                                
++    return k;
++}
++
++    
++/*
++  Draw the keyboard.
++
++  If key >= 0, only the specified key is drawn.
++*/
++void QPinyinFrame::drawKeyboard( QPainter &p, int key )
++{
++    const bool threeD = FALSE;
++    const QColorGroup& cg = colorGroup();
++    QColor keycolor = // cg.background();
++		    	QColor(240,240,230); // Beige!
++    QColor keycolor_pressed = cg.mid();
++    QColor keycolor_lo = cg.dark();
++    QColor keycolor_hi = cg.light();
++    QColor textcolor = QColor(0,0,0); // cg.text();
++
++    int margin = threeD ? 1 : 0;
++    
++//    p.fillRect( 0, , kw-1, keyHeight-2, keycolor_pressed );
++
++    for ( int j = 0; j < 5; j++ ) {
++	int y = j * keyHeight + PickHeight + 1;
++	int x = xoffs;
++	int kw = defaultKeyWidth;
++	int k= getKey( kw, j );
++	while ( k ) {
++	    if ( key < 0 || k == key ) {
++		QString s;
++		bool pressed = (k == pressedKey);
++		bool blank = (k == 0223);
++		const char * const * xpm = NULL;
++		
++		if ( k >= 0x80 ) {
++		    s = specialM[k - 0x80].label;
++
++		    xpm = specialM[k - 0x80].xpm;
++			
++		    if ( k == ShiftCode ) {
++			pressed = shift;
++		    } else if ( k == CapsCode ) {
++			pressed = lock;
++		    } else if ( k == CtrlCode ) {
++			pressed = ctrl;
++		    } else if ( k == AltCode ) {
++			pressed = alt;
++		    } 
++		} else {
++#if defined(Q_WS_QWS) || defined(_WS_QWS_)
++/*
++		    s = QChar( shift^lock ? QWSServer::keyMap()[k].shift_unicode : 
++			       QWSServer::keyMap()[k].unicode);
++*/
++		    // ### Fixme, bad code, needs improving, whole thing needs to
++		    // be re-coded to get rid of the way it did things with scancodes etc
++		    char shifted = k;
++		    if ( !isalpha( k ) ) {
++			for ( unsigned i = 0; i < sizeof(shiftMap)/sizeof(ShiftMap); i++ )
++			    if ( shiftMap[i].normal == k )
++				shifted = shiftMap[i].shifted;
++		    } else {
++			shifted = toupper( k );
++		    }
++		    s = QChar( shift^lock ? shifted : k );
++#endif
++		}
++
++		if (!blank) {
++		    if ( pressed )
++			p.fillRect( x+margin, y+margin, kw-margin, keyHeight-margin-1, keycolor_pressed );
++		    else
++			p.fillRect( x+margin, y+margin, kw-margin, keyHeight-margin-1, keycolor );
++
++		    if ( threeD ) {
++			p.setPen(pressed ? keycolor_lo : keycolor_hi);
++			p.drawLine( x, y+1, x, y+keyHeight-2 );
++			p.drawLine( x+1, y+1, x+1, y+keyHeight-3 );
++			p.drawLine( x+1, y+1, x+1+kw-2, y+1 );
++		    } else if ( j == 0 ) {
++			p.setPen(pressed ? keycolor_hi : keycolor_lo);
++			p.drawLine( x, y, x+kw, y );
++		    }
++
++		    // right
++		    p.setPen(pressed ? keycolor_hi : keycolor_lo);
++		    p.drawLine( x+kw-1, y, x+kw-1, y+keyHeight-2 );
++
++		    if ( threeD ) {
++			p.setPen(keycolor_lo.light());
++			p.drawLine( x+kw-2, y+keyHeight-2, x+kw-2, y+1 );
++			p.drawLine( x+kw-2, y+keyHeight-2, x+1, y+keyHeight-2 );
++		    }
++
++		    if (xpm) {
++			p.drawPixmap( x + 1, y + 2, QPixmap((const char**)xpm) );
++		    } else {
++    			p.setPen(textcolor);
++			p.drawText( x - 1, y, kw, keyHeight-2, AlignCenter, s );
++		    }
++	    
++		    if ( threeD ) {
++			p.setPen(keycolor_hi);
++			p.drawLine( x, y, x+kw-1, y );
++		    }
++
++		    // bottom
++		    p.setPen(keycolor_lo);
++		    p.drawLine( x, y+keyHeight-1, x+kw-1, y+keyHeight-1 );
++	    
++		} else {
++		    p.fillRect( x, y, kw, keyHeight, cg.background() );
++		}
++	    }
++
++	    x += kw;
++	    kw = defaultKeyWidth;
++	    k = getKey( kw ,-1);
++	}
++    }
++}
++
++
++void QPinyinFrame::clearHighlight()
++{
++    if (m_bShowKeyboard&&( pressedKey >= 0) ) {
++	int tmp = pressedKey;
++	pressedKey = -1;
++	QPainter p(this);
++	drawKeyboard( p, tmp );
++    }
++}
++
++void QPinyinFrame::timerEvent(QTimerEvent*e)
++{
++    if ( e->timerId() == pressTid ) {
++	killTimer(pressTid);
++        pressTid = 0;
++        if ( !pressed )
++            clearHighlight();
++    }
++}
++
++void QPinyinFrame::repeat()
++{
++    repeatTimer->start( 150 );
++    if(m_bEnglishMode) {
++    	emit key( unicode, qkeycode, modifiers, true, true );
++    } else
++	GetKey(unicode,qkeycode);
++}
++
++void QPinyinFrame::mousePressEvent(QMouseEvent *e) 
++{
++    if(!m_bShowKeyboard) return;
++    printX86("(%d,%d)-height=%d\n",e->x(),e->y(),PickHeight);
++    if(e->y()<=PickHeight) return;                                                                        
++    clearHighlight(); // typing fast?
++
++    int i2 = ((e->x() - xoffs) * 2) / defaultKeyWidth;
++    int j = (e->y() - PickHeight) / keyHeight;
++                                                                                
++    int k = keycode( i2, j, (const uchar **)((useOptiKeys) ? keyboard_opti : keyboard_standard) );
++    bool need_repaint = FALSE;
++    unicode = -1;
++    qkeycode = 0;
++    printX86("k=%d\n",k);
++    if ( k >= 0x80 ) {
++        if ( k == ShiftCode ) {
++            shift = !shift;
++	    if(!m_bEnglishMode)
++	    	GetKey(unicode,Qt::Key_Shift);
++            need_repaint = TRUE;
++        } else if ( k == AltCode ){
++            alt = !alt;
++            need_repaint = TRUE;
++        } else if ( k == CapsCode ) {
++            lock = !lock;
++            need_repaint = TRUE;
++        } else if ( k == CtrlCode ) {
++            ctrl = !ctrl;
++	     need_repaint = TRUE;
++        } else if ( k == 0224 /* Expand */ ) {
++            useLargeKeys = !useLargeKeys;
++            resizeEvent(0);
++            repaint( TRUE ); // need it to clear first
++        } else if ( k == 0225 /* Opti/Toggle */ ) {
++            useOptiKeys = !useOptiKeys;
++            resizeEvent(0);
++            repaint( TRUE ); // need it to clear first
++        } else {
++            qkeycode = specialM[ k - 0x80 ].qcode;
++            unicode = specialM[ k - 0x80 ].unicode;
++        }
++    } else {
++        //due to the way the keyboard is defined, we know that
++        //k is within the ASCII range, and can be directly mapped to
++        //a qkeycode; except letters, which are all uppercase
++        qkeycode = toupper(k);
++        if ( shift^lock ) {
++            if ( !isalpha( k ) ) {
++            for ( unsigned i = 0; i < sizeof(shiftMap)/sizeof(ShiftMap); i++ )
++                if ( shiftMap[i].normal == k ) {
++                    unicode = shiftMap[i].shifted;
++           qkeycode = unicode;
++                    break;
++                }
++            } else {
++                unicode = toupper( k );
++            }
++        } else {
++            unicode = k;
++        }
++    }
++    if  ( unicode != -1 ) {
++        if ( ctrl && unicode >= 'a' && unicode <= 'z' )
++            unicode = unicode - 'a'+1;
++        modifiers = (shift ? Qt::ShiftButton : 0) | (ctrl ? Qt::ControlButton :
++0) |
++                  (alt ? Qt::AltButton : 0);
++#if defined(Q_WS_QWS) || defined(_WS_QWS_)
++	if(m_bEnglishMode) {
++	        emit key( unicode, qkeycode, modifiers, true, false );
++	} else 
++		GetKey(unicode,qkeycode);
++        repeatTimer->start( 500 );
++#endif
++        need_repaint = shift || alt || ctrl;
++        shift = alt = ctrl = FALSE;
++	/*KeyboardConfig *dc = picks->dc;
++                                                                                
++        if (dc) {
++            if (qkeycode == Qt::Key_Backspace) {
++                dc->input.remove(dc->input.last()); // remove last input
++                dc->decBackspaces();
++            } else if ( k == 0226 || qkeycode == Qt::Key_Return ||
++                        qkeycode == Qt::Key_Space ||
++                        QChar(unicode).isPunct() ) {
++                dc->input.clear();
++                dc->resetBackspaces();
++            } else {
++                dc->add(QString(QChar(unicode)));
++                dc->incBackspaces();
++            }
++        }*/
++    }
++    pressedKey = k;
++    if ( need_repaint ) {
++        repaint( FALSE );
++    } else {
++        QPainter p(this);
++        drawKeyboard( p, pressedKey );
++    }
++    pressTid = startTimer(80);
++    pressed = TRUE;
++}
++
++
++/*QSize QPinyinFrame::sizeHint() const
++{
++    QFontMetrics fm=fontMetrics();
++    int keyHeight = fm.lineSpacing()+2;
++
++    if (useOptiKeys)
++    	keyHeight += 1;
++    
++    return QSize( 320, keyHeight * 5 + 32);
++}*/
++
++
+ /*
+  * Revision history
+  * 
+diff -Nur MurphyPinyin/PinyinFrame.h MurphyPinyin-ok//PinyinFrame.h
+--- MurphyPinyin/PinyinFrame.h	2004-08-01 01:20:19.000000000 +0800
++++ MurphyPinyin-ok//PinyinFrame.h	2012-05-14 16:19:38.870560014 +0800
+@@ -23,6 +23,7 @@
+ #include <qwindowsystem_qws.h>
+ #include "PinyinEngine.h"
+ 
++class QTimer;
+ class QPinyinFrame : public QFrame, public QWSServer::KeyboardFilter
+ {
+ 	Q_OBJECT
+@@ -43,23 +44,41 @@
+ 	bool GetKey(int,int);
+ 	virtual void show();
+ 	virtual void hide();
++	//virtual void sizeHint(); 
+ 
+ 	void paintEvent(QPaintEvent * e); 
++	void drawKeyboard( QPainter &p, int key);
+ 	void SendKey ( int  , int c = 0);
+-
+-	void mouseReleaseEvent(QMouseEvent*);
+-	void keyPressEvent(QKeyEvent*);
++	void clearHighlight();
++	void mouseReleaseEvent(QMouseEvent*e);
++	void mousePressEvent(QMouseEvent*e);
++	void keyPressEvent(QKeyEvent*e);
++	void resizeEvent(QResizeEvent*e);
++	void timerEvent(QTimerEvent *e);
+ 
+ signals:
+ 	void key( ushort, ushort, ushort, bool, bool );
+ 
++private slots:
++	void repeat();
+ private:
+ 	PinyinEngine m_engine;
+ 	bool m_bEnglishMode;
+ 	bool m_bMakingPhrase;
++	QRect screen_rect;
+ 	QRect m_indicator_rect/*for English or Chinese mode*/;
+ 	QRect m_about_rect;/*the about text rect*/
+-	QRect m_leftbtn_rect,m_rightbtn_rect;
++	QRect m_leftbtn_rect,m_rightbtn_rect,m_cand_rect,m_kbd_rect;
++	QRect m_kbdbtn_rect;
++	bool m_bShowKeyboard;
++	short cand_width;
++	//soft keyboard related
++    	short keyHeight,PickHeight, xoffs, 
++	defaultKeyWidth,pressedKey,
++	shift,ctrl,alt,lock,
++	useLargeKeys,useOptiKeys,modifiers,pressed;
++	int pressTid,qkeycode,unicode;
++	QTimer *repeatTimer;
+ 
+ 	typedef struct ime_info_struc{
+ 		String       pinyin;
+@@ -74,7 +93,7 @@
+ 		}
+ 
+ 		bool prev_page_available(){
+-			return candidates_count>0&&first_visible>0;
++			return (candidates_count>0)&&(first_visible>0);
+ 		}
+ 
+ 		bool next_page_available(){
+@@ -88,11 +107,11 @@
+ private:
+ 	virtual bool filter ( int unicode, int keycode, int modifiers, bool isPress, bool autoRepeat );
+ 	int get_charunicode(unsigned int nIndexOnPage);
+-	inline QChar QPinyinFrame::get_char(unsigned int nIndex/*this is global index*/){
++	inline QChar get_char(unsigned int nIndex/*this is global index*/){
+ 	       	return m_engine.get_char(nIndex);
+ 	}
+ 	
+-	inline QString QPinyinFrame::get_phrase(unsigned int nIndex/*this is global index*/){
++	inline QString get_phrase(unsigned int nIndex/*this is global index*/){
+        		return m_engine.get_phrase(nIndex);
+      	}
+ 	bool prev_page();
+@@ -102,7 +121,7 @@
+ 		m_ime_info.candidates_count=m_engine.search(m_ime_info.pinyin.c_str());
+ 		m_ime_info.first_visible=0;
+ #ifdef X86
+-		printf("%s,%d matched\n",m_ime_info.pinyin.c_str(),m_ime_info.candidates_count);
++		//printf("%s,%d matched\n",m_ime_info.pinyin.c_str(),m_ime_info.candidates_count);
+ #endif
+ 	}
+ 	int init_gui_dimention();
+diff -Nur MurphyPinyin/PinyinImpl.cpp MurphyPinyin-ok//PinyinImpl.cpp
+--- MurphyPinyin/PinyinImpl.cpp	2004-07-10 23:02:23.000000000 +0800
++++ MurphyPinyin-ok//PinyinImpl.cpp	2012-05-14 16:19:38.874560014 +0800
+@@ -27,23 +27,25 @@
+ 
+ /* XPM of inputmethod*/
+ static const char * pix_xpm[] = {
+-"16 13 3 1",
+-" 	c #FFFFFFFFFFFF",
+-"#	c #000000000000",
+-".	c #FFFFFFFFFFFF",
+-"                ",
+-"  # ####        ",
+-"  # ....#       ",
+-"  # ....#       ",
+-"  # ....#       ",
+-"  # # ##        ",
+-"  #      #...#  ",
+-"  #      #...#  ",
+-"  #       ####  ",
+-"  #       ...#  ",
+-"  #      #...#  ",
+-"  #       ###   ",
+-"                "};
++"23 13 5 1",
++" 	c None",
++".	c #CC0204",
++"+	c #D4DAE4",
++"#	c #FFFF00",
++"$	c #000000",
++"+++++++++++++++++++++++",
++"++++++++++++++$++$+++$+",
++"+...........++$+++$+$++",
++"+.....#.....$$$$$$$$$$$",
++"+.. #....#..++$++$++$++",
++"+.#.#.#.....++$$+$++$++",
++"+..# #...#..+$$++$++$++",
++"+.....#.....$+$+$$$$$$$",
++"+...........++$++$++$++",
++"+...........++$++$++$++",
++"+...........++$++$++$++",
++"+...........$$$+$+++$++",
++"+++++++++++++++++++++++"};
+ 
+ 
+ QPinyinImpl::QPinyinImpl()
+--- MurphyPinyin/PinyinEngine.cpp	2004-07-19 01:48:01.000000000 +0800
++++ mpy/PinyinEngine.cpp	2004-07-28 23:20:25.000000000 +0800
+@@ -26,7 +26,7 @@
+ 
+ PinyinEngine::PinyinEngine(const char *table_file,const char *phrase_index_file)
+ 	:m_table(NULL,table_file),m_table_filename(table_file),
+-	 m_phrases_table(phrase_index_file),m_phrase_idx_filename(phrase_index_file)
++	 m_phrases_table(phrase_index_file),m_phrase_idx_filename(phrase_index_file),table_changed(0)
+ {
+ }
+ 
+@@ -70,19 +70,24 @@
+ 	if(isPhrase()){
+ 		m_phrases_table.set_frequency(m_offset_freq_pairs[index].first,
+ 					      m_offset_freq_pairs[index].second+1);
++		table_changed|=2;
+ 	}
+ 	else{
+ 		PinyinKey& key=m_key.get_key_by_index(0);
+ 		uint32 freq=m_table.get_char_frequency(m_chars[index],key)+1;
+ 		m_table.set_char_frequency(m_chars[index],freq,key);
++		table_changed|=1;
+ 	}
+ }
+ 
+ void PinyinEngine::save_table()
+ {
++	if(table_changed&1)
+ 	m_table.save_table(m_table_filename.c_str());
++	if(table_changed&2)
+ 	m_phrases_table.save_index(m_phrase_idx_filename.c_str());
+ 	printX86("table saved\n");
++	table_changed=0;
+ }
+ 
+ void PinyinEngine::append_phrase(QString& phrase,const char* pinyin)
+--- MurphyPinyin/PinyinEngine.h	2004-07-18 23:45:10.000000000 +0800
++++ mpy/PinyinEngine.h	2004-07-28 23:17:35.000000000 +0800
+@@ -61,12 +61,12 @@
+ 	PinyinTable m_table;
+ 	CharVector  m_chars;
+ 	String      m_table_filename;
+-	
+ 	//phrase
+        	PinyinPhraseTable               m_phrases_table;
+ 	PhraseOffsetFrequencyPairVector m_offset_freq_pairs;
+ 	PhraseStringVector              m_phrases;
+ 	String                          m_phrase_idx_filename;
++	unsigned char	table_changed;
+ };
+ 
+ #endif

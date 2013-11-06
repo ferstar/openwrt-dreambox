@@ -1,0 +1,350 @@
+Source-Makefile: feeds/qpe/qpe-base/qte2/Makefile
+Package: qte2
+Submenu: qpe-base
+Version: 2.3.10-1
+Depends: +qpe-build +libuuid +libstdcpp +libgcc
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: qt-embedded-2.3.10
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description:   qt-embedded-2.3.10
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/qte2/Config.in"
+@@
+
+Package: qte2-support-thread
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2 +libpthread
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Compile with Threading Support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Compile with Threading Support
+@@
+
+Package: qte2-support-tslib
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libts
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable TSlib (touchscreen library) mouse handler
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable TSlib (touchscreen library) mouse handler
+@@
+
+Package: qte2-support-zlib
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +zlib
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use a zlib from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use a zlib from the operating system
+@@
+
+Package: qte2-support-libpng
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libpng
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use a libpng from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use a libpng from the operating system
+@@
+
+Package: qte2-support-jpeg
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libjpeg
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use jpeglib from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use jpeglib from the operating system
+@@
+
+Package: qte2-support-gif
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Compile in GIF reading support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Compile in GIF reading support
+@@
+
+Package: qte2-support-libmng
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libmng
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use libmng from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use libmng from the operating system
+@@
+
+Package: qte2-support-nas-sound
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use NAS libaudio from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use NAS libaudio from the operating system
+@@
+
+Package: qte2-support-xft
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable support for Anti-Aliased fonts
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable support for Anti-Aliased fonts
+@@
+
+Package: qte2-support-sm
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support X Session Management
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support X Session Management
+@@
+
+Package: qte2-support-module-opengl
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support opengl module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support opengl module
+@@
+
+Package: qte2-support-module-network
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support network module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support network module
+@@
+
+Package: qte2-support-module-table
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support table module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support table module
+@@
+
+Package: qte2-support-module-canvas
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support canvas module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support canvas module
+@@
+
+Package: qte2-support-graphics-accel-snap
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable SciTech SNAP Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable SciTech SNAP Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-voodoo3
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Voodoo3 Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Voodoo3 Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-mach64
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Mach64 Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Mach64 Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-matrox
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Matrox MGA Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Matrox MGA Graphics acceleration
+@@
+
+Package: qte2-keypad-mode
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable keypad widget navigation
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable keypad widget navigation
+@@
+
+Package: qte2-keypad-input
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Include keypad keys
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Include keypad keys
+@@
+
+Package: qte2-support-vnc
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2 +qte2-support-module-network
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable VNC server (requires network module)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable VNC server (requires network module)
+@@
+
+Package: qte2-support-qvfb
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable X11-based Qt Virtual Frame Buffer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable X11-based Qt Virtual Frame Buffer
+@@
+
+

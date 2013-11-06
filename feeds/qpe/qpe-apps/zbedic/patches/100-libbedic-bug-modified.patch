@@ -1,0 +1,74 @@
+--- zbedic-1.2.2/libbedic/src/bedic_wrapper.cpp	2006-03-05 05:00:50.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/bedic_wrapper.cpp	2011-10-31 14:40:27.030337181 +0800
+@@ -60,7 +60,7 @@
+ 
+   virtual const char *getErrorMessage();
+ 
+-  virtual bool BedicDictionary::checkIntegrity();
++  virtual bool checkIntegrity();
+   
+ };
+ 
+--- zbedic-1.2.2/libbedic/src/dynamic_dictionary.cpp	2006-05-26 00:27:06.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/dynamic_dictionary.cpp	2011-10-31 14:38:46.253837453 +0800
+@@ -66,7 +66,7 @@
+ 
+   bool bind();
+ 
+-  bool SQLiteDictionary::findNext( const char *keyword, std::string &next, bool or_same );
++  bool findNext( const char *keyword, std::string &next, bool or_same );
+   
+ public:
+   ~SQLiteDictionary();
+--- zbedic-1.2.2/libbedic/src/format_entry.cpp	2006-03-05 05:00:50.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/format_entry.cpp	2011-10-31 14:43:22.739208470 +0800
+@@ -20,7 +20,7 @@
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ****************************************************************************/
+ 
+-#include <string>
++#include <cstring>
+ #include <sstream>
+ #include <iostream>
+ 
+--- zbedic-1.2.2/libbedic/src/mkbedic.cpp	2005-12-20 06:28:33.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/mkbedic.cpp	2011-10-31 14:54:24.734491132 +0800
+@@ -19,6 +19,8 @@
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ****************************************************************************/
++#include <climits>
++#include <cstring>
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
+--- zbedic-1.2.2/libbedic/src/shcm.cpp	2003-10-17 09:03:31.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/shcm.cpp	2011-10-31 14:19:29.076099327 +0800
+@@ -17,6 +17,7 @@
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ****************************************************************************/
++#include <stdlib.h>
+ 
+ #include <stdio.h>
+ #include <vector>
+--- zbedic-1.2.2/libbedic/src/xerox.cpp	2005-06-24 18:11:04.000000000 +0800
++++ zbedic-1.2.2/libbedic/src/xerox.cpp	2011-10-31 14:50:28.521319808 +0800
+@@ -21,6 +21,8 @@
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ****************************************************************************/
++#include <string.h>
++#include <limits.h>
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
+@@ -141,7 +143,7 @@
+   
+ public:
+ 
+-  XeroxDict::XeroxDict(const char* filename) :
++  XeroxDict(const char* filename) :
+     DictImpl( filename, false )
+   {
+   }

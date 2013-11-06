@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-base/qtopia-sl/Makefile
+Package: qtopia-sl
+Submenu: qpe-base
+Version: 2.1.1-1
+Depends: +qpe-build +qte2-sl +qt2 @!PACKAGE_qtopia
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qtopia for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description:   qtopia-free-2.1.1
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+

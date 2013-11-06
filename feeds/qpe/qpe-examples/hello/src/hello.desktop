@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaApplications
+Context=Hello World
+Comment[Desktop Entry/Name]=Use soft hyphen (char U00AD) to indicate hyphenation
+[Desktop Entry]
+Comment[]=Hello World
+Exec=hello
+Icon=hello
+Type=Application
+Name[]=Hello World

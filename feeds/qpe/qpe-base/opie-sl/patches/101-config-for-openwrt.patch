@@ -1,0 +1,29 @@
+--- opie-1.2.5/config.in.orig	2012-09-16 20:15:38.921236961 +0800
++++ opie-1.2.5/config.in	2012-09-16 20:21:24.345237121 +0800
+@@ -12,6 +12,9 @@
+   config TARGET_X86
+     boolean "Intel X86"
+ 
++  config TARGET_OPENWRT
++    boolean "OpenWrt"
++
+   config TARGET_MACOSX
+     boolean "Mac OS X (DARWIN)"
+ 
+@@ -94,6 +97,8 @@
+   string
+   default "qws/linux-generic-g++" if TARGET_X86 && (! X11)
+   default "linux-g++" if TARGET_X86 && X11
++  default "qws/linux-openwrt-g++" if TARGET_OPENWRT && (! X11)
++  default "linux-g++" if TARGET_OPENWRT && X11
+   default "qws/linux-sharp-g++" if TARGET_SHARP && (! X11)
+   default "linux-g++" if TARGET_SHARP && X11
+   default "qws/linux-ipaq-g++" if TARGET_IPAQ && (! X11)
+@@ -110,6 +115,7 @@
+ 
+ config CUSTOMFILE
+   string
++  default "custom-openwrt.h" if TARGET_OPENWRT
+   default "custom-ipaq.h" if TARGET_IPAQ
+   default "custom-sharp.h" if TARGET_SHARP
+   default "custom-ramses.h" if TARGET_RAMSES

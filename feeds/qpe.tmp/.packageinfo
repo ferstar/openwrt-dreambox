@@ -1,0 +1,2003 @@
+Source-Makefile: feeds/qpe/libs/mitab/Makefile
+Package: mitab
+Submenu: libs
+Version: 1.7.0-1
+Depends: 
+Provides: 
+Section: libs-
+Category: Qt/Qtopia
+Title: MITAB MapInfo Library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: mitab-1.7.0.tar.gz
+Type: ipkg
+Description:   MITAB is an Open Source (i.e. Free!) C++ library 
+  to read and write MapInfo .TAB (binary) and .MIF/MID files.
+  It is based on the OGR library which is an implementation 
+  of the Open GIS Consortium Simple Feature specification.
+http://mitab.maptools.org
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libopenobex/Makefile
+Package: libopenobex
+Submenu: libs
+Version: 1.6-1
+Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: OpenOBEX
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: openobex-1.6-Source.tar.gz
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_bgrab/Makefile
+Package: libSDL_bgrab
+Submenu: libs
+Version: 1.0.0-1
+Depends: +libSDL
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL framegrabber client library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_bgrab-1.0.0.tar.gz
+Type: ipkg
+Description:   SDL framegrabber client library.
+  SDL convertion of libbgrab (a framegrabber lib from the same author).
+http://www.ferzkopp.net/Software/SDL_bgrab/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_net/Makefile
+Package: libSDL_net
+Submenu: libs
+Version: 1.2.8-1
+Depends: +libSDL +zlib
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple portable network library for use with SDL
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_net-1.2.8.tar.gz
+Type: ipkg
+Description:   This is an example portable network library for use with SDL.
+  It is available under the zlib license, found in the file COPYING.
+  The API can be found in the file SDL_net.h
+  This library supports UNIX, Windows, MacOS Classic, MacOS X, BeOS and QNX.
+http://www.libsdl.org/projects/SDL_net/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_rtf/Makefile
+Package: libSDL_rtf
+Submenu: libs
+Version: 0.1.0-1
+Depends: +libSDL +libSDL_ttf
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Display simple Rich Text Format (RTF) files for SDL
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_rtf-0.1.0.tar.gz
+Type: ipkg
+Description:   This library allows you to display simple 
+  Rich Text Format (RTF) files in SDL applications.
+http://www.libsdl.org/projects/SDL_rtf/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_vnc/Makefile
+Package: libSDL_vnc
+Submenu: libs
+Version: 1.0.0-1
+Depends: +libSDL
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL based VNC client library with a threaded renderer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_vnc-1.0.0.tar.gz
+Type: ipkg
+Description:   SDL based VNC client library with a threaded renderer.
+http://www.ferzkopp.net/Software/SDL_vnc/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_ttf/Makefile
+Package: libSDL_ttf
+Submenu: libs
+Version: 2.0.11-2
+Depends: +libSDL +libpthread +libfreetype +zlib 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: ttf library for Simple DirectMedia Layer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_ttf-2.0.11.tar.gz
+Type: ipkg
+Description:   SDL_ttf is a sample library for Simple DirectMedia Layer.
+http://www.libsdl.org/projects/SDL_ttf/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_sound/Makefile
+Package: libSDL_sound
+Submenu: libs
+Version: 1.0.3-2
+Depends: +libSDL
+Provides: 
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer Sound Decoder
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: SDL_sound-1.0.3.tar.gz
+Type: ipkg
+Description:   SDL_sound is a library that handles the decoding
+  of several popular sound file formats, such as .WAV and .MP3.
+http://icculus.org/SDL_sound/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_image/Makefile
+Package: libSDL_image
+Submenu: libs
+Version: 1.2.12-2
+Depends: +libSDL +libjpeg +libpng +libpthread +BUILD_NLS:libiconv-full 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer Image
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_image-1.2.12.tar.gz
+Type: ipkg
+Description:   SDL_image is a sample image library.
+http://www.libsdl.org/projects/SDL_image/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL/Makefile
+Package: libSDL
+Submenu: libs
+Version: 1.2.14-2
+Depends: +directfb +zlib +libpthread +AUDIO_SUPPORT:alsa-lib +libts
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: SDL-1.2.14.tar.gz
+Type: ipkg
+Description:  SDL is a library that allows programs portable low level access to a video
+ framebuffer, audio output, mouse, and keyboard.
+http://www.libsdl.org
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_gfx/Makefile
+Package: libSDL_gfx
+Submenu: libs
+Version: 2.0.23-1
+Depends: +libSDL
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL graphics drawing supporting functions
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_gfx-2.0.23.tar.gz
+Type: ipkg
+Description:   The SDL_gfx library evolved out of the SDL_gfxPrimitives code which
+  provided basic drawing routines such as lines, circles or polygons for 
+  SDL Surfaces and adding a couple other useful functions for zooming 
+  images for example and doing basic image processing on byte arrays.
+
+  The current components of the SDL_gfx library are:
+  - Graphic Primitives (SDL_gfxPrimitives.h, SDL_gfxPrimitives.c)
+  - Rotozoomer (SDL_rotozoom.h, SDL_rotozoom.c)
+  - Framerate control (SDL_framerate.h, SDL_framerate.c)
+  - MMX image filters (SDL_imageFilter.h, SDL_imageFilter.c)
+  - Custom Blit functions (SDL_gfxBlitFunc.h, SDL_gfxBlitFunc.c)
+  - Build-in 8x8 Font (SDL_gfxPrimitives_font.h)
+http://www.ferzkopp.net/ http://www.ferzkopp.net/Software/SDL_gfx-2.0/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libxine/Makefile
+Package: libxine
+Submenu: libs
+Version: 1.1.1-2
+Depends: +alsa-lib +zlib +libfreetype
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: xine libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xine-lib-1.1.1.tar.gz
+Type: ipkg
+Description:   xine is a free multimedia player. It plays back CDs, DVDs, and VCDs.
+  It also decodes multimedia files like AVI, MOV, WMV, and MP3 
+  from local disk drives, and displays multimedia streamed over the Internet.
+  It interprets many of the most common multimedia formats available – 
+  and some of the most uncommon formats, too.
+http://www.xine-project.org/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_mixer/Makefile
+Package: libSDL_mixer
+Submenu: libs
+Version: 1.2.11-1
+Depends: +libSDL +libmikmod +libvorbisidec
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer Sound Mixer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: SDL_mixer-1.2.11.tar.gz
+Type: ipkg
+Description:   SDL_mixer is a sample multi-channel audio mixer library.
+http://www.libsdl.org/projects/SDL_mixer/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libopkg/Makefile
+Package: libopkg
+Submenu: libs
+Version: 576-1
+Depends: 
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: libraries of opkg package management system
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: libopkg-576.tar.gz
+Type: ipkg
+Description:   Lightweight package management system
+  opkg is the opkg Package Management System, for handling
+  installation and removal of packages on a system. It can
+  recursively follow dependencies and download all packages
+  necessary to install a particular package.
+
+  opkg knows how to install both .ipk and .deb packages.
+http://wiki.openmoko.org/wiki/Opkg
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libSDL_pango/Makefile
+Package: libSDL_pango
+Submenu: libs
+Version: 0.1.2-1
+Depends: +libSDL +fontconfig +pango
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL Pango text rendering engine
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_Pango-0.1.2.tar.gz
+Type: ipkg
+Description:   Pango is the text rendering engine of GNOME 2.x.
+  SDL_Pango connects the engine to SDL.
+  In Windows, pre-built binary package (MSI and merge module) is provided.
+http://sdlpango.sourceforge.net/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libobexftp/Makefile
+Package: libobexftp
+Submenu: libs
+Version: 0.23-1
+Depends: +libopenobex +bluez-libs
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: ObexFTP
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: obexftp-0.23.tar.bz2
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libsword/Makefile
+Package: libsword
+Submenu: libs
+Version: 1.5.9-1
+Depends: +zlib +libcurl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: The SWORD API/library for Bible software
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sword-1.5.9.tar.gz
+Type: ipkg
+Description:   The SWORD Project is an open source, cross-platform (Linux, Windows, Solaris, MacOSX etc.) 
+  API/library for Bible software with a constantly growing list of front-ends 
+  (GUI, textmode, web-based, etc.) and a library of over 200 text modules.
+http://www.crosswire.org
+@@
+
+Package: libsword-utils
+Submenu: apps
+Version: 1.5.9-1
+Depends: +libsword
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: utils for bible documents in SWORD supported formats
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sword-1.5.9.tar.gz
+Type: ipkg
+Description: utils for bible documents in SWORD supported formats
+http://www.crosswire.org
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libmng/Makefile
+Package: libmng
+Submenu: libs
+Version: 1.0.10-1
+Depends: +zlib +libjpeg +liblcms
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: A MNG format files handling library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: libmng-1.0.10.tar.bz2
+Type: ipkg
+Description: A MNG format files handling library
+www.libmng.com/MNGsuite/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libetpan/Makefile
+Package: libetpan
+Submenu: libs
+Version: 2012-09-01-1
+Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: Mail Framework for C Language
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: libetpan-2012-09-01.tar.bz2
+Type: ipkg
+Description:   The purpose of this mail library is to provide a portable, 
+  efficient framework for different kinds of mail access. 
+  When using the drivers interface, the interface is the same 
+  for all kinds of mail access, remote and local mailboxes.
+http://www.etpan.org/ https://github.com/dinhviethoa/libetpan.git
+@@
+
+
+Source-Makefile: feeds/qpe/libs/liblcms/Makefile
+Package: liblcms
+Submenu: libs
+Version: 1.19-1
+Depends: +zlib +libjpeg +libtiff
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: little cms color engine
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: lcms-1.19.tar.gz
+Type: ipkg
+Description: little cms color engine
+http://www.littlecms.com/
+@@
+
+
+Source-Makefile: feeds/qpe/libs/libts/Makefile
+Package: libts
+Submenu: libs
+Version: 2012.02.12-1
+Depends: @!LINUX_2_4
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: tslib is an abstraction layer for touchscreen panel events
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: tslib-2012.02.12.tar.bz2
+Type: ipkg
+Description:   tslib is an abstraction layer for touchscreen panel events,
+  as well as a filter stack for the manipulation of those events.
+  Examples of implemented filters include jitter smoothing and the calibration transform.
+http://tslib.berlios.de/ https://github.com/kergoth/tslib
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/Qt4/Makefile
+Package: Qt4
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: +zlib +librt +libstdcpp @!LINUX_2_4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4
+http://qt.nokia.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/Qt4/Config.in"
+@@
+
+Package: Qt4-gui
+Submenu: qpe-base
+Default: y
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-gui:libpng +PACKAGE_Qt4-gui:libtiff +PACKAGE_Qt4-gui:libjpeg +PACKAGE_Qt4-gui:libfreetype +Qt4-network +FEATURE_drawing-backend_libX11:libX11 +FEATURE_drawing-backend_libX11:libXext @DISPLAY_SUPPORT
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (gui)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (gui)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-demos
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (demos)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (demos)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-examples
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-svg
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (examples)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (examples)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-network
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (network)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (network)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-sqlite
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-sqlite:libsqlite3
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (sqlite)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (sqlite)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-mysql
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-mysql:libmysqlclient
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (mysql)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (mysql)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-pgsql
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +coreutils +coreutils-su +PACKAGE_Qt4-pgsql:libpq
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (pgsql)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (pgsql)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-openssl
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-openssl:libopenssl
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (openssl)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (openssl)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-phonon
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-xml +Qt4-dbus +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (phonon)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (phonon)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-svg
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (svg)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (svg)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-webkit
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-webkit:libsqlite3 +Qt4-phonon +Qt4-dbus +Qt4-xml +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (webkit)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (webkit)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-script
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (script)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (script)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-scripttools
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-script +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (scripttools)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (scripttools)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-dbus
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +PACKAGE_Qt4-dbus:libdbus +Qt4-xml
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (dbus)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (dbus)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-qt3support
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-gui +Qt4-xml
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (qt3support)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (qt3support)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-declarative
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 +Qt4-script +Qt4-xml +Qt4-gui +Qt4-network
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (declarative)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (declarative)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-xml
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (xml)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (xml)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-xmlpatterns
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 (xmlpatterns)
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 (xmlpatterns)
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-tpmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers tpmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers tpmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-pcmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers pcmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers pcmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-mouse-tslibmousedriver
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS +PACKAGE_Qt4-drivers-mouse-tslibmousedriver:libts
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 mousedrivers tslibmousedriver
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 mousedrivers tslibmousedriver
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-directfb
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS @FEATURE_drawing-backend_DirectFB +Qt4-drivers-gfx-directfb:directfb
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers directfb
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers directfb
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-linuxfb
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers linuxfb
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers linuxfb
+http://qt.nokia.com/
+@@
+
+Package: Qt4-drivers-gfx-vnc
+Submenu: qpe-base
+Version: 4.8.1-1
+Depends: Qt4 @Qt4_WS_QWS
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Qt4 gfxdrivers VNC
+Maintainer: Mirko Vogt <mirko@openwrt.org>
+Source: qt-everywhere-opensource-src-4.8.1.tar.gz
+Type: ipkg
+Description: Qt4 gfxdrivers VNC
+http://qt.nokia.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/qtopia-sl/Makefile
+Package: qtopia-sl
+Submenu: qpe-base
+Version: 2.1.1-1
+Depends: +qpe-build +qte2-sl +qt2 @!PACKAGE_qtopia
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qtopia for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description:   qtopia-free-2.1.1
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/opie/Makefile
+Package: opie
+Submenu: qpe-base
+Version: 1.2.5-1
+Depends: +qpe-build +qte2 +libsysfs +libpng +libjpeg +zlib @!PACKAGE_qtopia
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Open Palmtop Integrated Environment
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description:   Opie - Open Palmtop Integrated Environment
+  Applications and libraries for mobile devices.
+http://opie.sourceforge.net/
+@@
+Config:
+	source "feeds/qpe/qpe-base/opie/Config.in"
+@@
+
+Package: opie-have-sqlite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libsqlite3
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: SQLite PIM backends(libsqlite3)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: SQLite PIM backends(libsqlite3)
+@@
+
+Package: opie-have-freetype
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libfreetype
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: libfreetype font engine
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: libfreetype font engine
+@@
+
+Package: opie-have-libsword
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libsword
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: The SWORD API/library(libsword)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: The SWORD API/library(libsword)
+@@
+
+Package: opie-have-libetpan
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libetpan
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Mail Framework for C Language(libetpan)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Mail Framework for C Language(libetpan)
+@@
+
+Package: opie-have-libpcap
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpcap
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: packet capture library(libpcap)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: packet capture library(libpcap)
+@@
+
+Package: opie-have-bluez-libs
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +bluez-libs
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Bluetooth library(bluez-libs)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Bluetooth library(bluez-libs)
+@@
+
+Package: opie-have-xine-lib
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libxine
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Xine libraries(xine-lib)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Xine libraries(xine-lib)
+@@
+
+Package: opie-have-alsa-lib
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +alsa-lib
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Advanced Linux Sound Architecture libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Advanced Linux Sound Architecture libraries
+@@
+
+Package: opie-have-flite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +flite
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Text-to-speech for embedded systems
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: Text-to-speech for embedded systems
+@@
+
+Package: opie-have-obexftp
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libopenobex +libobexftp
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: ObexFTP libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: ObexFTP libraries
+@@
+
+Package: opie-have-libpam
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpam @BROKEN
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (libpam)Linux-PAM
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (libpam)Linux-PAM
+@@
+
+Package: opie-have-libpcsclite
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libpcsclite
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (libpcsclite) PC/SC Lite
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (libpcsclite) PC/SC Lite
+@@
+
+Package: opie-have-opkg
+Submenu: qpe-base
+Default: y
+Version: 1.2.5-1
+Depends: opie +libopkg
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: (opkg)lightweight package management system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description: (opkg)lightweight package management system
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/qte2/Makefile
+Package: qte2
+Submenu: qpe-base
+Version: 2.3.10-1
+Depends: +qpe-build +libuuid +libstdcpp +libgcc
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: qt-embedded-2.3.10
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description:   qt-embedded-2.3.10
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/qte2/Config.in"
+@@
+
+Package: qte2-support-thread
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2 +libpthread
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Compile with Threading Support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Compile with Threading Support
+@@
+
+Package: qte2-support-tslib
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libts
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable TSlib (touchscreen library) mouse handler
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable TSlib (touchscreen library) mouse handler
+@@
+
+Package: qte2-support-zlib
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +zlib
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use a zlib from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use a zlib from the operating system
+@@
+
+Package: qte2-support-libpng
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libpng
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use a libpng from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use a libpng from the operating system
+@@
+
+Package: qte2-support-jpeg
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libjpeg
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use jpeglib from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use jpeglib from the operating system
+@@
+
+Package: qte2-support-gif
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Compile in GIF reading support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Compile in GIF reading support
+@@
+
+Package: qte2-support-libmng
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2 +libmng
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use libmng from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use libmng from the operating system
+@@
+
+Package: qte2-support-nas-sound
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Use NAS libaudio from the operating system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Use NAS libaudio from the operating system
+@@
+
+Package: qte2-support-xft
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable support for Anti-Aliased fonts
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable support for Anti-Aliased fonts
+@@
+
+Package: qte2-support-sm
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support X Session Management
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support X Session Management
+@@
+
+Package: qte2-support-module-opengl
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support opengl module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support opengl module
+@@
+
+Package: qte2-support-module-network
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support network module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support network module
+@@
+
+Package: qte2-support-module-table
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support table module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support table module
+@@
+
+Package: qte2-support-module-canvas
+Submenu: qpe-base
+Default: y
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Support canvas module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Support canvas module
+@@
+
+Package: qte2-support-graphics-accel-snap
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable SciTech SNAP Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable SciTech SNAP Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-voodoo3
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Voodoo3 Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Voodoo3 Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-mach64
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Mach64 Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Mach64 Graphics acceleration
+@@
+
+Package: qte2-support-graphics-accel-matrox
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable Matrox MGA Graphics acceleration
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable Matrox MGA Graphics acceleration
+@@
+
+Package: qte2-keypad-mode
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable keypad widget navigation
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable keypad widget navigation
+@@
+
+Package: qte2-keypad-input
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Include keypad keys
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Include keypad keys
+@@
+
+Package: qte2-support-vnc
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2 +qte2-support-module-network
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable VNC server (requires network module)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable VNC server (requires network module)
+@@
+
+Package: qte2-support-qvfb
+Submenu: qpe-base
+Default: n
+Version: 2.3.10-1
+Depends: qte2
+Provides: 
+Section: qtopia-libs
+Category: Qt/Qtopia
+Title: Enable X11-based Qt Virtual Frame Buffer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description: Enable X11-based Qt Virtual Frame Buffer
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/qte2-sl/Makefile
+Package: qte2-sl
+Submenu: qpe-base
+Version: 2.3.10-1
+Depends: +qpe-build @!PACKAGE_qte2
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qte2 for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description:   qte2 for PC simulation
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/opie-sl/Makefile
+Package: opie-sl
+Submenu: qpe-base
+Version: 1.2.5-1
+Depends: +qpe-build +qte2-sl +qt2 @!PACKAGE_opie @!PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: OPIE for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description:   Opie - Open Palmtop Integrated Environment
+  Applications and libraries for mobile devices.
+http://opie.sourceforge.net/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-base/qtopia/Makefile
+Package: qtopia
+Submenu: qpe-base
+Version: 2.1.1-1
+Depends: +qpe-build +qte2
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Qtopia-free-2.1.1
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description:   qtopia-free-2.1.1
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+Config:
+	source "feeds/qpe/qpe-base/qtopia/Config.in"
+@@
+
+Package: qtopia-support-thread
+Submenu: qpe-base
+Default: n
+Version: 2.1.1-1
+Depends: qtopia +qte2-support-thread +libpthread
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build with threading support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build with threading support
+@@
+
+Package: qtopia-support-qvfb
+Submenu: qpe-base
+Default: n
+Version: 2.1.1-1
+Depends: qtopia +qte2-support-qvfb
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build with the X11-based Qt Virtual Frame Buffer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build with the X11-based Qt Virtual Frame Buffer
+@@
+
+Package: qtopia-support-module-freetype
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build freetype module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build freetype module into Qtopia
+@@
+
+Package: qtopia-support-module-libmad
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libmad module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libmad module into Qtopia
+@@
+
+Package: qtopia-support-module-libffmpeg
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libffmpeg module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libffmpeg module into Qtopia
+@@
+
+Package: qtopia-support-module-libamr
+Submenu: qpe-base
+Default: y
+Version: 2.1.1-1
+Depends: qtopia
+Provides: 
+Section: qtopia-desktop
+Category: Qt/Qtopia
+Title: Build libamr module into Qtopia
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qtopia-free-source-2.1.1.tar.gz
+Type: ipkg
+Description: Build libamr module into Qtopia
+@@
+
+
+Source-Makefile: feeds/qpe/apps/tree/Makefile
+Package: tree
+Submenu: apps
+Version: 1.6.0-1
+Depends: 
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: Tree is a recursive directory listing command
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: tree-1.6.0.tgz
+Type: ipkg
+Description: Tree is a recursive directory listing command
+http://mama.indstate.edu/users/ice/tree/index.html
+@@
+
+
+Source-Makefile: feeds/qpe/apps/mplayer/Makefile
+Package: mplayer
+Submenu: apps
+Version: 1.0rc3-1
+Depends: +libpthread +libmad +libpng +libjpeg +libmng +giflib
+Provides: 
+Section: sound
+Category: Qt/Qtopia
+Title: MPlayer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: MPlayer-1.0rc3.tar.bz2
+Type: ipkg
+Description:  MPlayer can play most standard video formats out of the box
+ and almost all others with the help of external codecs.
+http://www.mplayerhq.hu/
+@@
+
+
+Source-Makefile: feeds/qpe/apps/obexfs/Makefile
+Package: obexfs
+Submenu: apps
+Version: 0.12-1
+Depends: +kmod-fuse +libfuse +libusb +fuse-utils +libopenobex +libobexftp
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: (ObexFS)FUSE based filesystem using ObexFTP
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: obexfs-0.12.tar.gz
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+
+Source-Makefile: feeds/qpe/apps/smplayer/Makefile
+Package: smplayer
+Submenu: apps
+Version: 0.8.1-1
+Depends: +mplayer +Qt4
+Provides: 
+Section: sound
+Category: Qt/Qtopia
+Title: SMPlayer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: smplayer-0.8.1.tar.bz2
+Type: ipkg
+Description:   SMPlayer is a complete front-end for MPlayer,
+  from basic features like playing videos, DVDs, VCDs
+  to more advanced features like support for MPlayer filters, edl lists, and more.
+http://smplayer.sourceforge.net/
+@@
+
+
+Source-Makefile: feeds/qpe/games/sdlpal/Makefile
+Package: sdlpal
+Submenu: games
+Version: 61376-2
+Depends: +libSDL +libSDL_image +libSDL_ttf +libSDL_mixer  +zlib +libfreetype +libmad +libjpeg +libpng
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: RPG game Paladin - Xian Jian Qi Xia Zhuan
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sdlpal-61376.tar.bz2
+Type: ipkg
+Description:   An SDL-based reimplemention of the classic Chinese-language RPG "Xian Jian Qi Xia Zhuan" 
+  (aka "The Legend of Sword and Fairy" or "PAL") which runs under modern operating systems 
+  (Microsoft Windows, GNU/Linux, Mac OS X, etc.) as well as several embedded systems.
+http://sdlpal.codeplex.com/
+@@
+
+Package: sdlpal-desktop
+Submenu: games
+Version: 61376-2
+Depends: +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl sdlpal
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: games
+Category: Qt/Qtopia
+Title: Qtopia desktop of RPG game Paladin
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sdlpal-61376.tar.bz2
+Type: ipkg
+Description: Qtopia desktop of RPG game Paladin
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-build/Makefile
+Package: qpe-build
+Version: 1
+Depends: 
+Provides: 
+Section: qpe
+Category: Qt/Qtopia
+Title: the makefiles of building qpe
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description: the makefiles of building qpe
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-host/qt3/Makefile
+Package: qt3
+Submenu: qpe-host
+Version: 3.3.5-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt-x11-3.3.5 tools
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-x11-free-3.3.5.tar.gz
+Type: ipkg
+Description:   qt-x11-3.3.5 tools
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-host/qt2/Makefile
+Package: qt2
+Submenu: qpe-host
+Version: 2.3.2-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt-x11-2.3.2 tools
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-x11-2.3.2.tar.gz
+Type: ipkg
+Description:   qt-x11-2.3.2
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-host/tmake/Makefile
+Package: tmake
+Submenu: qpe-host
+Version: 1.13-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: tmake-1.13
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: tmake-1.13.tar.gz
+Type: ipkg
+Description:   tmake-1.13.tar.gz
+ftp://ftp.trolltech.com/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/title-language/Makefile
+Package: title-language
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple title-language example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/filebrowser/Makefile
+Package: filebrowser
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A filebrowser for Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/network-setting/Makefile
+Package: network-setting
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple network-setting example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/qt-starter/Makefile
+Package: qt-starter
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple qt-starter example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/zbench/Makefile
+Package: zbench
+Submenu: qpe-examples
+Version: 2.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Benchmark for Opie or Qtopia
+Maintainer: Satoshi<af230533@im07.alpha-net.ne.jp>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://www.vanille.de/mirror/zbench-2.0.tar.bz2
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/ping-testing/Makefile
+Package: ping-testing
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple ping-testing example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/qt4map/Makefile
+Package: qt4map
+Submenu: qpe-apps
+Version: 1.0-1
+Depends: +mitab +Qt4
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt4-mitab-mif-map
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   Author:   hugerat <njjqs115@jlonline.com>
+  Blog:
+            http://blog.chinaunix.net/uid/11153816.html
+            http://blog.csdn.net/zy_emb
+  detail:
+            http://blog.chinaunix.net/uid-11153816-id-2903476.html
+            http://blog.csdn.net/zy_emb/article/details/6213486
+            http://www.arm9home.net/read.php?tid-10310.html
+http://blog.chinaunix.net/uid/11153816.html
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/dclock/Makefile
+Package: dclock
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple dclock example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/hello/Makefile
+Package: hello
+Submenu: qpe-examples
+Version: 1.0-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A simple hello example of Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-examples/zudoku/Makefile
+Package: zudoku
+Submenu: qpe-examples
+Version: 1.1-1
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: A Sudoku Game for Opie or Qtopia
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   /*
+   * Created by Richard Nee <richard.nee.cn@gmail.com>
+   * Supported by the OpenWRT-for-Embedded Project:http://code.google.com/p/openwrt-for-embedded/
+  /*
+http://www.vanille.de/mirror/zudoku-1.1.tar.gz
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-apps/konqueror/Makefile
+Package: konqueror-embedded
+Submenu: qpe-apps
+Version: 20030705-3
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: KDE Web Browser Konqueror
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: konqueror-embedded-snapshot-20030705.tar.gz
+Type: ipkg
+Description:   KDE Web Browser Konqueror, QtE based Palmtop Environments Edition
+http://www.konqueror.org/embedded
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-apps/zbedic/Makefile
+Package: zbedic
+Submenu: qpe-apps
+Version: 1.2-2-3
+Depends: +qpe-build +libpthread +libc +libstdcpp +libsqlite3 +libjpeg +libpng +zlib +libuuid +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Zbedic is an electronic dictionary
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: zbedic_1.2-2.tgz
+Type: ipkg
+Description:   Zbedic is an electronic dictionary reader for Sharp Zaurus and Linux desktop.
+  Now it's ported to every platform which OpenWrt supported.
+http://bedic.sourceforge.net/ http://sourceforge.net/projects/bedic/files/
+@@
+
+
+Source-Makefile: feeds/qpe/qpe-apps/murphypinyin/Makefile
+Package: murphytalk.pinyin
+Submenu: qpe-apps
+Version: 0.03-3
+Depends: +qpe-build +libc +libgcc +libstdcpp +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qtopia-
+Category: Qt/Qtopia
+Title: MurphyPinyin a Chinese Input Method
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: MurphyPinyin-0.03-src.tgz
+Type: ipkg
+Description:   MurphyPinyin a Chinese Input Method,
+  Port of Scim Chinese of James Su,released under GPL.
+  Maintainer: MurphyTalk(murphytalk@gmail.com) SunsetYang(sunsetyang@gmail.com)
+http://www.qkevin.com/
+@@
+
+

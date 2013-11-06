@@ -1,0 +1,30 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+diff -Nur MurphyPinyin/Makefile MurphyPinyin-0.03/Makefile
+--- MurphyPinyin/Makefile	2004-07-20 19:26:05.000000000 +0800
++++ MurphyPinyin-0.03/Makefile	2012-05-14 17:13:15.198558249 +0800
+@@ -14,7 +14,7 @@
+ INCPATH	=	-I$(QPEDIR)/include -I$(QTDIR)/include
+ LINK	=	arm-linux-g++
+ LFLAGS	=	-shared -Wl,-soname,libmurphypinyin.so.0
+-LIBS	=	$(SUBLIBS) -L$(QTDIR)/lib -lqpe -lqte
++LIBS	=	$(SUBLIBS) -L$(QTDIR)/lib -L$(QPEDIR)/lib -lqpe -lqte
+ AR	=	arm-linux-ar cqs
+ RANLIB	=	
+ MOC	=	$(QTDIR)/bin/moc
+diff -Nur MurphyPinyin/scim/scim_pinyin.h MurphyPinyin-0.03/scim/scim_pinyin.h
+--- MurphyPinyin/scim/scim_pinyin.h	2004-07-17 15:05:32.000000000 +0800
++++ MurphyPinyin-0.03/scim/scim_pinyin.h	2012-05-14 17:13:15.202558249 +0800
+@@ -27,9 +27,10 @@
+ #include <fstream>
+ #include <string>
+ #include <vector>
++#include <string.h>
+ 
+ #ifndef X86
+-#include <algo.h>
++#include <parallel/algo.h>
+ #endif
+ 
+ #include <stdint.h>

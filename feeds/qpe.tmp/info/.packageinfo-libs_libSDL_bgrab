@@ -1,0 +1,19 @@
+Source-Makefile: feeds/qpe/libs/libSDL_bgrab/Makefile
+Package: libSDL_bgrab
+Submenu: libs
+Version: 1.0.0-1
+Depends: +libSDL
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL framegrabber client library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_bgrab-1.0.0.tar.gz
+Type: ipkg
+Description:   SDL framegrabber client library.
+  SDL convertion of libbgrab (a framegrabber lib from the same author).
+http://www.ferzkopp.net/Software/SDL_bgrab/
+@@
+
+

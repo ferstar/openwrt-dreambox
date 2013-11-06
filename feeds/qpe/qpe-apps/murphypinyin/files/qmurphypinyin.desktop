@@ -1,0 +1,9 @@
+[Translation]
+File=QtopiaPlugins
+Context=Input Methods
+[Desktop Entry]
+Name[]=MurphyPinyin
+Comment[]=Chinese input method
+Name[zh_CN]=Murphy拼音
+Comment[zh_CN]=中文输入法
+X-QPE-Library=libmurphypinyin.so

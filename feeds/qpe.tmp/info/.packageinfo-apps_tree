@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/apps/tree/Makefile
+Package: tree
+Submenu: apps
+Version: 1.6.0-1
+Depends: 
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: Tree is a recursive directory listing command
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: tree-1.6.0.tgz
+Type: ipkg
+Description: Tree is a recursive directory listing command
+http://mama.indstate.edu/users/ice/tree/index.html
+@@
+
+

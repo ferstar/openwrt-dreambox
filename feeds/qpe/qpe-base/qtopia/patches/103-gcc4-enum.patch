@@ -1,0 +1,11 @@
+--- qtopia-free-2.1.1/src/libraries/qtopia/qpeapplication.h.orig	2012-05-13 12:48:07.343364182 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/qpeapplication.h	2012-05-13 12:48:50.551364202 +0800
+@@ -83,7 +83,7 @@
+ 	PhoneNumber,
+ 	Words,
+ 	Text,
+-	Named,
++	Named
+     };
+ 
+     enum screenSaverHint {

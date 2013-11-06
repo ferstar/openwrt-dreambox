@@ -1,0 +1,49 @@
+--- zbedic-1.2.2/zbedic/configure.orig	2012-05-17 06:56:16.369288549 +0800
++++ zbedic-1.2.2/zbedic/configure	2012-05-17 06:59:43.153288642 +0800
+@@ -1372,34 +1372,23 @@
+ 
+ 
+ if test "$QPE" = "yes"; then
+-  if test "$ARCH" = arm; then
+-    CC=arm-linux-gcc
+-    CXX=arm-linux-g++
+-    LD=arm-linux-g++
+-    STRIP=arm-linux-strip
+-    ARCH_CXXFLAGS="-DQT_QWS_EBX -DQT_QWS_CUSTOM -D__ARM__"
+-    OBJDIR=objs.arm
+-    BEDIC_LIBS="-L../libbedic/objs.arm/ -lbedic"
+-    QT_LIBS="-L${QPEDIR}/lib -lqpe -L${QTDIR}/lib -lqte -ljpeg"
+-  else
+-    ARCH=x86
+-    CC=gcc
+-    CXX=g++
+-    LD=g++
+-    STRIP=echo
+-    ARCH_CXXFLAGS=
+-    OBJDIR=objs.x86
+-    BEDIC_LIBS="-L../libbedic/objs.x86/ -lbedic"
+-    QT_LIBS="-L${QPEDIR}/lib -lqtopia -L${QTDIR}/lib -lqte -ljpeg"
+-  fi
+-  SQLITE3_LIBS=-lsqlite3
++  CC=${TARGET_CROSS}gcc
++  CXX=${TARGET_CROSS}g++
++  LD=${TARGET_CROSS}g++
++  STRIP=${TARGET_CROSS}strip
++  ARCH_CXXFLAGS="-DQT_QWS_EBX -DQT_QWS_CUSTOM"
++  OBJDIR=objs.${ARCH}
++  BEDIC_LIBS="-L../libbedic/objs.${ARCH}/ -lbedic"
++  QT_LIBS="-L${QPEDIR}/lib -lqpe -L${QTDIR}/lib -lqte -ljpeg ${TARGET_LDFLAGS}"
++
++  SQLITE3_LIBS="$SQLITE3_LIBS -lsqlite3"
+   MOC=${QTDIR}/bin/moc
+-  QT_CFLAGS="-I${QPEDIR}/include"
++  QT_CFLAGS="-I${QPEDIR}/include -I${QTDIR}/include ${TARGET_CFLAGS}"
+   BUILD_TYPE="embeded"
+   BUILD_OBJS='$(OBJDIR)/zfiledialog.o $(OBJDIR)/moc_zfiledialog.o'
+   BUILD_SOURCES="src/zfiledialog.cpp"
+ 
+-  CXXFLAGS="$CXXFLAGS -DQWS -fno-exceptions -fno-rtti"
++  CXXFLAGS="$CXXFLAGS -DQWS -fno-exceptions -fno-rtti ${TARGET_CXXFLAGS}"
+ 
+   BUILD_TARGET=ipk
+ else

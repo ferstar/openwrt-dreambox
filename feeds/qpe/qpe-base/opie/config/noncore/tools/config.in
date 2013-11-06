@@ -1,0 +1,9 @@
+  source noncore/tools/calculator/config.in
+  source noncore/tools/clock/config.in
+  source noncore/tools/euroconv/config.in
+  source noncore/tools/formatter/config.in
+  source noncore/tools/opie-sh/config.in
+  source noncore/tools/pimconverter/config.in
+  source noncore/tools/pyquicklauncher/config.in
+  source noncore/tools/remote/config.in
+

@@ -1,0 +1,6 @@
+  source core/settings/button/config.in
+  source core/settings/citytime/config.in
+  source core/settings/launcher/config.in
+  source core/settings/light-and-power/config.in
+  source core/settings/security/config.in
+

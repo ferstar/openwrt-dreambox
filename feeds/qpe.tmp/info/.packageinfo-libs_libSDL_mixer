@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/libs/libSDL_mixer/Makefile
+Package: libSDL_mixer
+Submenu: libs
+Version: 1.2.11-1
+Depends: +libSDL +libmikmod +libvorbisidec
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer Sound Mixer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: SDL_mixer-1.2.11.tar.gz
+Type: ipkg
+Description:   SDL_mixer is a sample multi-channel audio mixer library.
+http://www.libsdl.org/projects/SDL_mixer/
+@@
+
+

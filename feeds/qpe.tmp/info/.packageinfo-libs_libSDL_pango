@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/libs/libSDL_pango/Makefile
+Package: libSDL_pango
+Submenu: libs
+Version: 0.1.2-1
+Depends: +libSDL +fontconfig +pango
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL Pango text rendering engine
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_Pango-0.1.2.tar.gz
+Type: ipkg
+Description:   Pango is the text rendering engine of GNOME 2.x.
+  SDL_Pango connects the engine to SDL.
+  In Windows, pre-built binary package (MSI and merge module) is provided.
+http://sdlpango.sourceforge.net/
+@@
+
+

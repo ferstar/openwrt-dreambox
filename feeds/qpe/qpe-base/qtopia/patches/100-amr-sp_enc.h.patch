@@ -1,0 +1,10 @@
+--- qtopia-free-2.1.1.orig/src/3rdparty/libraries/amr/sp_enc.h	2005-01-24 15:29:30.000000000 +0800
++++ qtopia-free-2.1.1/src/3rdparty/libraries/amr/sp_enc.h	2005-11-11 10:43:28.000000000 +0800
+@@ -46,6 +46,7 @@
+ #include "pre_proc.h"
+ #include "mode.h"
+ #include "cod_amr.h"
++#include "frame.h"
+ 
+ /*
+ *****************************************************************************

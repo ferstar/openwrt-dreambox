@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-host/tmake/Makefile
+Package: tmake
+Submenu: qpe-host
+Version: 1.13-1
+Depends: +qpe-build
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: tmake-1.13
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: tmake-1.13.tar.gz
+Type: ipkg
+Description:   tmake-1.13.tar.gz
+ftp://ftp.trolltech.com/
+@@
+
+

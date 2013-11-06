@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#export QWS_DISPLAY=":1"
+exec filebrowser -qws

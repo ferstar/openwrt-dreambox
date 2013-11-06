@@ -1,0 +1,107 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- qtopia-free-2.1.1.orig/src/server/main.cpp	2005-11-11 10:43:32.000000000 +0800
++++ qtopia-free-2.1.1/src/server/main.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -772,11 +772,60 @@
+     }
+ 
+ #else // SINGLE_EXEC
++
++#include <string.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <unistd.h>
++
++void doCalibrate()
++{
++    const char *mouse_protocol = ::getenv("QWS_MOUSE_PROTO");
++    if (mouse_protocol == 0) {
++        return;
++    }
++    if (strstr(mouse_protocol, "TPanel") == 0) {
++        return;
++    }
++
++    if(QFile::exists("/etc/pointercal")) {
++        return;
++    }
++
++    pid_t pid;
++    pid = ::fork();
++    if(pid < 0) {
++        perror("create process");
++        exit(1);
++    }
++
++    if (pid == 0) {
++        if ( QFile::exists("/usr/bin/ts_calibrate") ) {
++            execl("/usr/bin/ts_calibrate", "ts_calibrate", 0);
++        } else if ( QFile::exists("/usr/local/bin/ts_calibrate") ) {
++            execl("/usr/local/bin/ts_calibrate", "ts_calibrate", 0);
++        } else {
++            fprintf(stderr, "do not have ts_calibrate, using the Qtopia default to calibrate touch screen\n");
++        }
++
++    } else if (pid > 0) {
++        waitpid(pid, 0, 0);
++    }
++
++    if(!QFile::exists("/etc/pointercal")) {
++        fprintf(stderr, "cannot calibrate touch screen\n");
++    }
++}
++
+ int main( int argc, char ** argv )
+ {
+ #endif // SINGLE_EXEC
+ 
+     signal( SIGCHLD, SIG_IGN );
++    signal( SIGUSR2, SIG_IGN );
++    if ( (QFile::exists("/usr/bin/ts_calibrate")) || (QFile::exists("/usr/local/bin/ts_calibrate")) ) {
++        doCalibrate();
++    }
+ 
+     int retVal = initApplication( argc, argv );
+ 
+
+--- qtopia-free-2.1.1.orig/src/settings/calibrate/calibrate.cpp	2005-11-11 10:43:31.000000000 +0800
++++ qtopia-free-2.1.1/src/settings/calibrate/calibrate.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -50,6 +50,10 @@
+ #include <qsimplerichtext.h>
+ #include <stdlib.h>
+ 
++#include <unistd.h>
++#include <qtopia/qpeapplication.h>
++#include <qtopia/qcopenvelope_qws.h>
++#include <stdio.h>
+ 
+ Calibrate::Calibrate(QWidget* parent, const char * name, WFlags wf) :
+     QDialog( parent, name, TRUE, wf | WStyle_Customize | WStyle_StaysOnTop )
+@@ -94,6 +98,26 @@
+ 
+ void Calibrate::show()
+ {
++
++    // just delete calibrate file and restart
++  if ( (QFile::exists("/usr/bin/ts_calibrate")) || (QFile::exists("/usr/local/bin/ts_calibrate")) ) {
++     QMessageBox mb( tr("Calibrate"),
++                    tr("Reboot Qtopia is needed\n"
++                       "to calibrate the touch screen\n"
++                       "\n"
++                       "Do you want to reboot?"),
++                    QMessageBox::NoIcon,
++                    QMessageBox::Yes | QMessageBox::Default,
++                    QMessageBox::No | QMessageBox::Escape,
++                    QMessageBox::NoButton );
++    if ( mb.exec() == QMessageBox::Yes) {
++        ::unlink("/etc/pointercal");
++        QCopEnvelope e("QPE/System", "restart()" );
++    }
++
++    return ;
++  }
++
+     if ( !isVisible() && QWSServer::mouseHandler() ) {
+ 	init();
+ 	anygood = QFile::exists("/etc/pointercal");

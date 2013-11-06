@@ -1,0 +1,24 @@
+--- zbedic-1.2.2/zbedic/Makefile.in.orig	2012-05-17 07:36:43.221289668 +0800
++++ zbedic-1.2.2/zbedic/Makefile.in	2012-05-17 16:00:21.056186631 +0800
+@@ -93,6 +93,7 @@
+ 
+ 
+ install: $(TARGET)
++	install -d $(bindir)
+ 	install $(TARGET) $(bindir)
+ 	install -d $(pkgdatadir)/zbedic
+ 	for icon in $(LARGE_ICONS_SRC); do\
+@@ -133,10 +134,12 @@
+ 	for i in preinst postinst prerm postrm ; do \
+ 		test -f misc/$(APPLICATION).$$i && ln -sf ../misc/$(APPLICATION).$$i $(OBJDIR) ;\
+ 	done
+-	mkipks -arch $(ARCH) $(OBJDIR)/$(APPLICATION).control
++	$(QPEDIR)/bin/mkipks -arch $(ARCH) $(OBJDIR)/$(APPLICATION).control
+ 	if test x"$(enable_sqlite_static)" = "xyes"; then \
+ 	  mv $(APPLICATION)_$(VERSION)_$(ARCH).ipk $(APPLICATION)_$(VERSION)_static_$(ARCH).ipk; \
+ 	fi
++	install -d $(prefix)
++	cp -fpRv $(APPLICATION)_$(VERSION)_$(ARCH).ipk $(prefix)
+ 
+ dist:
+ 	tar -czf zbedic_$(VERSION).tgz \

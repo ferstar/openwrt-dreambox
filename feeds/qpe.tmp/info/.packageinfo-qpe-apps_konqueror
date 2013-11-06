@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-apps/konqueror/Makefile
+Package: konqueror-embedded
+Submenu: qpe-apps
+Version: 20030705-3
+Depends: +qpe-build +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: KDE Web Browser Konqueror
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: konqueror-embedded-snapshot-20030705.tar.gz
+Type: ipkg
+Description:   KDE Web Browser Konqueror, QtE based Palmtop Environments Edition
+http://www.konqueror.org/embedded
+@@
+
+

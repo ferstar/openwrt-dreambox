@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaApplications
+Context=The Legend of Sword and Fairy
+[Desktop Entry]
+Comment[]=The Legend of Sword and Fairy
+Exec=sdlpal
+Icon=sdlpal
+Type=Application
+MimeType=
+Name[]=SDL Paladin

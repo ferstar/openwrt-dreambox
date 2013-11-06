@@ -1,0 +1,19 @@
+Source-Makefile: feeds/qpe/libs/libSDL_rtf/Makefile
+Package: libSDL_rtf
+Submenu: libs
+Version: 0.1.0-1
+Depends: +libSDL +libSDL_ttf
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Display simple Rich Text Format (RTF) files for SDL
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_rtf-0.1.0.tar.gz
+Type: ipkg
+Description:   This library allows you to display simple 
+  Rich Text Format (RTF) files in SDL applications.
+http://www.libsdl.org/projects/SDL_rtf/
+@@
+
+

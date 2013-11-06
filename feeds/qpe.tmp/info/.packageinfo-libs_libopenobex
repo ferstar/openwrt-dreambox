@@ -1,0 +1,20 @@
+Source-Makefile: feeds/qpe/libs/libopenobex/Makefile
+Package: libopenobex
+Submenu: libs
+Version: 1.6-1
+Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: OpenOBEX
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: openobex-1.6-Source.tar.gz
+Type: ipkg
+Description:   The overall goal of this project is to make an open source 
+  implementation of the Object Exchange (OBEX) protocol. 
+  OBEX is a session protocol and can best be described as a binary HTTP protocol.
+http://dev.zuckschwerdt.org/openobex
+@@
+
+

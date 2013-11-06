@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaApplications
+Context=Zuduku
+Comment[Desktop Entry/Name]=Use soft hyphen (char U00AD) to indicate hyphenation
+[Desktop Entry]
+Comment[]=A Sudoku Game for Opie
+Exec=zudoku
+Icon=zudoku
+Type=Application
+Name[]=Zudoku

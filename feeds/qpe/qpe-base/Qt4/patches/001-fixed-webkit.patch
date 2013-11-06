@@ -1,0 +1,26 @@
+--- qt-everywhere-opensource-src-4.8.1/configure.orig	2012-10-23 16:58:59.071690488 +0800
++++ qt-everywhere-opensource-src-4.8.1/configure	2012-10-23 17:00:13.463690496 +0800
+@@ -6019,12 +6019,6 @@
+ 	fi
+     fi
+ 
+-    # Additional check to decide if WebKit support will be included
+-    if [ "$CFG_XRENDER" = "no" ] && [ "$CFG_WEBKIT" != "no" ]; then
+-        echo "Warning: -no-xrender will disable the QtWebkit module."
+-        CFG_WEBKIT="no"
+-    fi
+-
+     # auto-detect MIT-SHM support
+     if [ "$CFG_MITSHM" != "no" ]; then
+ 	if "$unixtests/compile.test" "$XQMAKESPEC" "$QMAKE_CONFIG" $OPT_VERBOSE "$relpath" "$outpath" config.tests/x11/mitshm "mitshm" $L_FLAGS $I_FLAGS $l_FLAGS $X11TESTS_FLAGS; then
+--- qt-everywhere-opensource-src-4.8.1/configure.orig	2012-10-23 20:11:36.923691930 +0800
++++ qt-everywhere-opensource-src-4.8.1/configure	2012-10-23 20:13:02.831691940 +0800
+@@ -7648,7 +7648,7 @@
+     QCONFIG_FLAGS="$QCONFIG_FLAGS QT_NO_SVG"
+ fi
+ 
+-if [ "$CFG_WEBKIT" != "no" ]; then
++if [ "$CFG_WEBKIT" = "auto" ]; then
+     CFG_WEBKIT="$canBuildWebKit"
+ fi
+ 

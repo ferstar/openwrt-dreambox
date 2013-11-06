@@ -1,0 +1,9 @@
+Files: bin/zbench apps/Applications/zbench.desktop pics/zbench.png
+Priority: optional
+Section: Qtopia
+Maintainer: Satoshi<af230533@im07.alpha-net.ne.jp>
+Architechture: arm
+Version: 2.0
+Depends: Qtopia-base($Qtopia_VERSION)
+License: GPL
+Description: Bench mark test for Zaurus.

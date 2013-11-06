@@ -1,0 +1,235 @@
+--- sdlpal/nbproject/Makefile-Debug.mk.orig	2012-05-22 10:30:42.408093921 +0800
++++ sdlpal/nbproject/Makefile-Debug.mk	2012-05-22 11:17:11.696095208 +0800
+@@ -11,17 +11,17 @@
+ MKDIR=mkdir
+ CP=cp
+ CCADMIN=CCadmin
+-RANLIB=ranlib
+-CC=gcc
+-CCC=g++
+-CXX=g++
++RANLIB=$(TARGET_CROSS)ranlib
++CC=$(TARGET_CROSS)gcc
++CCC=$(TARGET_CROSS)g++
++CXX=$(TARGET_CROSS)g++
+ FC=g77
+ 
+ # Include project Makefile
+ include Makefile
+ 
+ # Object Directory
+-OBJECTDIR=build/Debug/GNU-Linux-x86
++OBJECTDIR=build/Debug/GNU-Linux-$(ARCH)
+ 
+ # Object Files
+ OBJECTFILES= \
+@@ -63,6 +63,9 @@
+ 
+ # C Compiler Flags
+ CFLAGS=`sdl-config --cflags` 
++ 
++SDL_CFLAGS=
++SDL_LIBS=
+ 
+ # CC Compiler Flags
+ CCFLAGS=`sdl-config --cflags` 
+@@ -75,151 +78,151 @@
+ LDLIBSOPTIONS=-lm
+ 
+ # Build Targets
+-.build-conf: ${BUILD_SUBPROJECTS} dist/Debug/GNU-Linux-x86/sdlpal
++.build-conf: ${BUILD_SUBPROJECTS} dist/Debug/GNU-Linux-$(ARCH)/sdlpal
+ 
+-dist/Debug/GNU-Linux-x86/sdlpal: ${OBJECTFILES}
+-	${MKDIR} -p dist/Debug/GNU-Linux-x86
+-	${LINK.cc} `sdl-config --libs` -Xlinker -Map=dist/Debug/GNU-Linux-x86/sdlpal.map -o dist/Debug/GNU-Linux-x86/sdlpal  ${OBJECTFILES} ${LDLIBSOPTIONS} 
++dist/Debug/GNU-Linux-$(ARCH)/sdlpal: ${OBJECTFILES}
++	${MKDIR} -p dist/Debug/GNU-Linux-$(ARCH)
++	${LINK.cc} `sdl-config --libs` -Xlinker -Map=dist/Debug/GNU-Linux-$(ARCH)/sdlpal.map -o sdlpal_$(ARCH)  ${OBJECTFILES}
+ 
+ ${OBJECTDIR}/rixplay.o: rixplay.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/rixplay.o rixplay.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/rixplay.o rixplay.cpp
+ 
+ ${OBJECTDIR}/adplug/rix.o: adplug/rix.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/rix.o adplug/rix.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/rix.o adplug/rix.cpp
+ 
+ ${OBJECTDIR}/text.o: text.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/text.o text.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/text.o text.c
+ 
+ ${OBJECTDIR}/font.o: font.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/font.o font.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/font.o font.c
+ 
+ ${OBJECTDIR}/adplug/player.o: adplug/player.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/player.o adplug/player.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/player.o adplug/player.cpp
+ 
+ ${OBJECTDIR}/itemmenu.o: itemmenu.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/itemmenu.o itemmenu.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/itemmenu.o itemmenu.c
+ 
+ ${OBJECTDIR}/adplug/binio.o: adplug/binio.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/binio.o adplug/binio.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/binio.o adplug/binio.cpp
+ 
+ ${OBJECTDIR}/scene.o: scene.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/scene.o scene.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/scene.o scene.c
+ 
+ ${OBJECTDIR}/palcommon.o: palcommon.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/palcommon.o palcommon.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/palcommon.o palcommon.c
+ 
+ ${OBJECTDIR}/script.o: script.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/script.o script.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/script.o script.c
+ 
+ ${OBJECTDIR}/adplug/emuopl.o: adplug/emuopl.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/emuopl.o adplug/emuopl.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/emuopl.o adplug/emuopl.cpp
+ 
+ ${OBJECTDIR}/util.o: util.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/util.o util.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/util.o util.c
+ 
+ ${OBJECTDIR}/play.o: play.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/play.o play.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/play.o play.c
+ 
+ ${OBJECTDIR}/getopt.o: getopt.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/getopt.o getopt.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/getopt.o getopt.c
+ 
+ ${OBJECTDIR}/input.o: input.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/input.o input.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/input.o input.c
+ 
+ ${OBJECTDIR}/uibattle.o: uibattle.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/uibattle.o uibattle.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/uibattle.o uibattle.c
+ 
+ ${OBJECTDIR}/game.o: game.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/game.o game.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/game.o game.c
+ 
+ ${OBJECTDIR}/magicmenu.o: magicmenu.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/magicmenu.o magicmenu.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/magicmenu.o magicmenu.c
+ 
+ ${OBJECTDIR}/map.o: map.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/map.o map.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/map.o map.c
+ 
+ ${OBJECTDIR}/ending.o: ending.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/ending.o ending.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/ending.o ending.c
+ 
+ ${OBJECTDIR}/adplug/fmopl.o: adplug/fmopl.c 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/fmopl.o adplug/fmopl.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/fmopl.o adplug/fmopl.c
+ 
+ ${OBJECTDIR}/uigame.o: uigame.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/uigame.o uigame.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/uigame.o uigame.c
+ 
+ ${OBJECTDIR}/rngplay.o: rngplay.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/rngplay.o rngplay.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/rngplay.o rngplay.c
+ 
+ ${OBJECTDIR}/ui.o: ui.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/ui.o ui.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/ui.o ui.c
+ 
+ ${OBJECTDIR}/adplug/fprovide.o: adplug/fprovide.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/fprovide.o adplug/fprovide.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/fprovide.o adplug/fprovide.cpp
+ 
+ ${OBJECTDIR}/global.o: global.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/global.o global.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/global.o global.c
+ 
+ ${OBJECTDIR}/main.o: main.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/main.o main.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/main.o main.c
+ 
+ ${OBJECTDIR}/adplug/binfile.o: adplug/binfile.cpp 
+ 	${MKDIR} -p ${OBJECTDIR}/adplug
+-	$(COMPILE.cc) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/adplug/binfile.o adplug/binfile.cpp
++	$(COMPILE.cc) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/adplug/binfile.o adplug/binfile.cpp
+ 
+ ${OBJECTDIR}/video.o: video.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/video.o video.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/video.o video.c
+ 
+ ${OBJECTDIR}/palette.o: palette.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/palette.o palette.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/palette.o palette.c
+ 
+ ${OBJECTDIR}/sound.o: sound.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/sound.o sound.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/sound.o sound.c
+ 
+ ${OBJECTDIR}/res.o: res.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/res.o res.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/res.o res.c
+ 
+ ${OBJECTDIR}/battle.o: battle.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/battle.o battle.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/battle.o battle.c
+ 
+ ${OBJECTDIR}/fight.o: fight.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/fight.o fight.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/fight.o fight.c
+ 
+ ${OBJECTDIR}/yj1.o: yj1.c 
+ 	${MKDIR} -p ${OBJECTDIR}
+-	$(COMPILE.c) -g -D_DEBUG -I/usr/include/SDL -o ${OBJECTDIR}/yj1.o yj1.c
++	$(COMPILE.c) -g -D_DEBUG $(SDL_CFLAGS) -o ${OBJECTDIR}/yj1.o yj1.c
+ 
+ # Subprojects
+ .build-subprojects:
+@@ -227,7 +230,7 @@
+ # Clean Targets
+ .clean-conf:
+ 	${RM} -r build/Debug
+-	${RM} dist/Debug/GNU-Linux-x86/sdlpal
++	${RM} dist/Debug/GNU-Linux-$(ARCH)/sdlpal
+ 
+ # Subprojects
+ .clean-subprojects:

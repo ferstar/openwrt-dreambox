@@ -1,0 +1,2039 @@
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/dcopclient.h.orig	2012-05-13 13:21:32.007365106 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/dcopclient.h	2012-05-13 13:19:43.643365056 +0800
+@@ -12,7 +12,7 @@
+ namespace KIO
+ {
+     class Connection;
+-};
++}
+ 
+ class DCOPClient
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/dcopdispatcher.h.orig	2012-05-13 13:21:00.383365091 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/dcopdispatcher.h	2012-05-13 13:19:11.323365042 +0800
+@@ -18,7 +18,7 @@
+ namespace KIO
+ {
+     class Connection;
+-};
++}
+ 
+ class DCOPClientTransaction;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/connection.h.orig	2012-05-13 13:25:53.455365226 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/connection.h	2012-05-13 13:26:19.283365238 +0800
+@@ -111,6 +111,6 @@
+         bool m_suspended;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/global.h.orig	2012-05-13 13:30:11.595365345 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/global.h	2012-05-13 13:30:37.327365357 +0800
+@@ -301,5 +301,5 @@
+    }
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/authinfo.h.orig	2012-05-13 13:31:22.927365378 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/authinfo.h	2012-05-13 13:31:33.703365383 +0800
+@@ -275,5 +275,5 @@
+   class NetRCPrivate;
+   NetRCPrivate* d;
+ };
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/slavebase.h.orig	2012-05-13 13:35:29.491365492 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/slavebase.h	2012-05-13 13:35:53.791365503 +0800
+@@ -135,7 +135,7 @@
+ 	bool m_multipleAuthCaching;
+     };
+ 
+-};
++}
+ 
+ /* vim: et sw=4 ts=4
+  */
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/factory.h.orig	2012-05-13 13:38:20.787365571 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/factory.h	2012-05-13 13:38:44.131365581 +0800
+@@ -111,6 +111,6 @@
+     virtual QObject *createObject( QObject *parent = 0, const char *name = 0, const char *classname = "QObject", const QStringList &args = QStringList() );
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/mimehandler.h.orig	2012-05-13 13:41:11.347365651 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/mimehandler.h	2012-05-13 13:41:25.703365656 +0800
+@@ -181,6 +181,6 @@
+ 	bool m_wantdata;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/jobclasses.h.orig	2012-05-13 13:42:29.123365685 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/jobclasses.h	2012-05-13 13:42:58.583365699 +0800
+@@ -200,6 +200,6 @@
+ 	void mimeRules( const MimeHandler* mime );
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/tcpslavebase.h.orig	2012-05-13 13:44:11.543365733 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/tcpslavebase.h	2012-05-13 13:44:33.999365743 +0800
+@@ -302,6 +302,6 @@
+ 
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kio_file.h.orig	2012-05-13 13:45:58.063365782 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kio_file.h	2012-05-13 13:46:25.211365794 +0800
+@@ -35,6 +35,6 @@
+ 	static bool implementsProto( const QString &prot );
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/slaveinterface.h.orig	2012-05-13 13:47:42.107365829 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/slaveinterface.h	2012-05-13 13:48:06.543365841 +0800
+@@ -287,7 +287,7 @@
+     SlaveInterfacePrivate *d;
+ };
+ 
+-};
++}
+ 
+ inline QDataStream &operator >>(QDataStream &s, KIO::UDSAtom &a )
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kfileitem.h.orig	2012-05-13 13:50:02.239365894 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kfileitem.h	2012-05-13 13:50:18.663365902 +0800
+@@ -9,7 +9,7 @@
+ namespace KIO
+ {
+     typedef struct stat UDSEntry;
+-};
++}
+ 
+ 
+ class KFileItem
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/netaccess.h.orig	2012-05-13 13:51:04.959365923 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/netaccess.h	2012-05-13 13:51:20.035365930 +0800
+@@ -22,6 +22,6 @@
+         static QString lastErrorString();
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/scheduler.h.orig	2012-05-13 13:53:07.683365979 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/scheduler.h	2012-05-13 13:53:22.663365987 +0800
+@@ -68,6 +68,6 @@
+         static Scheduler *s_self;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/slave.h.orig	2012-05-13 13:54:18.023366012 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/slave.h	2012-05-13 13:54:49.675366027 +0800
+@@ -34,6 +34,6 @@
+         pid_t m_pid;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/krun.h.orig	2012-05-13 13:58:49.115366137 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/krun.h	2012-05-13 13:59:05.835366145 +0800
+@@ -8,7 +8,7 @@
+ namespace KIO
+ {
+     class Job;
+-};
++}
+ 
+ class KRun : public QObject
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/event.h.orig	2012-05-13 14:00:32.507366186 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/event.h	2012-05-13 14:00:49.747366193 +0800
+@@ -113,6 +113,6 @@
+   QWidget *m_widget;
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/browserextension.h.orig	2012-05-13 14:01:47.447366220 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/browserextension.h	2012-05-13 14:02:02.527366227 +0800
+@@ -593,7 +593,7 @@
+   BrowserHostExtensionPrivate *d;
+ };
+ 
+-};
++}
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/part.h.orig	2012-05-13 14:02:55.543366252 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/part.h	2012-05-13 14:03:13.687366259 +0800
+@@ -116,7 +116,7 @@
+ 	KIO::Job * m_job;
+     };
+ 
+-};
++}
+ 
+ #if defined(ENABLE_READWRITE)
+ #include <kparts/part_rw.h>
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/khtml/khtml_run.h.orig	2012-05-13 14:04:43.255366300 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/khtml/khtml_run.h	2012-05-13 14:05:02.083366309 +0800
+@@ -32,7 +32,7 @@
+ namespace khtml
+ {
+   struct ChildFrame;
+-};
++}
+ 
+ class KHTMLRun : public KRun
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/observer.h.orig	2012-05-13 14:13:05.055366533 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/observer.h	2012-05-13 14:13:18.131366539 +0800
+@@ -26,6 +26,6 @@
+         static Observer *s_self;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/passdlg.h.orig	2012-05-13 14:15:03.507366586 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/passdlg.h	2012-05-13 14:16:15.631366620 +0800
+@@ -65,7 +65,7 @@
+ 
+   };
+ 
+-};
++}
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kio_ftp.h.orig	2012-05-13 14:18:09.035366672 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/kio_ftp.h	2012-05-13 14:18:36.023366685 +0800
+@@ -30,7 +30,7 @@
+         bool m_gettingURL : 1;
+         bool m_blockFinished : 1;
+     };
+-};
++}
+ 
+ #endif // KIO_FTP_H
+ /* vim: et sw=4 ts=4
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/slaveconfig.h.orig	2012-05-13 14:22:36.283366795 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/slaveconfig.h	2012-05-13 14:22:50.975366802 +0800
+@@ -103,6 +103,6 @@
+         static SlaveConfig *_self;
+         SlaveConfigPrivate *d;
+     };
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/historyprovider.h.orig	2012-05-13 14:25:34.031366877 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/historyprovider.h	2012-05-13 14:25:48.699366884 +0800
+@@ -72,6 +72,6 @@
+     static HistoryProvider *s_self;
+ };
+ 
+-};
++}
+ 
+ #endif // KHISTORYPROVIDER_H
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/browserinterface.h.orig	2012-05-13 14:29:31.771366986 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kparts/browserinterface.h	2012-05-13 14:29:42.135366991 +0800
+@@ -47,6 +47,6 @@
+ #endif
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_node.h.orig	2012-05-13 14:43:22.419367370 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_node.h	2012-05-13 14:43:53.087367384 +0800
+@@ -763,5 +763,5 @@
+ typedef unsigned long long DOMTimeStamp;
+ 
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_string.h.orig	2012-05-13 14:45:07.711367418 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_string.h	2012-05-13 14:46:58.875367469 +0800
+@@ -115,14 +115,14 @@
+ bool operator==( const DOMString &a, const DOMString &b );
+ bool operator==( const DOMString &a, const QString &b );
+ bool operator==( const DOMString &a, const char *b );
+-inline bool operator!=( const DOMString &a, const DOMString &b ) { return !(a==b); };
+-inline bool operator!=( const DOMString &a, const QString &b ) { return !(a==b); };
+-inline bool operator!=( const DOMString &a, const char *b )  { return !(a==b); };
++inline bool operator!=( const DOMString &a, const DOMString &b ) { return !(a==b); }
++inline bool operator!=( const DOMString &a, const QString &b ) { return !(a==b); }
++inline bool operator!=( const DOMString &a, const char *b )  { return !(a==b); }
+ inline bool strcmp( const DOMString &a, const DOMString &b ) { return a != b; }
+ 
+ // returns false when equal, true otherwise (ignoring case)
+ bool strcasecmp( const DOMString &a, const DOMString &b );
+ bool strcasecmp( const DOMString& a, const char* b );
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_stylesheet.h.orig	2012-05-13 14:48:17.807367506 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_stylesheet.h	2012-05-13 14:48:36.363367514 +0800
+@@ -487,6 +487,6 @@
+     DocumentStyleImpl *impl;
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_doc.h.orig	2012-05-13 14:49:37.471367544 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_doc.h	2012-05-13 14:50:04.107367555 +0800
+@@ -662,5 +662,5 @@
+     DocumentType(DocumentTypeImpl *impl);
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_document.h.orig	2012-05-13 14:51:01.315367582 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_document.h	2012-05-13 14:51:26.971367593 +0800
+@@ -285,6 +285,6 @@
+     NodeList getElementsByName ( const DOMString &elementName );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_range.h.orig	2012-05-13 14:52:33.599367624 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_range.h	2012-05-13 14:52:55.719367634 +0800
+@@ -469,6 +469,6 @@
+     void throwException(int exceptioncode) const;
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_part.h.orig	2012-05-13 14:55:29.995367705 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_part.h	2012-05-13 14:56:12.283367726 +0800
+@@ -54,7 +54,7 @@
+   class Node;
+   class HTMLEventListener;
+   class EventListener;
+-};
++}
+ 
+ namespace khtml
+ {
+@@ -68,18 +68,18 @@
+   class MouseReleaseEvent;
+   class DrawContentsEvent;
+   class CachedObject;
+-};
++}
+ 
+ namespace KJS {
+     class Window;
+     class WindowFunc;
+     class JSEventListener;
+-};
++}
+ 
+ namespace KParts
+ {
+   class PartManager;
+-};
++}
+ 
+ /**
+  * This class is khtml's main class. It features an almost complete
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtmlview.h.orig	2012-05-13 14:57:34.407367763 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtmlview.h	2012-05-13 14:58:20.043367784 +0800
+@@ -43,7 +43,7 @@
+     class Range;
+     class NodeImpl;
+     class CSSProperty;
+-};
++}
+ 
+ namespace khtml {
+     class RenderObject;
+@@ -51,7 +51,7 @@
+     class RenderStyle;
+     class RenderLineEdit;
+     void applyRule(RenderStyle *style, DOM::CSSProperty *prop, DOM::ElementImpl *e);
+-};
++}
+ 
+ class KHTMLPart;
+ class KHTMLViewPrivate;
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_value.h.orig	2012-05-13 14:59:30.539367816 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_value.h	2012-05-13 14:59:52.827367826 +0800
+@@ -728,6 +728,6 @@
+ };
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_element.h.orig	2012-05-13 15:02:41.971367905 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_element.h	2012-05-13 15:03:04.339367916 +0800
+@@ -383,5 +383,5 @@
+     Element(ElementImpl *_impl);
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kssl/kopenssl.cc.orig	2012-05-13 15:05:29.911367982 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kssl/kopenssl.cc	2012-05-13 15:06:10.495368001 +0800
+@@ -100,7 +100,7 @@
+ static int (*K_sk_push) (STACK*, char*) = NULL;
+ static STACK* (*K_sk_dup) (STACK *) = NULL;
+ #endif    
+-};
++}
+ 
+ 
+ bool KOpenSSLProxy::hasLibSSL() const {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kdecore/kbufferedio.cpp.orig	2012-05-13 15:09:44.511368099 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kdecore/kbufferedio.cpp	2012-05-13 15:10:07.527368110 +0800
+@@ -149,7 +149,7 @@
+ int KBufferedIO::unreadBlock(const char *data, unsigned len)
+ {
+   return feedReadBuffer(len, data, true);
+-};
++}
+ 
+ //
+ // protected member functions
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/kjs.h.orig	2012-05-13 15:12:24.219368173 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/kjs.h	2012-05-13 15:12:40.207368181 +0800
+@@ -36,7 +36,7 @@
+ #ifdef KJS_DEBUGGER
+   class Debugger;
+ #endif
+-};
++}
+ 
+ /**
+  * @libdoc ECMAScript interpreter
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/ustring.h.orig	2012-05-13 15:13:32.971368205 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/ustring.h	2012-05-13 15:14:19.039368227 +0800
+@@ -30,7 +30,7 @@
+  */
+ namespace DOM {
+   class DOMString;
+-};
++}
+ class KJScript;
+ class QString;
+ class QConstString;
+@@ -414,6 +414,6 @@
+   bool operator==(const CString& s1, const CString& s2);
+   UString operator+(const UString& s1, const UString& s2);
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object.h.orig	2012-05-13 15:15:30.399368259 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object.h	2012-05-13 15:15:46.755368266 +0800
+@@ -635,6 +635,6 @@
+     static Object createObject(ErrorType e, const char *m = 0, int l = -1);
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/types.h.orig	2012-05-13 15:16:28.231368286 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/types.h	2012-05-13 15:16:43.511368292 +0800
+@@ -349,7 +349,7 @@
+     static List *emptyList;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function.h.orig	2012-05-13 15:17:42.159368321 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function.h	2012-05-13 15:17:56.683368327 +0800
+@@ -129,6 +129,6 @@
+     static Constructor dynamicCast(const KJSO &obj);
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/internal.h.orig	2012-05-13 15:18:36.347368346 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/internal.h	2012-05-13 15:18:51.575368351 +0800
+@@ -400,7 +400,7 @@
+   void printInfo( const char *s, const KJSO &o );
+ #endif
+ 
+-}; // namespace
++} // namespace
+ 
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/collector.h.orig	2012-05-13 15:20:06.915368387 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/collector.h	2012-05-13 15:20:29.211368398 +0800
+@@ -94,6 +94,6 @@
+     enum { BlockSize = 100 };
+   };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/kjs.cpp.orig	2012-05-13 15:21:15.671368418 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/kjs.cpp	2012-05-13 15:21:32.455368426 +0800
+@@ -147,7 +147,7 @@
+ 	return Completion(Normal);
+       }
+   };
+-};
++}
+ 
+ void KJScript::enableDebug()
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/debugger.h.orig	2012-05-13 15:23:31.339368481 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/debugger.h	2012-05-13 15:23:57.319368493 +0800
+@@ -145,6 +145,6 @@
+   };
+ #endif
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/nodes.h.orig	2012-05-13 15:24:39.827368512 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/nodes.h	2012-05-13 15:24:59.967368522 +0800
+@@ -784,6 +784,6 @@
+     void deleteGlobalStatements();
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lexer.h.orig	2012-05-13 15:25:43.279368541 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lexer.h	2012-05-13 15:26:28.647368563 +0800
+@@ -129,6 +129,6 @@
+     LexerPrivate *priv;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/launcher.h.orig	2012-05-14 12:46:51.282567020 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/dropin/kio/launcher.h	2012-05-14 12:47:08.070567012 +0800
+@@ -80,6 +80,6 @@
+         static Launcher *s_self;
+     };
+ 
+-};
++}
+ 
+ #endif // __launcher_h__
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lookup.h.orig	2012-05-14 12:50:15.426566910 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lookup.h	2012-05-14 12:50:32.714566899 +0800
+@@ -75,6 +75,6 @@
+     HashTable *table;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/operations.h.orig	2012-05-14 12:54:31.622566769 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/operations.h	2012-05-14 12:55:16.486566744 +0800
+@@ -62,6 +62,6 @@
+    */
+   KJSO mult(const KJSO &v1, const KJSO &v2, char oper);
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lexer.lut.h.orig	2012-05-14 12:52:05.902566848 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/lexer.lut.h	2012-05-14 12:52:21.170566839 +0800
+@@ -74,4 +74,4 @@
+ 
+ const struct HashTable2 mainTable = { 2, 67, mainTableEntries, 41 };
+ 
+-}; // namespace
++} // namespace
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/error_object.h.orig	2012-05-14 12:57:44.990566661 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/error_object.h	2012-05-14 12:57:59.642566654 +0800
+@@ -50,6 +50,6 @@
+     Completion execute(const List &);
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object.cpp.orig	2012-05-14 12:58:18.898566644 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object.cpp	2012-05-14 12:58:33.466566635 +0800
+@@ -54,7 +54,7 @@
+   const double D32 = 4294967296.0;
+ 
+   // TODO: -0
+-};
++}
+ 
+ using namespace KJS;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/operations.cpp.orig	2012-05-14 13:00:04.346566586 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/operations.cpp	2012-05-14 13:01:28.762566540 +0800
+@@ -52,7 +52,7 @@
+ #ifdef HAVE_FUNC_ISNAN
+   return isnan(d);
+ #elif defined HAVE_FLOAT_H
+-  return _isnan(d) != 0;
++  return isnan(d) != 0;
+ #else
+   return !(d == d);
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/ustring.cpp.orig	2012-05-14 13:03:18.846566480 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/ustring.cpp	2012-05-14 13:03:35.322566470 +0800
+@@ -38,7 +38,7 @@
+ namespace KJS {
+   extern const double NaN;
+   extern const double Inf;
+-};
++}
+ 
+ using namespace KJS;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function.cpp.orig	2012-05-14 13:04:57.082566424 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function.cpp	2012-05-14 13:05:09.774566419 +0800
+@@ -49,7 +49,7 @@
+     Parameter *next;
+   };
+ 
+-};
++}
+ 
+ FunctionImp::FunctionImp()
+   : ObjectImp(/*TODO*/BooleanClass), param(0L)
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/regexp.h.orig	2012-05-14 13:06:04.342566388 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/regexp.h	2012-05-14 13:06:17.322566380 +0800
+@@ -51,6 +51,6 @@
+     RegExp();
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object_object.h.orig	2012-05-14 13:07:55.918566328 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/object_object.h	2012-05-14 13:08:11.522566318 +0800
+@@ -48,6 +48,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function_object.h.orig	2012-05-14 13:09:00.078566292 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/function_object.h	2012-05-14 13:09:18.078566282 +0800
+@@ -37,6 +37,6 @@
+     Object construct(const List &);
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/array_object.h.orig	2012-05-14 13:10:05.938566255 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/array_object.h	2012-05-14 13:10:17.134566250 +0800
+@@ -48,6 +48,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/bool_object.h.orig	2012-05-14 13:11:20.894566215 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/bool_object.h	2012-05-14 13:11:29.958566210 +0800
+@@ -47,6 +47,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/string_object.h.orig	2012-05-14 13:12:11.074566186 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/string_object.h	2012-05-14 13:12:22.658566181 +0800
+@@ -61,6 +61,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/number_object.h.orig	2012-05-14 13:12:59.714566161 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/number_object.h	2012-05-14 13:13:11.798566153 +0800
+@@ -39,6 +39,6 @@
+     virtual KJSO get(const UString &p) const;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/date_object.h.orig	2012-05-14 13:15:29.478566078 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/date_object.h	2012-05-14 13:15:40.778566072 +0800
+@@ -39,6 +39,6 @@
+     virtual KJSO get(const UString &p) const;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/global_object.cpp.orig	2012-05-14 13:16:15.482566052 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/global_object.cpp	2012-05-14 13:16:55.498566032 +0800
+@@ -61,7 +61,7 @@
+     GlobalInternal *internal;
+   };
+ 
+-};
++}
+ 
+ using namespace KJS;
+ 
+@@ -200,7 +200,7 @@
+   dateProto.setConstructor(dateObj);
+   regexpProto.setConstructor(regObj);
+   errorProto.setConstructor(errObj);
+-};
++}
+ 
+ void GlobalImp::init()
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/math_object.h.orig	2012-05-14 13:19:02.562565960 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/math_object.h	2012-05-14 13:19:20.182565951 +0800
+@@ -43,6 +43,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/math_object.lut.h.orig	2012-05-14 13:20:38.146565908 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/math_object.lut.h	2012-05-14 13:20:49.110565902 +0800
+@@ -40,4 +40,4 @@
+ 
+ const struct HashTable2 mathTable = { 2, 33, mathTableEntries, 21 };
+ 
+-}; // namespace
++} // namespace
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/date_object.cpp.orig	2012-05-14 13:22:10.354565858 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/date_object.cpp	2012-05-14 13:22:33.906565844 +0800
+@@ -81,7 +81,7 @@
+   // helper functions
+   KJSO parseDate(const String &s);
+   KJSO timeClip(const KJSO &t);
+-};
++}
+ 
+ using namespace KJS;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/collector.cpp.orig	2012-05-14 13:24:30.914565781 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/collector.cpp	2012-05-14 13:24:47.646565773 +0800
+@@ -40,7 +40,7 @@
+ #endif
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ using namespace KJS;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/http/http.cc.orig	2012-05-14 13:27:03.698565697 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kio/http/http.cc	2012-05-14 13:27:48.554565672 +0800
+@@ -77,7 +77,7 @@
+ extern "C" {
+   void sigalrm_handler(int);
+   int http_kdemain(int argc, char **argv);
+-};
++}
+ 
+ int http_kdemain( int argc, char **argv )
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/partmanager.h.orig	2012-05-14 13:30:12.790565594 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/partmanager.h	2012-05-14 13:30:28.918565584 +0800
+@@ -247,7 +247,7 @@
+   PartManagerPrivate *d;
+ };
+ 
+-};
++}
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/partmanager.cpp.orig	2012-05-14 13:31:34.562565548 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/partmanager.cpp	2012-05-14 13:31:49.730565540 +0800
+@@ -65,7 +65,7 @@
+   bool m_bIgnoreScrollBars;
+ };
+ 
+-};
++}
+ 
+ PartManager::PartManager( QWidget * parent, const char * name )
+  : QObject( parent, name )
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/browserextension.cpp.orig	2012-05-14 13:33:15.874565491 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kparts/browserextension.cpp	2012-05-14 13:34:11.210565462 +0800
+@@ -68,7 +68,7 @@
+     bool lockHistory;
+ };
+ 
+-};
++}
+ 
+ URLArgs::URLArgs()
+ {
+@@ -171,7 +171,7 @@
+ {
+ };
+ 
+-};
++}
+ 
+ WindowArgs::WindowArgs()
+ {
+@@ -285,7 +285,7 @@
+   BrowserInterface *m_browserInterface;
+ };
+ 
+-};
++}
+ 
+ BrowserExtension::ActionSlotMap * BrowserExtension::s_actionSlotMap = 0L;
+ KStaticDeleter<BrowserExtension::ActionSlotMap> actionSlotMapsd;
+@@ -510,7 +510,7 @@
+   KParts::ReadOnlyPart *m_part;
+ };
+ 
+-};
++}
+ 
+ BrowserHostExtension::BrowserHostExtension( KParts::ReadOnlyPart *parent, const char *name )
+  : QObject( parent, name )
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/decoder.h.orig	2012-05-14 13:37:36.218565350 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/decoder.h	2012-05-14 13:37:50.606565341 +0800
+@@ -62,5 +62,5 @@
+     bool haveEncoding;
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_misc.h.orig	2012-05-14 13:39:46.138565278 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_misc.h	2012-05-14 13:39:59.866565270 +0800
+@@ -55,6 +55,6 @@
+     unsigned int _ref;
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/khtmllayout.h.orig	2012-05-14 13:40:54.302565240 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/khtmllayout.h	2012-05-14 13:41:08.870565234 +0800
+@@ -113,6 +113,6 @@
+ 	LengthType type : 3;
+     };
+     
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmlhashes.h.orig	2012-05-14 13:42:40.390565182 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmlhashes.h	2012-05-14 13:42:54.982565175 +0800
+@@ -9,6 +9,6 @@
+ {
+   int getTagID(const char *tagStr, int len);
+   int getAttrID(const char *tagStr, int len);
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_stringimpl.h.orig	2012-05-14 13:44:01.514565139 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_stringimpl.h	2012-05-14 13:44:19.154565128 +0800
+@@ -77,5 +77,5 @@
+     QChar *s;
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader_client.h.orig	2012-05-14 13:46:43.406565049 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader_client.h	2012-05-14 13:47:00.554565039 +0800
+@@ -29,6 +29,6 @@
+ 	virtual void setStyleSheet(const DOM::DOMString &/*url*/, const DOM::DOMString &/*sheet*/) {}
+ 	virtual void notifyFinished(CachedObject * /*finishedObj*/) {}
+     };
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader_jpeg.h.orig	2012-05-14 13:47:16.566565031 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader_jpeg.h	2012-05-14 13:47:36.686565020 +0800
+@@ -42,7 +42,7 @@
+         const char* formatName() const;
+     };
+ 
+-};
++}
+ 
+ 
+ // -----------------------------------------------------------------------------
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader.h.orig	2012-05-14 13:47:55.070565010 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/loader.h	2012-05-14 13:48:21.458564996 +0800
+@@ -60,7 +60,7 @@
+ {
+     class CSSStyleSheetImpl;
+     class DocumentImpl;
+-};
++}
+ 
+ namespace khtml
+ {
+@@ -475,6 +475,6 @@
+         static unsigned long s_ulRefCnt;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssparser.h.orig	2012-05-14 13:50:29.570564925 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssparser.h	2012-05-14 13:50:48.370564915 +0800
+@@ -238,6 +238,6 @@
+     CSSValueImpl *m_value;
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_stylesheetimpl.h.orig	2012-05-14 13:51:40.630564887 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_stylesheetimpl.h	2012-05-14 13:52:23.170564863 +0800
+@@ -34,7 +34,7 @@
+ namespace khtml {
+     class CachedCSSStyleSheet;
+     class DocLoader;
+-};
++}
+ 
+ namespace DOM {
+ 
+@@ -164,7 +164,7 @@
+ };
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmltags.c.orig	2012-05-14 13:54:59.674564776 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmltags.c	2012-05-14 13:55:27.358564762 +0800
+@@ -501,4 +501,4 @@
+ {
+     if(id > ID_CLOSE_TAG*2) id = ID_CLOSE_TAG+1;
+     return DOMString(tagList[id]);
+-};
++}
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmlattrs.c.orig	2012-05-14 13:56:33.370564725 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/htmlattrs.c	2012-05-14 13:56:48.438564717 +0800
+@@ -565,4 +565,4 @@
+ DOMString getAttrName(unsigned short id)
+ {
+     return attrList[id-1];
+-};
++}
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/helper.h.orig	2012-05-14 13:58:19.138564667 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/helper.h	2012-05-14 13:58:32.198564660 +0800
+@@ -35,6 +35,6 @@
+     extern QPainter *printpainter;
+     void setPrintPainter( QPainter *printer );
+     QFontMetrics fontMetrics( const QFont &f );
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_element.h.orig	2012-05-14 14:00:37.118564591 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_element.h	2012-05-14 14:00:54.778564582 +0800
+@@ -196,6 +196,6 @@
+ 
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_block.h.orig	2012-05-14 14:01:44.226564556 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_block.h	2012-05-14 14:02:05.414564544 +0800
+@@ -327,6 +327,6 @@
+     void setWidth( long );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_nodeimpl.h.orig	2012-05-14 14:03:31.550564497 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_nodeimpl.h	2012-05-14 14:04:03.514564478 +0800
+@@ -43,7 +43,7 @@
+     enum FindSelectionResult { SelectionPointBefore,
+                                SelectionPointAfter,
+                                SelectionPointInside };
+-};
++}
+ 
+ namespace DOM {
+ 
+@@ -543,5 +543,5 @@
+     QList<NodeImpl> *m_contents;
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_elementimpl.h.orig	2012-05-14 14:05:08.794564444 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_elementimpl.h	2012-05-14 14:05:26.654564433 +0800
+@@ -235,6 +235,6 @@
+     void clearAttrs();
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_elementimpl.h.orig	2012-05-14 14:06:52.050564386 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_elementimpl.h	2012-05-14 14:07:07.634564378 +0800
+@@ -78,6 +78,6 @@
+     ushort _id;
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_blockimpl.h.orig	2012-05-14 14:08:42.990564324 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_blockimpl.h	2012-05-14 14:09:03.730564314 +0800
+@@ -150,5 +150,5 @@
+     bool fixed;
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_inline.h.orig	2012-05-14 14:11:29.382564234 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_inline.h	2012-05-14 14:11:45.518564225 +0800
+@@ -613,6 +613,6 @@
+     void setCite( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_inlineimpl.h.orig	2012-05-14 14:13:49.206564156 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_inlineimpl.h	2012-05-14 14:14:13.562564144 +0800
+@@ -123,6 +123,6 @@
+     virtual ushort id() const;
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_baseimpl.h.orig	2012-05-14 14:15:14.710564110 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_baseimpl.h	2012-05-14 14:15:32.990564101 +0800
+@@ -209,7 +209,7 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_traversal.h.orig	2012-05-14 14:16:47.562564059 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_traversal.h	2012-05-14 14:17:08.726564048 +0800
+@@ -612,6 +612,6 @@
+ };
+ */
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_traversalimpl.h.orig	2012-05-14 14:18:17.330564010 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_traversalimpl.h	2012-05-14 14:18:36.898564000 +0800
+@@ -188,7 +188,7 @@
+ };
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_docimpl.h.orig	2012-05-14 14:19:41.054563964 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_docimpl.h	2012-05-14 14:20:00.002563953 +0800
+@@ -350,5 +350,5 @@
+ 
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_rule.h.orig	2012-05-14 14:28:23.382563679 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/css_rule.h	2012-05-14 14:28:37.610563670 +0800
+@@ -527,6 +527,6 @@
+ };
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_exception.h.orig	2012-05-14 14:29:12.022563649 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_exception.h	2012-05-14 14:29:28.838563642 +0800
+@@ -87,5 +87,5 @@
+     unsigned short code;
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_ruleimpl.h.orig	2012-05-14 14:32:03.858563555 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_ruleimpl.h	2012-05-14 14:32:26.094563545 +0800
+@@ -31,7 +31,7 @@
+ 
+ namespace khtml {
+     class CachedCSSStyleSheet;
+-};
++}
+ 
+ namespace DOM {
+ 
+@@ -214,6 +214,6 @@
+     CSSRuleImpl *item ( unsigned long /*index*/ ) { return 0; }
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_events.h.orig	2012-05-14 14:34:21.282563481 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_events.h	2012-05-14 14:34:41.326563470 +0800
+@@ -633,5 +633,5 @@
+ 
+ 
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_misc.h.orig	2012-05-14 14:43:16.538563188 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_misc.h	2012-05-14 14:43:55.738563165 +0800
+@@ -191,6 +191,6 @@
+     HTMLFormCollection(NodeImpl *base);
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_textimpl.h.orig	2012-05-14 14:44:52.246563136 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_textimpl.h	2012-05-14 14:45:05.786563127 +0800
+@@ -138,5 +138,5 @@
+ 
+ 
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_documentimpl.h.orig	2012-05-14 14:46:01.278563099 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_documentimpl.h	2012-05-14 14:46:19.214563086 +0800
+@@ -106,6 +106,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_miscimpl.h.orig	2012-05-14 14:47:29.346563049 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_miscimpl.h	2012-05-14 14:47:46.078563039 +0800
+@@ -110,6 +110,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_list.h.orig	2012-05-14 14:56:37.770562748 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_list.h	2012-05-14 14:57:09.946562730 +0800
+@@ -336,6 +336,6 @@
+     void setType( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_listimpl.h.orig	2012-05-14 14:58:27.498562687 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_listimpl.h	2012-05-14 14:58:42.962562679 +0800
+@@ -132,6 +132,6 @@
+     virtual ushort id() const;
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_headimpl.h.orig	2012-05-14 15:07:34.074562387 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_headimpl.h	2012-05-14 15:08:16.762562364 +0800
+@@ -31,7 +31,7 @@
+ #include "misc/loader_client.h"
+ namespace khtml {
+     class CachedCSSStyleSheet;
+-};
++}
+ 
+ 
+ namespace DOM {
+@@ -174,6 +174,6 @@
+     virtual void setTitle();
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_valueimpl.h.orig	2012-05-14 15:10:05.230562304 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/css_valueimpl.h	2012-05-14 15:10:25.222562294 +0800
+@@ -33,7 +33,7 @@
+ namespace khtml {
+     class CachedImage;
+     class RenderStyle;
+-};
++}
+ 
+ namespace DOM {
+ 
+@@ -251,6 +251,6 @@
+ };
+ // ------------------------------------------------------------------------------
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_text.h.orig	2012-05-14 15:12:13.434562234 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_text.h	2012-05-14 15:12:29.346562224 +0800
+@@ -305,5 +305,5 @@
+ 
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_form.h.org	2012-05-14 15:22:53.746561883 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_form.h	2012-05-14 15:23:09.494561875 +0800
+@@ -1323,6 +1323,6 @@
+     void setPrompt( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_object.h.orig	2012-05-14 15:23:24.190561865 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_object.h	2012-05-14 15:23:46.986561852 +0800
+@@ -574,6 +574,6 @@
+     void setValueType( const DOMString & );
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_objectimpl.h.orig	2012-05-14 15:25:15.450561805 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_objectimpl.h	2012-05-14 15:25:27.882561799 +0800
+@@ -136,5 +136,5 @@
+     DOMStringImpl *m_value;
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_xml.h.orig	2012-05-14 15:39:19.838561342 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom_xml.h	2012-05-14 15:39:40.650561329 +0800
+@@ -309,5 +309,5 @@
+     ProcessingInstruction(ProcessingInstructionImpl *i);
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_views.h.orig	2012-05-14 15:39:59.870561319 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/dom2_views.h	2012-05-14 15:40:17.690561310 +0800
+@@ -86,5 +86,5 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_head.h.orig	2012-05-14 15:52:03.742560923 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_head.h	2012-05-14 15:52:18.058560914 +0800
+@@ -548,6 +548,6 @@
+     void setText( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_base.h.orig	2012-05-14 15:55:49.606560797 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_base.h	2012-05-14 15:56:05.446560789 +0800
+@@ -420,6 +420,6 @@
+     void setVersion( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_image.h.orig	2012-05-14 16:36:38.902559454 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_image.h	2012-05-14 16:36:58.342559443 +0800
+@@ -421,6 +421,6 @@
+     void setName( const DOMString & );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_imageimpl.h.orig	2012-05-14 16:37:56.442559411 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_imageimpl.h	2012-05-14 16:38:11.330559403 +0800
+@@ -129,6 +129,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_formimpl.h.orig	2012-05-14 16:40:48.026559316 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_formimpl.h	2012-05-14 16:41:00.826559310 +0800
+@@ -538,6 +538,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_rangeimpl.h.orig	2012-05-14 16:53:00.042558916 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_rangeimpl.h	2012-05-14 16:53:17.998558905 +0800
+@@ -101,7 +101,7 @@
+     bool containedByReadOnly();
+ };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_table.h.orig	2012-05-14 16:55:46.898558825 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/dom/html_table.h	2012-05-14 16:56:02.486558815 +0800
+@@ -970,6 +970,6 @@
+     void deleteRow ( long index );
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_tableimpl.h.orig	2012-05-14 16:57:04.326558780 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/html_tableimpl.h	2012-05-14 16:57:19.326558772 +0800
+@@ -249,7 +249,7 @@
+     virtual void parseAttribute(AttrImpl *attr);
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_eventsimpl.h.orig	2012-05-14 17:01:53.682558623 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_eventsimpl.h	2012-05-14 17:02:08.954558613 +0800
+@@ -273,6 +273,6 @@
+     bool useCapture;
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+ // vim:ts=4:sw=4
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_viewsimpl.h.orig	2012-05-14 17:01:24.482558639 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom2_viewsimpl.h	2012-05-14 17:01:39.302558629 +0800
+@@ -43,5 +43,5 @@
+     DocumentImpl *m_document;
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/csshelper.h.orig	2012-05-14 17:04:58.794558521 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/csshelper.h	2012-05-14 17:05:21.494558509 +0800
+@@ -34,7 +34,7 @@
+ namespace DOM
+ {
+     class CSSPrimitiveValueImpl;
+-};
++}
+ 
+ namespace khtml
+ {
+@@ -44,7 +44,7 @@
+      * mostly just removes the url("...") brace
+      */
+     DOM::DOMString parseURL(const DOM::DOMString &url);
+-};
++}
+ 
+ 
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssvalues.c.orig	2012-05-14 17:07:10.854558449 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssvalues.c	2012-05-14 17:07:29.358558438 +0800
+@@ -660,5 +660,5 @@
+       return DOMString();
+     else
+       return DOMString(valueList[id]);
+-};
++}
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssproperties.c.orig	2012-05-14 17:06:25.146558473 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssproperties.c	2012-05-14 17:06:49.802558460 +0800
+@@ -461,5 +461,5 @@
+       return 0;
+     else
+       return DOMString(propertyList[id]);
+-};
++}
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssstyleselector.h.orig	2012-05-14 17:11:21.770558310 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/css/cssstyleselector.h	2012-05-14 17:11:33.826558304 +0800
+@@ -235,5 +235,5 @@
+ 		      Source regular, Source important );
+     };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/stringit.h.orig	2012-05-14 17:24:37.266557875 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/misc/stringit.h	2012-05-14 17:24:49.974557867 +0800
+@@ -72,6 +72,6 @@
+ };
+ 
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/htmltokenizer.h.orig	2012-05-14 17:25:52.210557833 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/htmltokenizer.h	2012-05-14 17:26:22.546557815 +0800
+@@ -112,7 +112,7 @@
+         DOMStringImpl* text;
+         bool complexText;
+     };
+-};
++}
+ 
+ // The count of spaces used for each tab.
+ #define TAB_SIZE 8
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_object.h.orig	2012-05-14 17:27:35.198557776 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_object.h	2012-05-14 17:27:55.538557766 +0800
+@@ -41,7 +41,7 @@
+ namespace DOM {
+     class DOMString;
+     class NodeImpl;
+-};
++}
+ 
+ namespace khtml {
+ 
+@@ -372,5 +372,5 @@
+     PositionUndefined = 0x3fff
+ };
+ 
+-}; //namespace
++} //namespace
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_container.h.orig	2012-05-14 17:28:45.630557738 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_container.h	2012-05-14 17:29:00.618557729 +0800
+@@ -59,5 +59,5 @@
+     RenderObject *m_first;
+     RenderObject *m_last;
+ };
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_box.h.orig	2012-05-14 17:29:48.866557703 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_box.h	2012-05-14 17:30:04.942557694 +0800
+@@ -137,6 +137,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/bidi.h.orig	2012-05-14 17:30:58.810557665 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/bidi.h	2012-05-14 17:31:23.554557650 +0800
+@@ -118,6 +118,6 @@
+ 	QChar::Direction last		: 5;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_flow.h.orig	2012-05-14 17:32:08.906557625 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_flow.h	2012-05-14 17:32:23.982557618 +0800
+@@ -179,6 +179,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_root.h.orig	2012-05-14 17:33:11.086557591 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_root.h	2012-05-14 17:33:27.450557582 +0800
+@@ -96,5 +96,5 @@
+     bool m_printingMode;
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_text.h.orig	2012-05-14 17:35:59.982557499 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_text.h	2012-05-14 17:36:16.098557489 +0800
+@@ -205,5 +205,5 @@
+ };
+ 
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/htmlparser.h.orig	2012-05-14 17:39:40.210557379 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/html/htmlparser.h	2012-05-14 17:40:00.482557367 +0800
+@@ -58,7 +58,7 @@
+ 
+ namespace khtml {
+     class Token;
+-};
++}
+ 
+ class KHTMLParser;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_replaced.h.orig	2012-05-14 17:49:57.150557041 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_replaced.h	2012-05-14 17:50:11.830557032 +0800
+@@ -96,6 +96,6 @@
+     QWidget *m_widget;
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_image.h.orig	2012-05-14 17:57:05.538556803 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_image.h	2012-05-14 17:57:16.362556798 +0800
+@@ -95,6 +95,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_br.h.orig	2012-05-14 17:56:37.254556820 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_br.h	2012-05-14 17:56:50.362556813 +0800
+@@ -59,5 +59,5 @@
+     virtual void cursorPos(int offset, int &_x, int &_y, int &height);
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_frames.h.orig	2012-05-14 19:51:12.464459262 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_frames.h	2012-05-14 19:52:09.503925229 +0800
+@@ -35,7 +35,7 @@
+   class HTMLFrameElementImpl;
+   class HTMLElementImpl;
+   class MouseEventImpl;
+-};
++}
+ 
+ namespace khtml
+ {
+@@ -150,6 +150,6 @@
+     void slotViewCleared();
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_body.h.orig	2012-05-14 19:53:06.755285199 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_body.h	2012-05-14 19:53:23.826745190 +0800
+@@ -56,5 +56,5 @@
+         bool scrollbarsStyled;
+ 
+     };
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_html.h.orig	2012-05-14 19:54:44.354461144 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_html.h	2012-05-14 19:54:57.751759137 +0800
+@@ -49,5 +49,5 @@
+     private:
+         QScrollView* m_view;
+     };
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_list.h.orig	2012-05-14 20:06:06.830300770 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_list.h	2012-05-14 20:06:18.150300764 +0800
+@@ -94,6 +94,6 @@
+     RenderListMarker *m_marker;
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_form.h.orig	2012-05-14 20:07:53.214300712 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_form.h	2012-05-14 20:08:39.974300687 +0800
+@@ -52,7 +52,7 @@
+     class HTMLSelectElementImpl;
+     class HTMLGenericFormElementImpl;
+     class HTMLTextAreaElementImpl;
+-};
++}
+ 
+ namespace khtml {
+ 
+@@ -390,6 +390,6 @@
+ 
+ // -------------------------------------------------------------------------
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_applet.h.orig	2012-05-14 20:11:03.446300606 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_applet.h	2012-05-14 20:11:19.494300598 +0800
+@@ -64,5 +64,5 @@
+     virtual void layout();
+ };
+ 
+-};
++}
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_table.h.orig	2012-05-14 20:13:29.142300527 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_table.h	2012-05-14 20:14:07.590300504 +0800
+@@ -38,7 +38,7 @@
+ 
+ namespace DOM {
+     class DOMString;
+-};
++}
+ 
+ namespace khtml {
+ 
+@@ -462,6 +462,6 @@
+     RenderTable *table;
+ };
+ 
+-};
++}
+ #endif
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/break_lines.h.orig	2012-05-14 20:16:28.594300430 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/break_lines.h	2012-05-14 20:16:36.726300425 +0800
+@@ -2,4 +2,4 @@
+ 
+ namespace khtml {
+     bool isBreakable( const QChar *str, int pos, int len );
+-};
++}
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/break_lines.cpp.orig	2012-05-14 20:20:06.790300308 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/break_lines.cpp	2012-05-14 20:20:16.386300304 +0800
+@@ -80,4 +80,4 @@
+     return false;
+ }
+ 
+-};
++}
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_hr.h.orig	2012-05-14 20:23:06.486300208 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/rendering/render_hr.h	2012-05-14 20:23:30.362300198 +0800
+@@ -51,6 +51,6 @@
+ };
+ 
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_events.h.orig	2012-05-14 20:25:45.498300124 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_events.h	2012-05-14 20:26:05.574300110 +0800
+@@ -148,6 +148,6 @@
+   static const char *s_strDrawContentsEvent;
+ };
+ 
+-};
++}
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_proxy.h.orig	2012-05-14 20:28:16.418300041 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_proxy.h	2012-05-14 20:28:30.910300033 +0800
+@@ -29,7 +29,7 @@
+ namespace DOM {
+   class Node;
+   class EventListener;
+-};
++}
+ 
+ namespace KJS {
+   class KJSO;
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_part.cpp.orig	2012-05-14 20:29:50.130299990 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_part.cpp	2012-05-14 20:30:30.934299966 +0800
+@@ -130,7 +130,7 @@
+     bool m_bNotify;
+   };
+ 
+-};
++}
+ 
+ class FrameList : public QValueList<khtml::ChildFrame>
+ {
+@@ -413,7 +413,7 @@
+         QGuardedPtr<KHTMLPart> m_part;
+         khtml::CachedCSSStyleSheet *m_cachedSheet;
+     };
+-};
++}
+ 
+ 
+ FrameList::Iterator FrameList::find( const QString &name )
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_factory.cpp.orig	2012-05-14 22:06:22.574959925 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/khtml_factory.cpp	2012-05-14 22:06:41.682959913 +0800
+@@ -56,7 +56,7 @@
+       // (Simon)
+       return new KHTMLFactory( true );
+   }
+-};
++}
+ 
+ KHTMLFactory *KHTMLFactory::s_self = 0;
+ unsigned long int KHTMLFactory::s_refcnt = 0;
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_binding.h.orig	2012-05-14 22:09:04.906959832 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_binding.h	2012-05-14 22:09:26.258959823 +0800
+@@ -67,6 +67,6 @@
+ 
+   QVariant KJSOToVariant(KJSO obj);
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_css.h.orig	2012-05-14 22:09:44.162959814 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_css.h	2012-05-14 22:09:56.786959806 +0800
+@@ -331,6 +331,6 @@
+ 
+   KJSO getDOMCounter(DOM::Counter c);
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_dom.h.orig	2012-05-14 22:10:13.626959797 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_dom.h	2012-05-14 22:10:34.278959786 +0800
+@@ -257,6 +257,6 @@
+   KJSO getNodePrototype();
+   KJSO getDOMExceptionPrototype();
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_html.h.orig	2012-05-14 22:10:55.550959774 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_html.h	2012-05-14 22:11:08.110959766 +0800
+@@ -165,6 +165,6 @@
+   KJSO getSelectHTMLCollection(DOM::HTMLCollection c, DOM::HTMLSelectElement e);
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_window.h.orig	2012-05-14 22:11:26.222959757 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_window.h	2012-05-14 22:11:44.274959747 +0800
+@@ -161,6 +161,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_events.h.orig	2012-05-14 22:11:56.866959740 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_events.h	2012-05-14 22:12:09.434959734 +0800
+@@ -170,6 +170,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_text.h.orig	2012-05-14 22:16:11.378959600 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_text.h	2012-05-14 22:16:31.390959590 +0800
+@@ -70,6 +70,6 @@
+   };
+ 
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_range.h.orig	2012-05-14 22:16:44.910959580 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_range.h	2012-05-14 22:17:00.470959574 +0800
+@@ -72,6 +72,6 @@
+    */
+   DOM::Range toRange(const KJSO&);
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_traversal.h.orig	2012-05-14 22:17:19.682959564 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_traversal.h	2012-05-14 22:17:33.142959555 +0800
+@@ -127,6 +127,6 @@
+     KJSO filter;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_views.h.orig	2012-05-14 22:17:49.222959548 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_views.h	2012-05-14 22:18:01.970959539 +0800
+@@ -57,6 +57,6 @@
+    */
+   DOM::AbstractView toAbstractView(const KJSO&);
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_window.cpp.orig	2012-05-14 22:22:07.150959406 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_window.cpp	2012-05-14 22:23:06.758959370 +0800
+@@ -89,7 +89,7 @@
+   QGuardedPtr<KHTMLPart> part;
+ };
+ 
+-}; // namespace KJS
++} // namespace KJS
+ 
+ ////////////////////// Screen Object ////////////////////////
+ 
+@@ -1289,7 +1289,7 @@
+         return String(m_part->url().prettyURL());
+ }
+ 
+-LocationFunc::LocationFunc( const Location* loc, int i) : location(loc), id(i) { };
++LocationFunc::LocationFunc( const Location* loc, int i) : location(loc), id(i) { }
+ 
+ Completion LocationFunc::tryExecute(const List &args)
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_navigator.h.orig	2012-05-14 22:21:12.966959436 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_navigator.h	2012-05-14 22:21:24.254959429 +0800
+@@ -38,6 +38,6 @@
+   private:
+     KHTMLPart *part;
+   };
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_navigator.cpp.orig	2012-05-14 22:25:33.978959292 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_navigator.cpp	2012-05-14 22:25:56.510959280 +0800
+@@ -133,7 +133,7 @@
+     private:
+         KHTMLPart *part;
+     };
+-};
++}
+ 
+ 
+ QList<PluginBase::PluginInfo> *KJS::PluginBase::plugins = 0;
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_css.cpp.orig	2012-05-14 22:27:52.738959216 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/ecma/kjs_css.cpp	2012-05-14 22:29:02.386959177 +0800
+@@ -541,7 +541,7 @@
+     return getDOMCSSRule(cssRule.parentRule());
+ 
+   return DOMObject::tryGet(p);
+-};
++}
+ 
+ void DOMCSSRule::tryPut(const UString &p, const KJSO& v)
+ {
+@@ -678,7 +678,7 @@
+     return Number(cssValue.cssValueType());
+ 
+   return DOMObject::tryGet(p);
+-};
++}
+ 
+ void DOMCSSValue::tryPut(const UString &p, const KJSO& v)
+ {
+@@ -766,7 +766,7 @@
+     return new DOMCSSPrimitiveValueFunc(val,DOMCSSPrimitiveValueFunc::GetRGBColorValue);
+ 
+   return DOMObject::tryGet(p);
+-};
++}
+ 
+ Completion DOMCSSPrimitiveValueFunc::tryExecute(const List &args)
+ {
+@@ -872,7 +872,7 @@
+     return getDOMCSSValue(valueList.item(u));
+ 
+   return DOMCSSValue::tryGet(p);
+-};
++}
+ 
+ Completion DOMCSSValueListFunc::tryExecute(const List &args)
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/src/mainwindowbase.h.orig	2012-05-14 22:34:39.486958993 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/src/mainwindowbase.h	2012-05-14 22:35:00.222958980 +0800
+@@ -46,7 +46,7 @@
+ namespace KIO
+ {
+     class Job;
+-};
++}
+ 
+ class MainWindowBase : public QMainWindow
+ {
+--- konqueror-embedded-snapshot-20030705/konq-embed/src/bookmarks.h.orig	2012-05-14 22:31:30.534959094 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/src/bookmarks.h	2012-05-14 22:33:17.114959038 +0800
+@@ -44,6 +44,8 @@
+ 
+ };
+ 
++class BookmarkFolder;
++
+ class Bookmark
+ {
+     friend class BookmarkFolder;
+--- konqueror-embedded-snapshot-20030705/konq-embed/src/view.h.orig	2012-05-14 22:38:50.502958855 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/src/view.h	2012-05-14 22:39:25.558958836 +0800
+@@ -40,7 +40,7 @@
+ namespace KIO
+ {
+     class Job;
+-};
++}
+ 
+ class BrowserInterface;
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/src/browseriface.h.orig	2012-05-14 22:41:10.182958778 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/src/browseriface.h	2012-05-14 22:41:46.466958757 +0800
+@@ -28,7 +28,7 @@
+ class BrowserInterface : public KParts::BrowserInterface
+ {
+     Q_OBJECT
+-    Q_PROPERTY( uint historyLength READ historyLength );
++    Q_PROPERTY( uint historyLength READ historyLength )
+ public:
+     BrowserInterface( BrowserView *view, const char *name );
+ 
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/regexp_object.h.orig	2012-05-14 23:10:50.494957801 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/kjs/regexp_object.h	2012-05-14 23:11:12.230957789 +0800
+@@ -47,6 +47,6 @@
+     int id;
+   };
+ 
+-}; // namespace
++} // namespace
+ 
+ #endif
+--- konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_xmlimpl.h.orig	2012-05-14 23:19:35.962957512 +0800
++++ konqueror-embedded-snapshot-20030705/konq-embed/kdesrc/khtml/xml/dom_xmlimpl.h	2012-05-14 23:19:50.930957504 +0800
+@@ -137,6 +137,6 @@
+     QString m_attrString;
+ };
+ 
+-}; //namespace
++} //namespace
+ 
+ #endif

@@ -1,0 +1,7 @@
+  source noncore/multimedia/camera/config.in
+  source noncore/multimedia/camera2/config.in
+  source noncore/multimedia/opieplayer2/config.in
+  source noncore/multimedia/opierec/config.in
+  source noncore/multimedia/powerchord/config.in
+  source noncore/multimedia/tonleiter/config.in
+

@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/libs/libmng/Makefile
+Package: libmng
+Submenu: libs
+Version: 1.0.10-1
+Depends: +zlib +libjpeg +liblcms
+Provides: 
+Section: qpe-
+Category: Qt/Qtopia
+Title: A MNG format files handling library
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: libmng-1.0.10.tar.bz2
+Type: ipkg
+Description: A MNG format files handling library
+www.libmng.com/MNGsuite/
+@@
+
+

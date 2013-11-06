@@ -1,0 +1,28 @@
+#
+# This patch modified the qconfig-qpe.h to support cursor & mouse,
+# when the configure is '-qconfig qpe' .
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+#
+# qtopia-free-2.2.0/qt2/doc/html/pointer-qws.html
+#  Macros defined at Qte compile time	Default mouse device used	Class name used
+#  QWS_CUSTOMTOUCHPANEL	 		/dev/ts 			QCustomTPanelHandlerPrivate
+#  QT_QWS_IPAQ and QT_QWS_IPAQ_RAW	/dev/h3600_tsraw		QTPanelHandlerPrivate
+#  QT_QWS_IPAQ				/dev/h3600_ts			QTPanelHandlerPrivate
+#  QT_QWS_SL5XXX			/dev/ts				QTPanelHandlerPrivate
+#  QT_QWS_TSLIB 			/dev/ts 			QTSLibHandlerPrivate
+#  QT_QWS_YOPY 				/dev/ts 			QYopyTPanelHandlerPrivate
+
+
+--- qtopia-free-2.1.1/src/qt/qconfig-qpe.h.orig	2012-05-10 23:45:25.389158211 +0800
++++ qtopia-free-2.1.1/src/qt/qconfig-qpe.h	2012-05-10 23:49:40.957158131 +0800
+@@ -156,3 +156,8 @@
+ #define QT_NO_QWS_VGA_16
+ #define QT_NO_QWS_SVGALIB
+ #endif
++
++#define QT_QWS_IPAQ
++#define QT_QWS_IPAQ_RAW
++#define QT_QWS_TSLIB
++

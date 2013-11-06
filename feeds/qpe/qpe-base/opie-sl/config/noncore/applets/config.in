@@ -1,0 +1,13 @@
+  source noncore/applets/autorotateapplet/config.in
+  source noncore/applets/brightnessapplet/config.in
+  source noncore/applets/cardapplet/config.in
+  source noncore/applets/keyhelper/config.in
+  source noncore/applets/memoryapplet/config.in
+  source noncore/applets/networkapplet/config.in
+  source noncore/applets/notesapplet/config.in
+  source noncore/applets/pcmcia/config.in
+  source noncore/applets/pyquicklaunch/config.in
+  source noncore/applets/volumeapplet2/config.in
+  source noncore/applets/wirelessapplet/config.in
+  source noncore/applets/zkbapplet/config.in
+

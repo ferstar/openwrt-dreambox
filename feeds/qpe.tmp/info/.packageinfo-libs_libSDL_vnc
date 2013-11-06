@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/libs/libSDL_vnc/Makefile
+Package: libSDL_vnc
+Submenu: libs
+Version: 1.0.0-1
+Depends: +libSDL
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: SDL based VNC client library with a threaded renderer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_vnc-1.0.0.tar.gz
+Type: ipkg
+Description:   SDL based VNC client library with a threaded renderer.
+http://www.ferzkopp.net/Software/SDL_vnc/
+@@
+
+

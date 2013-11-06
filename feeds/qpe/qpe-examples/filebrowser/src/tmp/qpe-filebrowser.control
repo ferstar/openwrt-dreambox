@@ -1,0 +1,10 @@
+Files: bin/filebrowser apps/Applications/filebrowser.desktop
+Priority: optional
+Section: qpe/applications
+Maintainer: Trolltech (www.trolltech.com)
+Architecture: $CPU_ARCH
+Arch: $DEVICE_ARCH
+Version: $QPE_VERSION-12
+Depends: qpe-libqtopia
+Description: Browse the file system
+ The filebrowser for the Qtopia environment.

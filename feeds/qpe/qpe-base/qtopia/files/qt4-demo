@@ -1,0 +1,12 @@
+#! /bin/sh
+
+. /etc/tslib-env.sh
+. /etc/qtopia-env.sh
+# 1 running starter-dialog
+/opt/Qtopia/bin/starter-dialog -qws >/dev/console </dev/console
+
+. /etc/tslib-env.sh
+. /etc/qt4-env.sh
+
+exec /usr/share/Qt/demos/textedit/textedit -qws >/dev/console </dev/console
+

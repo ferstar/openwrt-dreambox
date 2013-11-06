@@ -1,0 +1,9 @@
+  source core/apps/calibrate/config.in
+  source core/apps/embeddedkonsole/config.in
+  source core/apps/helpbrowser/config.in
+  source core/apps/oapp/config.in
+  source core/apps/qcop/config.in
+  source core/apps/qss/config.in
+  source core/apps/taboapp/config.in
+  source core/apps/textedit/config.in
+

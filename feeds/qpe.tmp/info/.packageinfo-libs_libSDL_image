@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/libs/libSDL_image/Makefile
+Package: libSDL_image
+Submenu: libs
+Version: 1.2.12-2
+Depends: +libSDL +libjpeg +libpng +libpthread +BUILD_NLS:libiconv-full 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer Image
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_image-1.2.12.tar.gz
+Type: ipkg
+Description:   SDL_image is a sample image library.
+http://www.libsdl.org/projects/SDL_image/
+@@
+
+

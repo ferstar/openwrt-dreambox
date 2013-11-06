@@ -1,0 +1,51 @@
+--- zbedic-1.2.2/libbedic/Makefile.orig	2012-05-17 06:33:35.806830120 +0800
++++ zbedic-1.2.2/libbedic/Makefile	2012-05-17 06:46:18.645288272 +0800
+@@ -4,29 +4,20 @@
+ DASH_RELEASE=$(VERSION)-$(RELEASE)
+ DOT_RELEASE=$(VERSION).$(RELEASE)
+ 
+-ifeq ($(ARCH), arm)
+-    CC=arm-linux-gcc
+-    CXX=arm-linux-g++
+-    LD=arm-linux-g++
+-    ARCH_CXXFLAGS=-I$(QTDIR)/include -O2 -DARCH_ARM
+-    DEBUG=1
+-else
+-    ARCH=x86
+-    CC=gcc
+-    CXX=g++
+-    LD=g++
+-    ARCH_CXXFLAGS=-DARCH_X86
+-    DEBUG=1
+-endif
++CC=$(TARGET_CROSS)gcc
++CXX=$(TARGET_CROSS)g++
++LD=$(TARGET_CROSS)g++
++ARCH_CXXFLAGS=-I$(QTDIR)/include -O2
++DEBUG=1
+ 
+ OBJDIR=objs.$(ARCH)
+ TARGET=$(OBJDIR)/libbedic.a
+ COMMON_CFLAGS=-pipe -Wall -W
+ COMMON_CXXFLAGS=-pipe -Wall -DQWS -fno-rtti
+ INCLUDES=-Iinclude
+-CFLAGS=$(COMMON_CFLAGS) $(ARCH_CFLAGS) $(INCLUDES)
+-CXXFLAGS=$(COMMON_CXXFLAGS) $(ARCH_CXXFLAGS) $(INCLUDES) -DVERSION=\"$(DOT_RELEASE)\"
+-LIBS=-L/opt/Qtopia/sharp/lib -lz -lsqlite3
++CFLAGS=$(COMMON_CFLAGS) $(ARCH_CFLAGS) $(INCLUDES) $(TARGET_CFLAGS)
++CXXFLAGS=$(COMMON_CXXFLAGS) $(ARCH_CXXFLAGS) $(INCLUDES) $(TARGET_CXXFLAGS) -DVERSION=\"$(DOT_RELEASE)\"
++LIBS=-L/opt/Qtopia/sharp/lib $(TARGET_LDFLAGS) -lz -lsqlite3
+ 
+ ifdef DEBUG
+     CXXFLAGS+=-g
+@@ -87,7 +78,9 @@
+ 
+ 
+ install:
+-	install objs.x86/xerox $(INSTALL_DIR)/bin
++	mkdir -p $(INSTALL_DIR)/bin/
++	mkdir -p $(INSTALL_DIR)/man/man1/
++	install objs.$(ARCH)/xerox $(INSTALL_DIR)/bin/
+ 	install src/xerox.1 $(INSTALL_DIR)/man/man1/
+ 
+ clean:

@@ -1,0 +1,24 @@
+Source-Makefile: feeds/qpe/qpe-examples/qt4map/Makefile
+Package: qt4map
+Submenu: qpe-apps
+Version: 1.0-1
+Depends: +mitab +Qt4
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qt4-mitab-mif-map
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description:   Author:   hugerat <njjqs115@jlonline.com>
+  Blog:
+            http://blog.chinaunix.net/uid/11153816.html
+            http://blog.csdn.net/zy_emb
+  detail:
+            http://blog.chinaunix.net/uid-11153816-id-2903476.html
+            http://blog.csdn.net/zy_emb/article/details/6213486
+            http://www.arm9home.net/read.php?tid-10310.html
+http://blog.chinaunix.net/uid/11153816.html
+@@
+
+

@@ -1,0 +1,39 @@
+--- ./core/obex/obexserver.cpp.orig	2012-09-17 21:26:02.580371185 +0800
++++ ./core/obex/obexserver.cpp	2012-09-17 21:30:17.064371190 +0800
+@@ -93,6 +93,27 @@
+     return err;
+ }
+ 
++// modified by Richard Nee <richard.nee.cn@gmail.com>
++static int UnicodeToChar(uint8_t *c, const uint8_t *uc, int size)
++{
++	int n;
++
++	if (uc == NULL || c == NULL)
++		return -1;
++
++	/* Make sure buffer is big enough! */
++	for (n = 0; uc[n*2+1] != 0; n++);
++
++	if (n >= size)
++		return -1;
++
++	for (n = 0; uc[n*2+1] != 0; n++)
++		c[n] = uc[n*2+1];
++	c[n] = 0;
++
++	return 0;
++}
++
+ /**
+  * Function handles the situation when the PUT request has been done
+  * @param handle OBEX connection handle
+@@ -118,7 +139,7 @@
+ 
+         case OBEX_HDR_NAME:
+             name = new uint8_t[(hlen / 2) + 1];
+-            OBEX_UnicodeToChar(name, hv.bs, hlen);
++            UnicodeToChar(name, hv.bs, hlen);
+             break;
+ 
+         default:

@@ -1,0 +1,36 @@
+#
+# This patch modified the qconfig-qpe.h to support cursor & mouse,
+# when the configure is '-qconfig qpe' .
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- qtopia-free-2.1.1/src/qt/qconfig-qpe.h.orig  2012-05-10 23:45:25.389158211 +0800
++++ qtopia-free-2.1.1/src/qt/qconfig-qpe.h       2012-05-10 23:49:40.957158131 +0800
+@@ -45,6 +45,7 @@
+ // Mouse not normally supported or needed.
+ // (enabling these, eg. so that USB mouse works can be done,
+ // but cursor should be turned on/off when device connected)
++#if 0
+ #ifndef QT_NO_QWS_CURSOR
+ #define QT_NO_QWS_CURSOR
+ #endif
+@@ -54,6 +55,7 @@
+ #ifndef QT_NO_QWS_MOUSE_PC
+ #define QT_NO_QWS_MOUSE_PC
+ #endif
++#endif
+ 
+ // Qtopia Phone
+ #if defined(QTOPIA_PHONE)
+@@ -63,9 +65,11 @@
+ #endif
+ 
+ // No builtin codecs (Qtopia uses plugins to add codecs individually)
++#if 0
+ #ifndef QT_NO_CODECS
+ #define QT_NO_CODECS
+ #endif
++#endif
+ 
+ // No builtin font factories (Qtopia uses plugins)
+ #define QT_NO_FREETYPE

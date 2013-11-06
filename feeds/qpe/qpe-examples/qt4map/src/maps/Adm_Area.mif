@@ -1,0 +1,24 @@
+Version 450
+Charset "Neutral"
+Delimiter ","
+CoordSys Earth Projection 1, 104 Bounds (-1000, -1000) (1000, 1000)
+Columns 7
+  Name Char(60)
+  PopName Char(30)
+  Code Char(12)
+  Type SmallInt
+  Display SmallInt
+  Extention Logical
+  Update Date
+Data
+
+Region 1
+  5
+118.98042 31.917395
+118.61009 31.917395
+118.61009 32.177968
+118.98042 32.177968
+118.98042 31.917395
+    Pen (1,1,8421504)
+    Brush (2,16771577)
+    Center 118.796377 31.923807

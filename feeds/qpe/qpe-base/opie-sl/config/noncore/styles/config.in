@@ -1,0 +1,9 @@
+menu "Styles"
+  source noncore/styles/flat/config.in
+  source noncore/styles/fresh/config.in
+  source noncore/styles/liquid/config.in
+  source noncore/styles/metal/config.in
+  source noncore/styles/phase/config.in
+  source noncore/styles/theme/config.in
+  source noncore/styles/web/config.in
+endmenu

@@ -1,0 +1,19 @@
+Source-Makefile: feeds/qpe/qpe-apps/zbedic/Makefile
+Package: zbedic
+Submenu: qpe-apps
+Version: 1.2-2-3
+Depends: +qpe-build +libpthread +libc +libstdcpp +libsqlite3 +libjpeg +libpng +zlib +libuuid +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qtopia-
+Category: Qt/Qtopia
+Title: Zbedic is an electronic dictionary
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: zbedic_1.2-2.tgz
+Type: ipkg
+Description:   Zbedic is an electronic dictionary reader for Sharp Zaurus and Linux desktop.
+  Now it's ported to every platform which OpenWrt supported.
+http://bedic.sourceforge.net/ http://sourceforge.net/projects/bedic/files/
+@@
+
+

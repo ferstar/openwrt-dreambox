@@ -1,0 +1,18 @@
+  source core/applets/aboutapplet/config.in
+  source core/applets/batteryapplet/config.in
+  source core/applets/cardmon/config.in
+  source core/applets/clipboardapplet/config.in
+  source core/applets/clockapplet/config.in
+  source core/applets/homeapplet/config.in
+  source core/applets/irdaapplet/config.in
+  source core/applets/lockapplet/config.in
+  source core/applets/logoutapplet/config.in
+  source core/applets/multikeyapplet/config.in
+  source core/applets/restartapplet/config.in
+  source core/applets/rotateapplet/config.in
+  source core/applets/screenshotapplet/config.in
+  source core/applets/suspendapplet/config.in
+  source core/applets/vmemo/config.in
+  source core/applets/volumeapplet/config.in
+  source core/applets/vtapplet/config.in
+

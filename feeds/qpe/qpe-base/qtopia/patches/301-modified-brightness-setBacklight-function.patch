@@ -1,0 +1,80 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- qtopia-free-2.1.1.orig/src/applications/photoedit/slideshow/slideshowdialog.cpp	2005-11-11 10:43:29.000000000 +0800
++++ qtopia-free-2.1.1/src/applications/photoedit/slideshow/slideshowdialog.cpp	2009-04-05 15:56:40.000000000 +0800
+@@ -43,7 +43,7 @@
+ {
+ #define LAYOUT_MARGIN 5
+ #define LAYOUT_SPACING 4
+-#define PAUSE_MIN 5
++#define PAUSE_MIN 1
+ #define PAUSE_MAX 60
+ 
+     setCaption( tr( "Slide Show" ) );
+--- qtopia-free-2.1.1.orig/src/libraries/qtopia/qpeapplication.cpp	2005-11-11 10:43:34.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/qpeapplication.cpp	2010-11-04 11:32:52.000000000 +0800
+@@ -745,6 +745,16 @@
+     {
+ 	setBacklight(-1);
+     }
++
++    void soft_down_bright(int New) {
++	int Old = backlight();
++	double Step = (New - Old) / 32.0;
++	for (double i = Old + Step; Step > 0 ? i <= New : i >= New; i+= Step) {
++		setBacklight(int(i + 0.5));
++		usleep(5000);
++	}
++	
++    }
+     bool save(int level)
+     {
+ #ifdef QTOPIA_PHONE
+@@ -763,13 +773,13 @@
+ 	 case 0:
+ 	    if ( disable_suspend > 0 && dim_on ) {
+ 		if (backlight() > 1)
+-		    setBacklight(1); // lowest non-off
++		    soft_down_bright(1); // lowest non-off
+ 	    }
+ 	    return TRUE;
+ 	    break;
+ 	 case 1:
+ 	    if ( disable_suspend > 1 && lightoff_on ) {
+-		setBacklight(0); // off
++		soft_down_bright(0); // off
+ 	    }
+ 	    return TRUE;
+ 	    break;
+
+
+--- qtopia-free-2.1.1.orig/src/plugins/applets/brightness/brightness.cpp	2005-11-11 10:43:21.000000000 +0800
++++ qtopia-free-2.1.1/src/plugins/applets/brightness/brightness.cpp	2010-11-04 12:05:50.000000000 +0800
+@@ -123,6 +123,7 @@
+     slider = new QSlider(this);
+     slider->setBackgroundMode(PaletteButton);
+     slider->setMaxValue(maxbright);
++    slider->setMinValue(1);
+     slider->setOrientation(QSlider::Vertical);
+     slider->setTickmarks(QSlider::Right);
+     slider->setTickInterval(QMAX(1, maxbright / 16));
+@@ -184,7 +185,7 @@
+ //
+ int BrightnessApplet::calcBrightnessValue(void)
+ {
+-    int v = bc->slider->maxValue() - bc->slider->value();
++    int v = bc->slider->maxValue() - bc->slider->value() + bc->slider->minValue();
+ 
+     return (v * 255 + bc->slider->maxValue() / 2) / bc->slider->maxValue();
+ }
+--- qtopia-free-2.1.1.orig/src/settings/light-and-power/light.cpp	2005-11-11 10:43:31.000000000 +0800
++++ qtopia-free-2.1.1/src/settings/light-and-power/light.cpp	2010-11-04 11:37:02.000000000 +0800
+@@ -148,6 +148,7 @@
+     
+     int maxbright = qpe_sysBrightnessSteps();
+     b->brightness->setMaxValue( maxbright );
++    b->brightness->setMinValue( 1 );
+     b->brightness->setTickInterval( QMAX(1,maxbright/16) );
+     b->brightness->setLineStep( QMAX(1,maxbright/16) );
+     b->brightness->setPageStep( QMAX(1,maxbright/16) );

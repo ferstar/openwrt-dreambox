@@ -1,0 +1,23 @@
+  source noncore/games/backgammon/config.in
+  source noncore/games/bounce/config.in
+  source noncore/games/buzzword/config.in
+  source noncore/games/fifteen/config.in
+  source noncore/games/go/config.in
+  source noncore/games/kbill/config.in
+  source noncore/games/kcheckers/config.in
+  source noncore/games/kpacman/config.in
+  source noncore/games/mindbreaker/config.in
+  source noncore/games/minesweep/config.in
+  source noncore/games/oyatzee/config.in
+  source noncore/games/parashoot/config.in
+  source noncore/games/qasteroids/config.in
+  source noncore/games/sfcave/config.in
+  source noncore/games/sfcave-sdl/config.in
+  source noncore/games/snake/config.in
+  source noncore/games/solitaire/config.in
+  source noncore/games/tetrix/config.in
+  source noncore/games/tictac/config.in
+  source noncore/games/wordgame/config.in
+  source noncore/games/zlines/config.in
+  source noncore/games/zsame/config.in
+

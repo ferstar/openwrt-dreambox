@@ -1,0 +1,125 @@
+#
+# This patch adds support for one wire input raw module (Linux /dev/touchscreen-1wire support).
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+
+
+--- tslib.orig/configure.ac	2012-05-07 22:28:42.000000000 +0800
++++ tslib/configure.ac	2012-05-07 23:53:18.849542215 +0800
+@@ -68,6 +68,7 @@
+ TSLIB_CHECK_MODULE([dmc], [yes], [Enable building of dmc raw module (HP iPaq DMC support)])
+ TSLIB_CHECK_MODULE([input], [yes], [Enable building of generic input raw module (Linux /dev/input/eventN support)])
+ TSLIB_CHECK_MODULE([touchkit], [yes], [Enable building of serial TouchKit raw module (Linux /dev/ttySX support)])
++TSLIB_CHECK_MODULE([one-wire-ts-input], [yes], [Enable building of one wire input raw module (Linux /dev/touchscreen-1wire support)])
+ 
+ AC_MSG_CHECKING([where to place modules])
+ AC_ARG_WITH(plugindir,
+--- tslib.orig/plugins/Makefile.am	2012-05-07 22:28:42.000000000 +0800
++++ tslib/plugins/Makefile.am	2012-05-08 00:08:59.229542649 +0800
+@@ -114,6 +114,12 @@
+ CY8MRLN_PALMPRE_MODULE =
+ endif
+ 
++if ENABLE_ONE_WIRE_TS_INPUT_MODULE
++ONE_WIRE_TS_INPUT_MODULE = one_wire_ts_input.la
++else
++ONE_WIRE_TS_INPUT_MODULE =
++endif
++
+ pluginexec_LTLIBRARIES = \
+ 	$(LINEAR_MODULE) \
+ 	$(DEJITTER_MODULE) \
+@@ -130,7 +136,8 @@
+ 	$(H2200_LINEAR_MODULE) \
+ 	$(INPUT_MODULE) \
+ 	$(TOUCHKIT_MODULE) \
+-	$(CY8MRLN_PALMPRE_MODULE)
++	$(CY8MRLN_PALMPRE_MODULE) \
++	$(ONE_WIRE_TS_INPUT_MODULE)
+   
+ variance_la_SOURCES	= variance.c
+ variance_la_LDFLAGS	= -module $(LTVSN)
+@@ -185,3 +192,6 @@
+ 
+ cy8mrln_palmpre_la_SOURCES = cy8mrln-palmpre.c
+ cy8mrln_palmpre_la_LDFLAGS = -module $(LTVSN)
++
++one_wire_ts_input_la_SOURCES = one-wire-ts-input.c
++one_wire_ts_input_la_LDFLAGS = -module $(LTVSN)
+--- tslib.orig/plugins/plugins.h	2012-05-07 22:28:42.000000000 +0800
++++ tslib/plugins/plugins.h	2012-05-07 23:57:38.369542335 +0800
+@@ -16,3 +16,4 @@
+ TSLIB_DECLARE_MODULE(tatung);
+ TSLIB_DECLARE_MODULE(input);
+ TSLIB_DECLARE_MODULE(cy8mrln_palmpre);
++TSLIB_DECLARE_MODULE(one_wire_ts_input);
+--- /dev/null	2012-05-08 11:52:49.481035009 +0800
++++ tslib/plugins/one-wire-ts-input.c	2012-05-08 12:04:38.749035337 +0800
+@@ -0,0 +1,66 @@
++#include <termios.h>
++#include <stdio.h>
++#include <unistd.h>
++#include <stdlib.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <sys/ioctl.h>
++#include <fcntl.h>
++#include <linux/fs.h>
++#include <errno.h>
++#include <string.h>
++#include <sys/utsname.h>
++#include <time.h>
++
++#include "config.h"
++#include "tslib-private.h"
++
++static int misc_read(struct tslib_module_info *inf, struct ts_sample *samp, int nr)
++{
++	struct tsdev *ts = inf->dev;
++
++	int ret;
++	unsigned ts_status;
++	ret = read(ts->fd, &ts_status, sizeof ts_status);
++	if (ret < 0) {
++		return 0;
++	}
++	if (ret == 0) {
++		return 0;
++	}
++
++	samp->x = ((ts_status) >> 16) & 0x7FFF;
++	samp->y = ts_status & 0x7FFF;
++	samp->pressure = ts_status >> 31;
++	gettimeofday(&samp->tv,NULL);
++	nr = nr;
++
++	return 1;
++}
++static int ts_fini(struct tslib_module_info *inf)
++{
++        free(inf);
++        return 0;
++}
++
++static const struct tslib_ops misc_ops =
++{
++	.read	= misc_read,
++        .fini   = ts_fini,
++};
++
++TSAPI struct tslib_module_info *one_wire_ts_mod_init(struct tsdev *dev, const char *params)
++{
++	struct tslib_module_info *m;
++
++	m = malloc(sizeof(struct tslib_module_info));
++	if (m == NULL)
++		return NULL;
++
++	m->ops = &misc_ops;
++	return m;
++}
++
++#ifndef TSLIB_STATIC_FRIENDLYARM_TS_MODULE
++TSLIB_MODULE_INIT(one_wire_ts_mod_init);
++#endif

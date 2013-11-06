@@ -1,0 +1,36 @@
+Source-Makefile: feeds/qpe/libs/libsword/Makefile
+Package: libsword
+Submenu: libs
+Version: 1.5.9-1
+Depends: +zlib +libcurl
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: The SWORD API/library for Bible software
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sword-1.5.9.tar.gz
+Type: ipkg
+Description:   The SWORD Project is an open source, cross-platform (Linux, Windows, Solaris, MacOSX etc.) 
+  API/library for Bible software with a constantly growing list of front-ends 
+  (GUI, textmode, web-based, etc.) and a library of over 200 text modules.
+http://www.crosswire.org
+@@
+
+Package: libsword-utils
+Submenu: apps
+Version: 1.5.9-1
+Depends: +libsword
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: utils for bible documents in SWORD supported formats
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sword-1.5.9.tar.gz
+Type: ipkg
+Description: utils for bible documents in SWORD supported formats
+http://www.crosswire.org
+@@
+
+

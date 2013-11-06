@@ -1,0 +1,19 @@
+Source-Makefile: feeds/qpe/libs/libSDL/Makefile
+Package: libSDL
+Submenu: libs
+Version: 1.2.14-2
+Depends: +directfb +zlib +libpthread +AUDIO_SUPPORT:alsa-lib +libts
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: Simple DirectMedia Layer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: SDL-1.2.14.tar.gz
+Type: ipkg
+Description:  SDL is a library that allows programs portable low level access to a video
+ framebuffer, audio output, mouse, and keyboard.
+http://www.libsdl.org
+@@
+
+

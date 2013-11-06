@@ -1,0 +1,177 @@
+#
+# This patch modified the bugs that some certain codes could not be
+# compiled with GCC >= 4.3 Version, as some g++ classes changed.
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+
+
+#
+# <g++编译器提示有多余的符号错误>
+# 有些编译器规定C++成员函数前不需要再加这个类的名字
+#
+--- qtopia-free-2.1.1/src/libraries/qtopia/qdawg.cpp.orig	2005-11-11 10:43:32.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/qdawg.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -291,7 +291,7 @@
+ 
+     bool ok() const { return node; }
+ 
+-    QDawgPrivate::~QDawgPrivate()
++    ~QDawgPrivate()
+     {
+ 	delete memoryFile;
+     }
+--- qtopia-free-2.1.1/src/libraries/qtopia2/thumbnailview_p.h.orig	2005-11-11 10:43:35.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia2/thumbnailview_p.h	2009-03-30 16:25:16.000000000 +0800
+@@ -78,7 +78,7 @@
+     void reload() { _loaded = loading = false; }
+     
+ protected:
+-    void ThumbnailItem::paintItem( QPainter*, const QColorGroup& );
++    void paintItem( QPainter*, const QColorGroup& );
+ 
+ private:
+     int _size;
+--- qtopia-free-2.1.1/src/libraries/mediaplayer/videoviewer.cpp.orig	2005-11-11 10:43:35.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/mediaplayer/videoviewer.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -49,7 +49,7 @@
+ 
+ class SimpleVideoWidget : public ControlWidgetBase {
+ public:
+-    SimpleVideoWidget::SimpleVideoWidget(QWidget *parent);
++    SimpleVideoWidget(QWidget *parent);
+     ~SimpleVideoWidget() { }
+     void makeVisible() { }
+     void updateVolume() { }
+--- qtopia-free-2.1.1/src/applications/addressbook/ablabel.h.orig	2005-11-11 10:43:30.000000000 +0800
++++ qtopia-free-2.1.1/src/applications/addressbook/ablabel.h	2009-03-30 16:25:16.000000000 +0800
+@@ -52,7 +52,7 @@
+ 
+     virtual void setSource( const QString& name );
+ 
+-    bool AbLabel::decodeHref(const QString& href, ServiceRequest* req, QString* pm) const;
++    bool decodeHref(const QString& href, ServiceRequest* req, QString* pm) const;
+     PimContact entry() const;
+ 
+ public slots:
+--- qtopia-free-2.1.1/src/games/minesweep/minefield.h.orig	2005-11-11 10:43:36.000000000 +0800
++++ qtopia-free-2.1.1/src/games/minesweep/minefield.h	2009-03-30 16:25:16.000000000 +0800
+@@ -102,8 +102,8 @@
+     bool mAlreadyHeld; // true if we've already taken action for holding down on the current key press
+ #endif
+     State stat;
+-    void MineField::setState( State st );
+-    void MineField::placeMines();
++    void setState( State st );
++    void placeMines();
+     enum FlagAction { NoAction, FlagOn, FlagNext };
+     FlagAction flagAction;
+     bool ignoreClick;
+--- qtopia-free-2.1.1/src/settings/buttoneditor/buttoneditordialog.h.orig	2005-11-11 10:43:31.000000000 +0800
++++ qtopia-free-2.1.1/src/settings/buttoneditor/buttoneditordialog.h	2009-03-30 16:25:16.000000000 +0800
+@@ -53,7 +53,7 @@
+     virtual void done(int r);
+ private:
+     void populate(QComboBox* comboBox, const ServiceRequest& current);
+-    ServiceRequest ButtonEditorDialog::actionFor(int cur) const;
++    ServiceRequest actionFor(int cur) const;
+     void initAppList();
+     void buildGUI();
+
+--- qtopia-free-2.1.1/src/settings/qipkg/packagewizard.h.orig	2005-11-11 10:43:31.000000000 +0800
++++ qtopia-free-2.1.1/src/settings/qipkg/packagewizard.h	2009-03-30 16:25:16.000000000 +0800
+@@ -103,7 +103,7 @@
+ 
+     QStringList findPackages( const QRegExp& re );
+     void selectPackages( const QStringList& l );
+-    PackageItem* PackageWizard::current() const;
++    PackageItem* current() const;
+ 
+     bool commitWithIpkg();
+
+--- qtopia-free-2.1.1/src/plugins/inputmethods/keyboard/keyboard.h.orig	2005-11-11 10:43:21.000000000 +0800
++++ qtopia-free-2.1.1/src/plugins/inputmethods/keyboard/keyboard.h	2009-03-30 16:25:16.000000000 +0800
+@@ -57,7 +57,7 @@
+ public:
+     KeyboardPicks(QWidget* parent=0, const char* name=0, WFlags f=0)
+ 	: PickboardPicks(parent, name, f), dc(0) { }
+-    KeyboardPicks::~KeyboardPicks();
++    ~KeyboardPicks();
+     void initialise();
+     virtual QSize sizeHint() const;
+     KeyboardConfig *dc;
+--- qtopia-free-2.1.1/src/plugins/decorations/polished/polished.h.orig	2005-11-11 10:43:21.000000000 +0800
++++ qtopia-free-2.1.1/src/plugins/decorations/polished/polished.h	2009-03-30 16:25:16.000000000 +0800
+@@ -55,7 +55,7 @@
+     Q_REFCOUNT
+ 
+ protected:
+-    void PolishedDecoration::drawBlend( QPainter *, const QRect &r, const QColor &c1, const QColor&c2 ) const;
++    void drawBlend( QPainter *, const QRect &r, const QColor &c1, const QColor&c2 ) const;
+ 
+ private:
+     ulong ref;
+--- qtopia-free-2.1.1/src/server/inputmethods.cpp.orig	2005-11-11 10:43:32.000000000 +0800
++++ qtopia-free-2.1.1/src/server/inputmethods.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -93,7 +93,7 @@
+ class IMToolButton : public QToolButton
+ {
+ public:
+-    IMToolButton::IMToolButton( QWidget *parent ) : QToolButton( parent )
++    IMToolButton( QWidget *parent ) : QToolButton( parent )
+     { setWFlags( WStyle_Tool ); }
+     QSize sizeHint() const {
+ 	if (pixmap() && ! pixmap()->isNull()) {
+--- qtopia-free-2.1.1/src/libraries/qtopia/qmemoryfile_unix.cpp.orig	2005-11-11 10:43:34.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/qmemoryfile_unix.cpp	2010-01-08 16:29:37.000000000 +0800
+@@ -138,7 +138,7 @@
+ 	int f = ::open(tmpFile.latin1(), O_WRONLY);
+ 
+ 	if (!f)
+-	    f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY);	
++	    f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY, 0777);	
+ 	
+ 	if (f){
+ 	    fstat(f, &st);
+#
+# <指针类型转换出错>
+# error: invalid conversion from ‘const char*’ to ‘char*’
+#
+--- qtopia-free-2.1.1/src/libraries/qtopia/backend/vobject.cpp.orig	2005-11-11 10:43:35.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/backend/vobject.cpp	2010-04-09 11:16:39.000000000 +0800
+@@ -416,7 +416,7 @@
+ 	    prop(VCGrouping=b)
+ 		prop(VCGrouping=a)
+      */
+-    char *dot = strrchr(g,'.');
++    char *dot = strrchr((char *)g,'.');
+     if (dot) {
+ 	VObject *p, *t;
+ 	char *gs, *n = dot+1;
+--- qtopia-free-2.1.1/src/plugins/codecs/wavplugin/wavplugin.cpp.orig	2005-11-11 10:43:21.000000000 +0800
++++ qtopia-free-2.1.1/src/plugins/codecs/wavplugin/wavplugin.cpp	2010-04-09 11:15:58.000000000 +0800
+@@ -432,7 +432,7 @@
+ bool WavPlugin::isFileSupported( const QString& path ) {
+     debugMsg( "WavPlugin::isFileSupported" );
+ 
+-    char *ext = strrchr( path.latin1(), '.' );
++    char *ext = strrchr((char *) path.latin1(), '.' );
+ 
+     // Test file extension
+     if ( ext ) {
+#
+# ISO C++ says that these are ambiguous, even though the worst conversion 
+# for the first is better than the worst conversion for the second:
+# backend/event.cpp:419: note: candidate 1: operator<=(int, int) <built-in>
+#
+--- qtopia-free-2.1.1/src/libraries/qtopia/backend/event.cpp.orig	2005-11-11 10:43:35.000000000 +0800
++++ qtopia-free-2.1.1/src/libraries/qtopia/backend/event.cpp	2009-03-30 16:25:16.000000000 +0800
+@@ -416,7 +416,7 @@
+ {
+     int dayOfWeek = 1;
+     char i = Event::MON;
+-    while ( !( i & day ) && i <= Event::SUN ) {
++    while ( !( i & day ) && (int)i <= Event::SUN ) {
+ 	i <<= 1;
+ 	++dayOfWeek;
+     }

@@ -1,0 +1,10 @@
+--- sword-1.5.9/include/Makefile.am.orig	2012-09-17 12:13:16.609509287 +0800
++++ sword-1.5.9/include/Makefile.am	2012-09-17 12:13:22.513509287 +0800
+@@ -61,7 +61,6 @@
+ 
+ pkginclude_HEADERS += $(swincludedir)/papyriplain.h
+ pkginclude_HEADERS += $(swincludedir)/plainfootnotes.h
+-pkginclude_HEADERS += $(swincludedir)/plainfootnotes.h
+ pkginclude_HEADERS += $(swincludedir)/plainhtml.h
+ pkginclude_HEADERS += $(swincludedir)/rawcom.h
+ pkginclude_HEADERS += $(swincludedir)/rawfiles.h

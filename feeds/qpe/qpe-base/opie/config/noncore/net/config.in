@@ -1,0 +1,10 @@
+  source noncore/net/ftplib/config.in
+  source noncore/net/mail/config.in
+  source noncore/net/opie-smb/config.in
+  source noncore/net/opieftp/config.in
+  source noncore/net/opieirc/config.in
+  source noncore/net/opierdesktop/config.in
+  source noncore/net/opiestumbler/config.in
+  source noncore/net/opietooth/config.in
+  source noncore/net/wellenreiter/config.in
+

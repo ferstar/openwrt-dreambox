@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. /etc/tslib-env.sh
+. /etc/qtopia-env.sh
+cd /opt/Qtopia/bin/
+exec ./filebrowser -qws >/dev/console </dev/console

@@ -1,0 +1,15 @@
+--- opie-1.2.5/core/multimedia/opieplayer/libmpeg3/video/output.c.orig	2012-08-09 16:16:26.484431295 +0800
++++ opie-1.2.5/core/multimedia/opieplayer/libmpeg3/video/output.c	2012-08-09 16:32:05.492431727 +0800
+@@ -479,10 +479,10 @@
+ 	*data++ = 0;
+ 
+ #define STORE_PIXEL_RGB565 \
+-	*((unsigned short*)data)++ = \
++	*((unsigned short*)data) = \
+ 		((CLIP(r_l) & 0xf8) << 8) | \
+ 		((CLIP(g_l) & 0xfc) << 3) | \
+-		((CLIP(b_l) & 0xf8) >> 3);
++		((CLIP(b_l) & 0xf8) >> 3); data += 2;
+ 
+ #define STORE_PIXEL_RGB888 \
+ 	*data++ = CLIP(r_l); \

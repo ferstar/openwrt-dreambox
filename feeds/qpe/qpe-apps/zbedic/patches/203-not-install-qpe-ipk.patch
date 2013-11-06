@@ -1,0 +1,65 @@
+--- zbedic-1.2.2/zbedic/Makefile.in.orig	2012-09-16 15:37:06.738698311 +0800
++++ zbedic-1.2.2/zbedic/Makefile.in	2012-09-16 15:38:16.146698343 +0800
+@@ -73,24 +73,6 @@
+ 	@mkdir -p $(OBJDIR)
+ 
+ install_qpe: $(TARGET)
+-	install $(TARGET) $(QPEDIR)/bin/$(APPLICATION)
+-	install -m 644 misc/zbedic.desktop $(QPEDIR)/apps/Applications
+-	install -d $(QPEDIR)/pics144/zbedic
+-	install -d $(QPEDIR)/pics/zbedic
+-	for icon in $(LARGE_ICONS_SRC); do\
+-	  install -m 644 $${icon} $(QPEDIR)/pics144/zbedic;\
+-	done
+-	for icon in $(SMALL_ICONS_SRC); do\
+-	  install -m 644 $${icon} $(QPEDIR)/pics/zbedic;\
+-	done
+-	install -m 644 misc/large_icons/zbedic.png $(QPEDIR)/pics144
+-	install -m 644 misc/small_icons/zbedic.png $(QPEDIR)/pics
+-	$(STRIP) $(QPEDIR)/bin/$(APPLICATION)
+-	install -d $(QPEDIR)/help/en/html
+-	install -m 644 doc/manual/zbedic* $(QPEDIR)/help/en/html
+-#	install -d $(QPEDIR)/help/html
+-#	install -m 644 doc/manual/zbedic-lang-choice.html $(QPEDIR)/help/html/zbedic.html
+-
+ 
+ install: $(TARGET)
+ 	install -d $(bindir)
+@@ -109,37 +91,6 @@
+ 	install -m 644 misc/large_icons/find.png $(pkgdatadir)
+ 
+ ipk: install_qpe
+-	rm -f $(OBJDIR)/$(APPLICATION).control
+-#	echo Package: $(APPLICATION) >> $(OBJDIR)/$(APPLICATION).control
+-	echo Files: $(RELEASE_FILES) >> $(OBJDIR)/$(APPLICATION).control
+-	if test x$(enable_sqlite_static) = "xyes"; then \
+-	  echo Filename: $(APPLICATION)_$(VERSION)_static_$(ARCH).ipk >> $(OBJDIR)/$(APPLICATION).control; \
+-	else \
+-	  echo Filename: $(APPLICATION)_$(VERSION)_$(ARCH).ipk >> $(OBJDIR)/$(APPLICATION).control; \
+-	fi
+-#	echo Installed-Size: $$(du -bc $$(for i in $(RELEASE_FILES) ; do \
+-#		echo $(QPEDIR)/$$i ; done) | sed -ne 's/\(.*\).total/\1/p')
+-	echo Priority: optional >> $(OBJDIR)/$(APPLICATION).control
+-	echo Section: qpe/applications >> $(OBJDIR)/$(APPLICATION).control
+-	echo 'Maintainer: Rafal Mantiuk <rafm@users.sourceforge.net>' >> $(OBJDIR)/$(APPLICATION).control
+-	echo Architecture: $(ARCH) >> $(OBJDIR)/$(APPLICATION).control
+-	echo Version: $(VERSION) >> $(OBJDIR)/$(APPLICATION).control
+-	if test x"$(enable_sqlite_static)" = "xyes"; then \
+-	  echo Depends: qpe-base >> $(OBJDIR)/$(APPLICATION).control; \
+-	else \
+-	  echo Depends: qpe-base sqlite3>> $(OBJDIR)/$(APPLICATION).control; \
+-	fi
+-	echo Description: ZBEDic dictionary runtime >> $(OBJDIR)/$(APPLICATION).control
+-
+-	for i in preinst postinst prerm postrm ; do \
+-		test -f misc/$(APPLICATION).$$i && ln -sf ../misc/$(APPLICATION).$$i $(OBJDIR) ;\
+-	done
+-	$(QPEDIR)/bin/mkipks -arch $(ARCH) $(OBJDIR)/$(APPLICATION).control
+-	if test x"$(enable_sqlite_static)" = "xyes"; then \
+-	  mv $(APPLICATION)_$(VERSION)_$(ARCH).ipk $(APPLICATION)_$(VERSION)_static_$(ARCH).ipk; \
+-	fi
+-	install -d $(prefix)
+-	cp -fpRv $(APPLICATION)_$(VERSION)_$(ARCH).ipk $(prefix)
+ 
+ dist:
+ 	tar -czf zbedic_$(VERSION).tgz \

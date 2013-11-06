@@ -1,0 +1,126 @@
+#
+
+menu "Qte2 Configuration"
+	depends on PACKAGE_qte2
+
+config QTE2_RELEASE
+	bool "Release or Debug"
+	default y
+	help
+	  Y/N: (-release/-debug)
+
+config QTE2_SHARED
+	bool "Shared or Static library"
+	default y
+	help
+	  Y/N: (-shared/-static)
+
+config QTE2_NO_EXCEPTIONS
+	bool "(-no-g++-exceptions) Disable exceptions on platforms using the GNU C++ compiler"
+	default n
+	help
+	Y/N: (-no-g++-exceptions/)
+
+# 4 fonts
+menu "Qte2 fonts"
+
+config QTE2_FONTS_songti
+	bool "songti"
+	default y
+	help
+	  ./files/fonts/songti*
+
+config QTE2_FONTS_unifont
+	bool "unifont"
+	default y
+	help
+	  unifont*
+
+config QTE2_FONTS_helvetica
+	bool "helvetica"
+	default y
+	help
+	   helv* or ./files/fonts/helvetica*
+
+config QTE2_FONTS_fixed
+	bool "fixed"
+	default y
+	help
+	  fixed* 5x7.bdf
+
+config QTE2_FONTS_micro
+	bool "micro"
+	default y
+	help
+	  micro*
+
+config QTE2_FONTS_smallsmooth
+	bool "smallsmooth"
+	default y
+	help
+	  smallsmooth*
+
+config QTE2_FONTS_smoothtimes
+	bool "smoothtimes"
+	default y
+	help
+	  smoothtimes*
+
+config QTE2_FONTS_smoothmono
+	bool "smoothmono"
+	default n
+	help
+	  smoothmono* VeraMo*
+
+config QTE2_FONTS_smoothsans
+	bool "smoothsans"
+	default n
+	help
+	  smoothsans* Vera.ttf VeraBd.ttf VeraIt.ttf VeraBI.ttf
+
+config QTE2_FONTS_smoothserif
+	bool "smoothserif"
+	default n
+	help
+	  smoothserif* VeraSe*
+
+config QTE2_FONTS_babelfish
+	bool "babelfish"
+	default n
+	help
+	  babelfish*
+
+config QTE2_FONTS_utopia
+	bool "utopia"
+	default n
+	help
+	  UT*
+
+config QTE2_FONTS_lucidux
+	bool "lucidux"
+	default n
+	help
+	  lcdx*
+
+config QTE2_FONTS_cursor
+	bool "cursor"
+	default n
+	help
+	  cursor*
+
+config QTE2_FONTS_courier
+	bool "courier"
+	default n
+	help
+	  cour* c0*
+
+config QTE2_FONTS_japanese
+	bool "japanese"
+	default n
+	help
+	  japanese*
+
+endmenu
+
+
+endmenu

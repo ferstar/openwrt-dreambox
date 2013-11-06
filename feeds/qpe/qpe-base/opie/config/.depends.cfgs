@@ -1,0 +1,3 @@
+$(TOPDIR)/core/pim/config.in : $(TOPDIR)/core/pim/today/plugins/config.in
+$(TOPDIR)/noncore/apps/config.in : $(TOPDIR)/noncore/apps/opie-console/test/config.in
+$(TOPDIR)/noncore/net/config.in : $(TOPDIR)/noncore/net/opietooth/config.in

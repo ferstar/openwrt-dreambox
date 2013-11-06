@@ -1,0 +1,5 @@
+  source noncore/securityplugins/blueping/config.in
+  source noncore/securityplugins/dummy/config.in
+  source noncore/securityplugins/notice/config.in
+  source noncore/securityplugins/pin/config.in
+

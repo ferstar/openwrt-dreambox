@@ -1,0 +1,124 @@
+--- opie-1.2.5/Rules.make	2012-09-20 21:28:39.136745832 +0800
++++ opie-1.2.5/Rules.make	2012-09-20 21:30:32.696745883 +0800
+@@ -179,32 +179,32 @@
+ 		$(TOPDIR)/include/qtopia/private \
+ 		$(TOPDIR)/include/sl \
+ 		$(TOPDIR)/include/opietooth
+-	( cd include/qpe &&  rm -f *.h; ln -sf ../../library/*.h .; ln -sf ../../library/backend/*.h .; rm -f *_p.h; )
+-	( cd include/qtopia && rm -f *.h; ln -sf ../../library/*.h .; )
+-	( cd include/qtopia/private && rm -f *.h; ln -sf ../../../library/backend/*.h .; )
++	( cd include/qpe &&  rm -f *.h; cp -fpR ../../library/*.h .; cp -fpR ../../library/backend/*.h .; rm -f *_p.h; )
++	( cd include/qtopia && rm -f *.h; cp -fpR ../../library/*.h .; )
++	( cd include/qtopia/private && rm -f *.h; cp -fpR ../../../library/backend/*.h .; )
+ 	# libopie2
+-	( cd include/opie2 && ln -sf ../../libopie2/opiecore/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiecore/device/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiecore/linux/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiemm/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiedb/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opienet/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/core/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/backend/*.h .; )
+-	( cd include/opie2/private && ln -sf ../../../libopie2/opiepim/private/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/ui/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/fileselector/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/big-screen/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiesecurity/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiebluez/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiecore/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiecore/device/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiecore/linux/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiemm/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiedb/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opienet/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/core/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/backend/*.h .; )
++	( cd include/opie2/private && cp -fpR ../../../libopie2/opiepim/private/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/ui/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/fileselector/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/big-screen/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiesecurity/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiebluez/*.h .; )
+ 	# auxilliary libraries
+-	( cd include/opie2 && ln -sf ../../libqtaux/*.h .; )
+-	( cd include/opietooth && ln -sf ../../noncore/net/opietooth/lib/*.h .; )
+-	( cd include/ && ln -sf ../noncore/net/ftplib/*.h .; )
+-	( cd include/ && ln -sf ../inputmethods/pickboard/pickboardcfg.h .; )
+-	( cd include/ && ln -sf ../inputmethods/pickboard/pickboardpicks.h .; )
++	( cd include/opie2 && cp -fpR ../../libqtaux/*.h .; )
++	( cd include/opietooth && cp -fpR ../../noncore/net/opietooth/lib/*.h .; )
++	( cd include/ && cp -fpR ../noncore/net/ftplib/*.h .; )
++	( cd include/ && cp -fpR ../inputmethods/pickboard/pickboardcfg.h .; )
++	( cd include/ && cp -fpR ../inputmethods/pickboard/pickboardpicks.h .; )
+ 	# all
+ 	( cd include/opie2; for generatedHeader in `cd ../../libopie2/opieui; ls *.ui | sed -e "s,\.ui,\.h,g"`; do \
+ 	ln -sf ../../libopie2/opieui/$$generatedHeader $$generatedHeader; done )
+@@ -223,31 +223,31 @@
+ 		 $(TOPDIR)/include/opie2/private \
+ 		 $(TOPDIR)/include/sl \
+ 		 $(TOPDIR)/include/opietooth
+-	( cd include/qpe &&  rm -f *.h; ln -sf ../../library/*.h .; ln -sf ../../library/backend/*.h .; rm -f *_p.h; )
+-	( cd include/qtopia && rm -f *.h; ln -sf ../../library/*.h .; )
+-	( cd include/qtopia/private && rm -f *.h; ln -sf ../../../library/backend/*.h .; )
++	( cd include/qpe &&  rm -f *.h; cp -fpR ../../library/*.h .; cp -fpR ../../library/backend/*.h .; rm -f *_p.h; )
++	( cd include/qtopia && rm -f *.h; cp -fpR ../../library/*.h .; )
++	( cd include/qtopia/private && rm -f *.h; cp -fpR ../../../library/backend/*.h .; )
+ 	# libopie2
+-	( cd include/opie2 && ln -sf ../../libopie2/opiecore/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiecore/device/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiemm/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiedb/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opienet/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/core/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/backend/*.h .; )
+-	( cd include/opie2/private && ln -sf ../../../libopie2/opiepim/private/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiepim/ui/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/fileselector/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opieui/big-screen/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiesecurity/*.h .; )
+-	( cd include/opie2 && ln -sf ../../libopie2/opiebluez/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiecore/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiecore/device/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiemm/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiedb/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opienet/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/core/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/backend/*.h .; )
++	( cd include/opie2/private && cp -fpR ../../../libopie2/opiepim/private/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiepim/ui/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/fileselector/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opieui/big-screen/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiesecurity/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libopie2/opiebluez/*.h .; )
+ 	# auxilliary libraries
+-	( cd include/opie2 && ln -sf ../../libqtaux/*.h .; )
++	( cd include/opie2 && cp -fpR ../../libqtaux/*.h .; )
+ 	( cd include/opietooth && ln -s ../../noncore/net/opietooth/lib/*.h .; )
+-	( cd include/ && ln -sf ../noncore/net/ftplib/*.h .; )
+-	( cd include/ && ln -sf ../inputmethods/pickboard/pickboardcfg.h .; )
+-	( cd include/ && ln -sf ../inputmethods/pickboard/pickboardpicks.h .; )
++	( cd include/ && cp -fpR ../noncore/net/ftplib/*.h .; )
++	( cd include/ && cp -fpR ../inputmethods/pickboard/pickboardcfg.h .; )
++	( cd include/ && cp -fpR ../inputmethods/pickboard/pickboardpicks.h .; )
+ 	# all
+ 	( cd include/opie2; for generatedHeader in `cd ../../libopie2/opieui; ls *.ui | sed -e "s,\.ui,\.h,g"`; do \
+ 	ln -sf ../../libopie2/opieui/$$generatedHeader $$generatedHeader; done )
+@@ -256,8 +256,8 @@
+ 	ln -sf ../../library/custom.h $(TOPDIR)/include/qpe/custom.h
+ 
+ 	# Qtopia
+-	( cd include/qpe; ln -sf ../../x11/libqpe-x11/qpe/*.h .; )
+-	( cd include/qtopia; ln -sf ../../x11/libqpe-x11/qpe/*.h .; )
++	( cd include/qpe; cp -fpR ../../x11/libqpe-x11/qpe/*.h .; )
++	( cd include/qtopia; cp -fpR ../../x11/libqpe-x11/qpe/*.h .; )
+ 	touch $@
+ 
+ $(TOPDIR)/library/custom.h : $(TOPDIR)/.config

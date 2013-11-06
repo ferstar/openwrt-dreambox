@@ -1,0 +1,34 @@
+--- qtopia-free-2.1.1/src/3rdparty/libraries/libavcodec/common.h.orig	2012-07-16 23:03:19.898300240 +0800
++++ qtopia-free-2.1.1/src/3rdparty/libraries/libavcodec/common.h	2012-07-16 23:13:37.586300318 +0800
+@@ -82,6 +82,7 @@
+ #define AVOPTION_SUB(ptr) { .name = NULL, .help = (const char*)ptr }
+ #define AVOPTION_END() AVOPTION_SUB(NULL)
+ 
++/*
+ struct AVOption;
+ #ifdef HAVE_MMX
+ extern const struct AVOption avoptions_common[3 + 5];
+@@ -89,6 +90,7 @@
+ extern const struct AVOption avoptions_common[3];
+ #endif
+ extern const struct AVOption avoptions_workaround_bug[11];
++*/
+ 
+ #endif /* HAVE_AV_CONFIG_H */
+ 
+--- qtopia-free-2.1.1/src/3rdparty/libraries/libavcodec/avcodec.h.orig	2012-07-17 21:34:45.670626114 +0800
++++ qtopia-free-2.1.1/src/3rdparty/libraries/libavcodec/avcodec.h	2012-07-17 21:36:04.262626150 +0800
+@@ -1450,6 +1450,13 @@
+ #define FF_OPT_MAX_DEPTH 10
+ } AVOption;
+ 
++#ifdef HAVE_MMX
++extern const AVOption avoptions_common[3 + 5];
++#else
++extern const AVOption avoptions_common[3];
++#endif
++extern const AVOption avoptions_workaround_bug[11];
++
+ /**
+  * Parse option(s) and sets fields in passed structure
+  * @param strct	structure where the parsed results will be written

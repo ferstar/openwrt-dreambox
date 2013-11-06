@@ -1,0 +1,34 @@
+#
+# Signed-off-by: Richard Nee <richard.nee.cn@gmail.com>
+#
+--- a/Makefile	2012-05-14 17:58:58.110556743 +0800
++++ b/Makefile	2012-05-14 18:02:19.762556632 +0800
+@@ -7,15 +7,15 @@
+ 
+ ####### Compiler, tools and options
+ 
+-CC	=	arm-linux-gcc
+-CXX	=	arm-linux-g++
++CC	=	$(TARGET_CROSS)gcc
++CXX	=	$(TARGET_CROSS)g++
+ CFLAGS	=	-pipe -Wall -W -O2 -fPIC -DNO_DEBUG
+ CXXFLAGS=	-pipe -DQT_QWS_SL5XXX -DQT_QWS_CUSTOM -DQWS -fno-exceptions -fno-rtti -Wall -W -O2 -fPIC -DNO_DEBUG
+ INCPATH	=	-I$(QPEDIR)/include -I$(QTDIR)/include
+-LINK	=	arm-linux-g++
++LINK	=	$(TARGET_CROSS)g++
+ LFLAGS	=	-shared -Wl,-soname,libmurphypinyin.so.0
+ LIBS	=	$(SUBLIBS) -L$(QTDIR)/lib -L$(QPEDIR)/lib -lqpe -lqte
+-AR	=	arm-linux-ar cqs
++AR	=	$(TARGET_CROSS)ar cqs
+ RANLIB	=	
+ MOC	=	$(QTDIR)/bin/moc
+ UIC	=	$(QTDIR)/bin/uic
+@@ -97,7 +97,7 @@
+ 	-rm -f DIST/$(TARGET1)
+ 	-rm -f DIST/$(TARGET2)
+ 	-mv $(TARGET) $(TARGET0) $(TARGET1) $(TARGET2) DIST/
+-	(cd DIST;rm -fr *.tar;$(TAR) murphypinyin.tar *;rm -f *so*)
++	(cd DIST;rm -fr *.tar;$(TAR) murphypinyin.tar *)
+ 
+ staticlib: $(TARGETA)
+ 

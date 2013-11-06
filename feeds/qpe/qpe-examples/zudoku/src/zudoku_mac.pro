@@ -1,0 +1,12 @@
+TEMPLATE	= app
+CONFIG		+= qt warn_on release
+HEADERS		+= src/mainwindow.h src/zudokuengine.h
+SOURCES		+= src/mainwindow.cpp src/zudokuengine.cpp src/main.cpp
+DEFINES		+= 
+TARGET      = Zudoku
+INCLUDEPATH	+= . /Developer/Headers/FlatCarbon/
+VERSION		= 1.0.0
+RC_FILE		= zudoku.icns
+QMAKE_LIBS_QT =
+QMAKE_LIBS_QT_THREAD =
+LIBS += $(QTDIR)/lib/libqt.a -lz -framework Carbon

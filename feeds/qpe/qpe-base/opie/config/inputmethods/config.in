@@ -1,0 +1,9 @@
+  source inputmethods/dvorak/config.in
+  source inputmethods/handwriting/config.in
+  source inputmethods/jumpx/config.in
+  source inputmethods/keyboard/config.in
+  source inputmethods/kjumpx/config.in
+  source inputmethods/multikey/config.in
+  source inputmethods/pickboard/config.in
+  source inputmethods/unikeyboard/config.in
+

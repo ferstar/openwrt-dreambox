@@ -1,0 +1,22 @@
+--- opie-1.2.5/Vars.make.orig	2012-09-16 21:31:03.705239047 +0800
++++ opie-1.2.5/Vars.make	2012-09-16 21:33:14.581239108 +0800
+@@ -28,6 +28,9 @@
+ ifdef CONFIG_TARGET_X86
+     PLATFORM=x86-linux
+ endif
++ifdef CONFIG_TARGET_OPENWRT
++    PLATFORM=openwrt-linux
++endif
+ ifdef CONFIG_TARGET_64BIT
+     PLATFORM=64bit-linux
+ endif
+@@ -119,6 +122,9 @@
+     ifneq ($(CONFIG_TARGET_X86),)
+         STRIP=strip
+     endif
++    ifneq ($(CONFIG_TARGET_OPENWRT),)
++        STRIP=$(TARGET_CROSS)strip
++    endif
+     ifneq ($(CONFIG_TARGET_64BIT),)
+         STRIP=strip
+     endif

@@ -1,0 +1,12 @@
+--- opie-1.2.5/libopie2/opiemm/owavrecorder.cpp.orig	2012-08-09 16:39:55.732431945 +0800
++++ opie-1.2.5/libopie2/opiemm/owavrecorder.cpp	2012-08-09 16:41:00.588431974 +0800
+@@ -26,6 +26,9 @@
+                              Boston, MA 02111-1307, USA.
+ */
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++
+ #include "owavrecorder.h"
+ 
+ extern "C" {

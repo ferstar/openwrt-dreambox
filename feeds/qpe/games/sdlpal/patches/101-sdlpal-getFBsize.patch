@@ -1,0 +1,50 @@
+diff -Nur sdlpal/main.c sdlpal/main.c
+--- sdlpal/main.c	2011-01-05 00:15:18.000000000 +0800
++++ sdlpal/main.c	2011-01-10 19:18:41.000000000 +0800
+@@ -435,6 +435,31 @@
+    PAL_FadeOut(1);
+ }
+ 
++#include <stdio.h>
++#include <string.h>
++#include <unistd.h>
++#include <stdlib.h>
++
++void getFBSize(int *w, int *h)
++{
++    char buf[256];
++    *w = 480;
++    *h = 272;
++    FILE *file=fopen("/sys/class/graphics/fb0/virtual_size","r");
++    if (!file) {
++        return ;
++    }
++    int tmp1=0,tmp2=0;
++    if (fgets(buf, sizeof(buf), file)) {
++        if (sscanf(buf, "%d,%d", &tmp1, &tmp2) == 2) {
++            *w = tmp1;
++            *h = tmp2;
++        }
++    }
++    fclose(file);
++    return ;
++}
++
+ int
+ main(
+    int      argc,
+@@ -532,8 +557,12 @@
+       wScreenHeight = 240;
+ #endif
+ #else
+-      wScreenWidth = 640;
+-      wScreenHeight = fFullScreen ? 480 : 400;
++      getFBSize(&wScreenWidth,&wScreenHeight);
++      printf("\nwScreenWidth=%d\nwScreenHeight%d\n", wScreenWidth, wScreenHeight);
++      if (wScreenWidth >= 800 || wScreenHeight >= 480) {
++          wScreenWidth = 800;
++          wScreenHeight = 480;
++      }
+ #endif
+    }
+ 

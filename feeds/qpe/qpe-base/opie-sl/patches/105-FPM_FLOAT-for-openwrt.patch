@@ -1,0 +1,21 @@
+--- opie-1.2.5/core/multimedia/opieplayer/libmad/libmad.pro.orig	2012-09-17 13:27:07.669509366 +0800
++++ opie-1.2.5/core/multimedia/opieplayer/libmad/libmad.pro	2012-09-17 13:28:47.501509369 +0800
+@@ -1,8 +1,10 @@
+ QMAKE_CFLAGS += $(if $(CONFIG_TARGET_X86),-DFPM_INTEL) \
++		$(if $(CONFIG_TARGET_OPENWRT),-DFPM_DEFAULT) \
+ 		$(if $(CONFIG_TARGET_64BIT),-DFPM_64BIT) \
+ 		$(if $(CONFIG_TARGET_IPAQ),-DFPM_ARM) \
+ 		$(if $(CONFIG_TARGET_SHARP),-DFPM_ARM)
+ QMAKE_CXXFLAGS += $(if $(CONFIG_TARGET_X86),-DFPM_INTEL) \
++		$(if $(CONFIG_TARGET_OPENWRT),-DFPM_DEFAULT) \
+ 		$(if $(CONFIG_TARGET_64BIT),-DFPM_64BIT) \
+ 		$(if $(CONFIG_TARGET_IPAQ),-DFPM_ARM) \
+ 		$(if $(CONFIG_TARGET_SHARP),-DFPM_ARM)
+--- opie-1.2.5/core/multimedia/opieplayer/libmpeg3/libmpeg3.pro.orig	2012-09-17 13:29:49.181509370 +0800
++++ opie-1.2.5/core/multimedia/opieplayer/libmpeg3/libmpeg3.pro	2012-09-17 13:36:10.961509376 +0800
+@@ -1,4 +1,5 @@
+ QMAKE_CFLAGS += $(if $(CONFIG_TARGET_X86),-DHAVE_CSS) \
++	$(if $(CONFIG_TARGET_OPENWRT),-DUSE_FIXED_POINT) \
+ 	$(if $(CONFIG_TARGET_IPAQ),-DUSE_FIXED_POINT) \
+ 	$(if $(CONFIG_TARGET_SHARP),-DUSE_FIXED_POINT)
+ QMAKE_CC = $(CXX)

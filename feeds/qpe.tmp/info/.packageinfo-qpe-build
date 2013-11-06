@@ -1,0 +1,16 @@
+Source-Makefile: feeds/qpe/qpe-build/Makefile
+Package: qpe-build
+Version: 1
+Depends: 
+Provides: 
+Section: qpe
+Category: Qt/Qtopia
+Title: the makefiles of building qpe
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: 
+Type: ipkg
+Description: the makefiles of building qpe
+http://code.google.com/p/openwrt-for-embedded/
+@@
+
+

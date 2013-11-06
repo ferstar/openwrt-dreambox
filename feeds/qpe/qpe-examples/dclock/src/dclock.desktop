@@ -1,0 +1,10 @@
+[Translation]
+File=QtopiaApplications
+Context=Digital Clock
+Comment[Desktop Entry/Name]=Use soft hyphen (char U00AD) to indicate hyphenation
+[Desktop Entry]
+Comment[]=Digital Clock
+Exec=dclock
+Icon=dclock
+Type=Application
+Name[]=Digital Clock

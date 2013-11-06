@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/libs/liblcms/Makefile
+Package: liblcms
+Submenu: libs
+Version: 1.19-1
+Depends: +zlib +libjpeg +libtiff
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: qpe-
+Category: Qt/Qtopia
+Title: little cms color engine
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: lcms-1.19.tar.gz
+Type: ipkg
+Description: little cms color engine
+http://www.littlecms.com/
+@@
+
+

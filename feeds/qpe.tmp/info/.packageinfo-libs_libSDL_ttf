@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/libs/libSDL_ttf/Makefile
+Package: libSDL_ttf
+Submenu: libs
+Version: 2.0.11-2
+Depends: +libSDL +libpthread +libfreetype +zlib 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: ttf library for Simple DirectMedia Layer
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: SDL_ttf-2.0.11.tar.gz
+Type: ipkg
+Description:   SDL_ttf is a sample library for Simple DirectMedia Layer.
+http://www.libsdl.org/projects/SDL_ttf/
+@@
+
+

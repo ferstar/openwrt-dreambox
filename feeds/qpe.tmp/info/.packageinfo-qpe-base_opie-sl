@@ -1,0 +1,18 @@
+Source-Makefile: feeds/qpe/qpe-base/opie-sl/Makefile
+Package: opie-sl
+Submenu: qpe-base
+Version: 1.2.5-1
+Depends: +qpe-build +qte2-sl +qt2 @!PACKAGE_opie @!PACKAGE_qtopia-sl
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: OPIE for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: opie-1.2.5.tar.bz2
+Type: ipkg
+Description:   Opie - Open Palmtop Integrated Environment
+  Applications and libraries for mobile devices.
+http://opie.sourceforge.net/
+@@
+
+

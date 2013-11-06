@@ -1,0 +1,17 @@
+Source-Makefile: feeds/qpe/qpe-base/qte2-sl/Makefile
+Package: qte2-sl
+Submenu: qpe-base
+Version: 2.3.10-1
+Depends: +qpe-build @!PACKAGE_qte2
+Provides: 
+Section: qtopia-
+Category: Qt/Qtopia
+Title: qte2 for PC simulation
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: qt-embedded-2.3.10-free.tar.gz
+Type: ipkg
+Description:   qte2 for PC simulation
+http://qt.nokia.com/ ftp://ftp.trolltech.com/
+@@
+
+

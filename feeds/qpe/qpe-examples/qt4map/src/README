@@ -1,0 +1,11 @@
+/*
+write by hugerat Email:njjqs115@jlonline.com
+2011-02-28
+*/
+2011-02-28:
+算是0.1版吧。目前只固定显示南京地图，源码包内包含mif格式南京地图,2003版的。有很多地图显示的细节还没完成。但整体的结构框架已构成。细节留待以后慢慢添加。
+
+编译：
+X11版linux:使用QT4.2以上版本进行编译。可能要先编译mitab1.7.0，(下载地址：mitab.maptools.org)，将生成的libmitab.so,libmitab.so.1,libmitab.so.1.0.1三个文件拷贝到源码目录的mitab目录下和源码根目录下。编译。在源码目录下，用命令行方式执行qt-map，等调试信息输出完后，即可看到界面和地图。
+嵌入式linux:使用QT embedded 4.2以上，或qt 4.6以上。步聚同上，只是注意要进行交叉编译。
+windows:使用QT 4.6以上版本，进行编译，运行即可，源码包内已含mitab.dll，故不需重新编译mitab1.7.0。

@@ -1,0 +1,16 @@
+  source noncore/apps/advancedfm/config.in
+  source noncore/apps/checkbook/config.in
+  source noncore/apps/confedit/config.in
+  source noncore/apps/dagger/config.in
+  source noncore/apps/odict/config.in
+  source noncore/apps/opie-bartender/config.in
+  source noncore/apps/opie-console/config.in
+  source noncore/apps/opie-gutenbrowser/config.in
+  source noncore/apps/opie-reader/config.in
+  source noncore/apps/opie-sheet/config.in
+  source noncore/apps/opie-write/config.in
+  source noncore/apps/oxygen/config.in
+  source noncore/apps/tableviewer/config.in
+  source noncore/apps/tinykate/config.in
+  source noncore/apps/zsafe/config.in
+

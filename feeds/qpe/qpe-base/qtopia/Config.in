@@ -1,0 +1,94 @@
+#
+
+menu "Qtopia Configuration"
+	depends on PACKAGE_qtopia
+
+config QTOPIA_RELEASE
+	bool "Release or Debug"
+	default y
+	help
+	  Y/N: (-release/-debug)
+
+config QTOPIA_SHARED
+	bool "Shared or Static library"
+	default y
+	help
+	  Y/N: (-shared/-static)
+
+#1
+config QTOPIA_DISPLAYSIZE
+	string
+	prompt "qtopia displaysize"
+	default "240x320"
+	help
+	  Specify qtopia displaysize, 240x320 by default(or 176x208).
+
+#2, actually not support
+choice
+	prompt "qtopia edition"
+	default QTOPIA_EDITION_PDA
+
+	config QTOPIA_EDITION_PDA
+		bool "PDA"
+
+	config QTOPIA_EDITION_PHONE
+		bool "phone"
+
+	config QTOPIA_EDITION_CORE
+		bool "core"
+
+endchoice
+
+#3, actually not support
+choice
+	prompt "qtopia language"
+	default QTOPIA_LANG_EN_US
+
+	config QTOPIA_LANG_EN_US
+		bool "en_US"
+
+	config QTOPIA_LANG_ZH_CN
+		bool "zh_CN"
+
+endchoice
+
+config QTOPIA_LANG
+	string
+	default "en_US"   if QTOPIA_LANG_EN_US
+	default "zh_CN"   if QTOPIA_LANG_ZH_CN
+	help
+	  -languages Default: "en_US"
+
+#
+config QTOPIA_COMPAT
+	bool "(-compat) Maintain binary compatibility with previous versions of Qtopia"
+	default y
+	help
+	  Y/N: (-compat/-no-compat)
+
+config QTOPIA_SINGLEEXEC
+	bool "(-singleexec) Bundled applications are statically linked into the server"
+	default n
+	help
+	  Bundled applications are statically linked into the server, and run via forking.
+	  Y/N: (-singleexec)
+
+config QTOPIA_QUICKLAUNCH
+	bool "(-quicklaunch) Use the quicklaunch method of speeding up application loading"
+	default y
+	help
+	  Y/N: (-quicklaunch/-no-quicklaunch)
+
+config QTOPIA_QDL
+	bool "(-qdl) Enable Qtopia Data Linking"
+	default y
+	help
+	  Y/N: (-qdl/-no-qdl)
+
+config QTOPIA_QTOPIA
+	bool "(-qtopia) Build the device part of Qtopia"
+	default y
+	help
+	  Y/N: (-qtopia/-no-qtopia)
+
+endmenu

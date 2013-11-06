@@ -1,0 +1,35 @@
+Source-Makefile: feeds/qpe/games/sdlpal/Makefile
+Package: sdlpal
+Submenu: games
+Version: 61376-2
+Depends: +libSDL +libSDL_image +libSDL_ttf +libSDL_mixer  +zlib +libfreetype +libmad +libjpeg +libpng
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: SDL-
+Category: Qt/Qtopia
+Title: RPG game Paladin - Xian Jian Qi Xia Zhuan
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sdlpal-61376.tar.bz2
+Type: ipkg
+Description:   An SDL-based reimplemention of the classic Chinese-language RPG "Xian Jian Qi Xia Zhuan" 
+  (aka "The Legend of Sword and Fairy" or "PAL") which runs under modern operating systems 
+  (Microsoft Windows, GNU/Linux, Mac OS X, etc.) as well as several embedded systems.
+http://sdlpal.codeplex.com/
+@@
+
+Package: sdlpal-desktop
+Submenu: games
+Version: 61376-2
+Depends: +qpe-build @PACKAGE_opie||@PACKAGE_opie-sl||@PACKAGE_qtopia||@PACKAGE_qtopia-sl sdlpal
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: games
+Category: Qt/Qtopia
+Title: Qtopia desktop of RPG game Paladin
+Maintainer: Richard Nee <richard.nee.cn@gmail.com>
+Source: sdlpal-61376.tar.bz2
+Type: ipkg
+Description: Qtopia desktop of RPG game Paladin
+@@
+
+

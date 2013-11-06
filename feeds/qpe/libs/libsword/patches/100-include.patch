@@ -1,0 +1,53 @@
+--- sword-1.5.9/src/modules/filters/gbfwordjs.cpp.orig	2012-09-17 10:38:06.109509185 +0800
++++ sword-1.5.9/src/modules/filters/gbfwordjs.cpp	2012-09-17 10:38:29.949509187 +0800
+@@ -6,6 +6,7 @@
+ 
+ 
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <gbfwordjs.h>
+ #include <swmodule.h>
+ #include <ctype.h>
+--- sword-1.5.9/utilities/diatheke/corediatheke.h.orig	2012-09-17 10:50:54.309509199 +0800
++++ sword-1.5.9/utilities/diatheke/corediatheke.h	2012-09-17 10:51:50.505509199 +0800
+@@ -4,6 +4,7 @@
+ // see accompanying LICENSE file for license details
+ 
+ #include <stdio.h>
++#include <iostream>
+ 
+ #include "diathekemgr.h"
+ #include <localemgr.h>
+--- sword-1.5.9/utilities/step2vpl.cpp.orig	2012-09-17 11:12:18.141509222 +0800
++++ sword-1.5.9/utilities/step2vpl.cpp	2012-09-17 11:13:08.965509222 +0800
+@@ -1,6 +1,7 @@
+ #include <iostream>
+-#include <string>
++#include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #include <fcntl.h>
+ 
+--- sword-1.5.9/utilities/diatheke/osiscgi.cpp.orig	2012-09-17 11:01:20.629509211 +0800
++++ sword-1.5.9/utilities/diatheke/osiscgi.cpp	2012-09-17 11:02:26.289509212 +0800
+@@ -19,9 +19,7 @@
+ #include <utilxml.h>
+ #include <versekey.h>
+ #include <swmodule.h>
+-#ifdef WIN32
+ #include <ctype.h>
+-#endif
+ 
+ SWORD_NAMESPACE_START
+ 
+--- sword-1.5.9/utilities/stepdump.cpp.orig	2012-09-17 11:03:28.833509213 +0800
++++ sword-1.5.9/utilities/stepdump.cpp	2012-09-17 11:04:49.673509213 +0800
+@@ -1,5 +1,6 @@
+ #include <iostream>
+-#include <string>
++#include <string.h>
++#include <stdlib.h>
+ 
+ #include <fcntl.h>
+ 

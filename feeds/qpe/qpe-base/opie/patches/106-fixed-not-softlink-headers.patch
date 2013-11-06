@@ -1,0 +1,15 @@
+# actually, they are all in $(QTDIR)/include, not needed to softlink !
+# by Richard Nee <richard.nee.cn@gmail.com>
+--- opie-1.2.5/Rules.make	2010-12-12 22:53:24.000000000 +0800
++++ opie-1.2.5/Rules.make	2012-09-20 19:41:45.840742872 +0800
+@@ -162,10 +162,6 @@
+ 
+ $(QTDIR)/stamp-headers :
+ 	@-rm -f $(QTDIR)/stamp-headers*
+-	( cd $(QTDIR)/include; \
+-		$(patsubst %,ln -sf ../src/kernel/%;,qgfx_qws.h qwsmouse_qws.h \
+-		qcopchannel_qws.h qwindowsystem_qws.h \
+-		qfontmanager_qws.h qwsdefaultdecoration_qws.h))
+ 	touch $@
+ 
+ $(QTDIR)/stamp-headers-x11 :

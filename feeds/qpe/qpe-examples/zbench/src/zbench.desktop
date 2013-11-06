@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=Benchmark for Opie or Qtopia
+Exec=zbench
+Icon=zbench
+Type=Application
+Name=ZBench
