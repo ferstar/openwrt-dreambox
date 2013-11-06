@@ -10,6 +10,10 @@
 /staging_dir
 /tmp
 /logs
+/feeds/dreambox_packages.tmp
+/feeds/luci.tmp
+/feeds/packages.tmp
+/feeds/qpe.tmp
 /feeds/qpe/.svn
 /feeds/dreambox_packages/.svn
 /feeds/xwrt/.svn
