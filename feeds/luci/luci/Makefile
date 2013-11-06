@@ -455,6 +455,9 @@ $(eval $(call application,pptpd,pptpd configuration module,\
 $(eval $(call application,transmission,transmission configuration module,\
 	+PACKAGE_luci-app-transmission:transmission-daemon +transmission-remote +transmission-web))
 
+$(eval $(call application,njit,njit configuration module,\
+	+PACKAGE_luci-app-njit:njit8021xclient))
+
 $(eval $(call application,nwan,nwan configuration module,\
 	 +PACKAGE_luci-app-nwan:ip +kmod-macvlan +iptables +iptables-mod-conntrack +iptables-mod-conntrack-extra +iptables-mod-ipopt))
 
