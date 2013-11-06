@@ -1062,6 +1062,22 @@ Description: transmission configuration module
 http://luci.subsignal.org/
 @@
 
+Package: luci-app-njit
+Submenu: 3. Applications
+Version: trunk+svn-1
+Depends: +PACKAGE_luci-app-njit:njit8021xclient
+Provides: 
+Build-Depends: lua/host
+Section: luci
+Category: LuCI
+Title: njit configuration module
+Maintainer: LuCI Development Team <luci@lists.subsignal.org>
+Source: 
+Type: ipkg
+Description: njit configuration module
+http://luci.subsignal.org/
+@@
+
 Package: luci-app-nwan
 Submenu: 3. Applications
 Version: trunk+svn-1

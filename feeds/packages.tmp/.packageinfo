@@ -37376,6 +37376,45 @@ http://libtorrent.rakshasa.no/
 @@
 
 
+Source-Makefile: feeds/packages/net/njit8021xclient/Makefile
+Package: njit8021xclient
+Version: 1.3-testing
+Depends: +libpcap
+Provides: 
+Build-Depends: +libopenssl
+Section: net
+Category: Network
+Title: NJIT 802.1X client program
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: njit8021xclient-1.3.tar.gz
+Type: ipkg
+Description:    802.1X client from Nanjing Institude of Technology,
+ compatable with H3C iNode 802.1X client.
+ Support H3C/iNode's private authentication protocol V2.40-V3.60
+  This package contains only the main program njit-client.
+http://liuqun.github.com/njit8021xclient
+@@
+
+Package: njit8021xclient-web
+Version: 1.3-testing
+Depends: njit8021xclient
+Provides: 
+Build-Depends: +libopenssl
+Section: net
+Category: Network
+Title: LuCI pages for NJIT 802.1X client
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: njit8021xclient-1.3.tar.gz
+Type: ipkg
+Description:    802.1X client from Nanjing Institude of Technology,
+ compatable with H3C iNode 802.1X client.
+ Support H3C/iNode's private authentication protocol V2.40-V3.60
+  This package contains LuCI web pages of njit8021xclient.
+  It will help you to set your 802.1X login password.
+http://sourceforge.net/projects/njit8021xclient/
+@@
+
+
 Source-Makefile: feeds/packages/net/openvpn/Makefile
 Package: openvpn
 Submenu: VPN

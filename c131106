@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # OpenWrt version: Trunk (r667)
-# Wed Nov  6 10:29:08 2013
+# Wed Nov  6 17:23:03 2013
 #
 CONFIG_HAVE_DOT_CONFIG=y
 # CONFIG_TARGET_ppc40x is not set
@@ -1359,9 +1359,9 @@ CONFIG_PACKAGE_luci-app-ntpc=y
 # CONFIG_PACKAGE_luci-app-ushare is not set
 # CONFIG_PACKAGE_luci-app-vnstat is not set
 # CONFIG_PACKAGE_luci-app-voice-core is not set
-CONFIG_PACKAGE_luci-app-vsftpd=y
+# CONFIG_PACKAGE_luci-app-vsftpd is not set
 # CONFIG_PACKAGE_luci-app-webcam is not set
-CONFIG_PACKAGE_luci-app-webshell=y
+# CONFIG_PACKAGE_luci-app-webshell is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
 # CONFIG_PACKAGE_luci-app-wshaper is not set
 
@@ -1377,7 +1377,7 @@ CONFIG_PACKAGE_luci-theme-base=y
 # CONFIG_PACKAGE_luci-theme-freifunk-generic is not set
 # CONFIG_PACKAGE_luci-theme-freifunk-hannover is not set
 CONFIG_PACKAGE_luci-theme-openwrt=y
-CONFIG_PACKAGE_luci-theme-openwrtcn=y
+# CONFIG_PACKAGE_luci-theme-openwrtcn is not set
 # CONFIG_PACKAGE_luci-theme-oxygen is not set
 
 #
